@@ -5,12 +5,14 @@
  */
 package gui;
 
+import logic.*;
+
 /**
  *
  * @author A.A
  */
 public class ListEmployees extends javax.swing.JFrame {
-
+private HrSystem hrSystem;
     /**
      * Creates new form ListEmployees
      */
@@ -18,6 +20,14 @@ public class ListEmployees extends javax.swing.JFrame {
         initComponents();
         java.awt.Color recursiveBG = new java.awt.Color(240, 240,240);
         getContentPane().setBackground(recursiveBG);
+        hrSystem = new HrSystem();
+           DeptComboBox.removeAllItems(); //remove all items
+        //for loop to add Departments names to combo box
+        for (Department ls : hrSystem.getAllDepartments() ) {
+            DeptComboBox.addItem(ls.getName());
+        }
+        DeptComboBox.setSelectedItem(null); //set selected Department to null
+        EmpsTextArea.setText(null); //set text area to null
     }
 
     /**
@@ -30,12 +40,12 @@ public class ListEmployees extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton2 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        DeptComboBox = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        EmpsTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -48,9 +58,14 @@ public class ListEmployees extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setEditable(true);
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dep1", "Dep2", "Dep3", "DepN" }));
+        DeptComboBox.setEditable(true);
+        DeptComboBox.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        DeptComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dep1", "Dep2", "Dep3", "DepN" }));
+        DeptComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeptComboBoxActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 204));
@@ -63,13 +78,18 @@ public class ListEmployees extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 153, 153));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setText("Close");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("i.e. 101 - Abdulla\n102 - Hassan\n");
-        jScrollPane1.setViewportView(jTextArea1);
+        EmpsTextArea.setColumns(20);
+        EmpsTextArea.setFont(new java.awt.Font("Monospaced", 0, 18)); // NOI18N
+        EmpsTextArea.setLineWrap(true);
+        EmpsTextArea.setRows(5);
+        EmpsTextArea.setText("\n");
+        jScrollPane1.setViewportView(EmpsTextArea);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -81,7 +101,7 @@ public class ListEmployees extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(DeptComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(212, 212, 212))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -103,7 +123,7 @@ public class ListEmployees extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DeptComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(35, 35, 35)
@@ -119,6 +139,26 @@ public class ListEmployees extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void DeptComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeptComboBoxActionPerformed
+        // TODO add your handling code here:
+         EmpsTextArea.setText(null);
+        int depIndex = DeptComboBox.getSelectedIndex();
+        String empsInformation = "This Department has no employees."
+                + "\n";
+        empsInformation = empsInformation +"dfdf \n";
+        
+    }//GEN-LAST:event_DeptComboBoxActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+
+        // TODO add your handling code here:
+MainMenu mainMenu = new MainMenu();
+        mainMenu.setVisible(true);
+        this.dispose();
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,12 +196,12 @@ public class ListEmployees extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> DeptComboBox;
+    private javax.swing.JTextArea EmpsTextArea;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

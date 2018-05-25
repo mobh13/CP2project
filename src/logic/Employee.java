@@ -5,10 +5,87 @@
  */
 package logic;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
 /**
  *
  * @author madan
  */
-public class Employee {
+public class Employee implements Serializable{
+    
+    private String firstName;
+    private String lastName ;
+    private String address;       
+    private char   gender; 
+    private PayScale payLevel;
+    private Department department;
+   private boolean isHead;
+   private int id;
+   static private int idCounter = 0;
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setGender(char gender) {
+        this.gender = gender;
+    }
+
+    public void setPayLevel(PayScale payLevel) {
+        this.payLevel = payLevel;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public void setIsHead(boolean isHead) {
+        this.isHead = isHead;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public char getGender() {
+        return gender;
+    }
+
+    public PayScale getPayLevel() {
+        return payLevel;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public boolean isIsHead() {
+        return isHead;
+    }
+
+    public int getId() {
+        return id;
+    }
     
 }

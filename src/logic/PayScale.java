@@ -5,10 +5,12 @@
  */
 package logic;
 
+import java.io.Serializable;
+
 /**
  *
  * @author madan
  */
-public class PayScale {
+public class PayScale implements Serializable {
     
 }

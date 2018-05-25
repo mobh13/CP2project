@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package gui;
-
+import logic.*;
 import javafx.scene.paint.Color;
+import javax.swing.JFrame;
 
 /**
  *
@@ -17,10 +18,14 @@ public class MainMenu extends javax.swing.JFrame {
     /**
      * Creates new form prog_gui_form
      */
+   
     public MainMenu() {
         initComponents();
         java.awt.Color recursiveBG = new java.awt.Color(240, 240,240);
         getContentPane().setBackground(recursiveBG);
+        HrSystem  hrSystem = new HrSystem();
+          
+        
     }
 
     /**
@@ -348,6 +353,9 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+AssignEmployee assignEmployee = new AssignEmployee();
+        assignEmployee.setVisible(true);
+
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
@@ -369,6 +377,8 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+         ListEmployees listEmployees = new ListEmployees();
+        listEmployees.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -377,6 +387,8 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        AddDepartment addDepartment = new AddDepartment();
+        addDepartment.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
