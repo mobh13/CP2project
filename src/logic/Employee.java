@@ -24,6 +24,15 @@ public class Employee implements Serializable{
    private int id;
    static private int idCounter = 0;
 
+    public static int getIdCounter() {
+        return idCounter;
+    }
+
+    public static void setIdCounter(int idCounter) {
+        Employee.idCounter = idCounter;
+    }
+    
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }

@@ -5,14 +5,17 @@
  */
 package gui;
 
+import java.util.ArrayList;
 import logic.*;
+
+
 
 /**
  *
  * @author A.A
  */
 public class ListEmployees extends javax.swing.JFrame {
-private HrSystem hrSystem;
+
     /**
      * Creates new form ListEmployees
      */
@@ -20,14 +23,8 @@ private HrSystem hrSystem;
         initComponents();
         java.awt.Color recursiveBG = new java.awt.Color(240, 240,240);
         getContentPane().setBackground(recursiveBG);
-        hrSystem = new HrSystem();
-           DeptComboBox.removeAllItems(); //remove all items
-        //for loop to add Departments names to combo box
-        for (Department ls : hrSystem.getAllDepartments() ) {
-            DeptComboBox.addItem(ls.getName());
-        }
-        DeptComboBox.setSelectedItem(null); //set selected Department to null
-        EmpsTextArea.setText(null); //set text area to null
+      depsLoad();
+           
     }
 
     /**
@@ -47,7 +44,7 @@ private HrSystem hrSystem;
         jScrollPane1 = new javax.swing.JScrollPane();
         EmpsTextArea = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jButton2.setBackground(new java.awt.Color(153, 255, 153));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -135,27 +132,58 @@ private HrSystem hrSystem;
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+private void depsLoad() {
 
+        int counter = 0;
+        DeptComboBox.removeAllItems(); //remove all itemsz
+        //while loop to add Departments names to combo box
+        while (counter < HrSystem.getAllDepartments().size()) {
+
+            DeptComboBox.addItem(HrSystem.getAllDepartments().get(counter).getName());
+            counter++;
+        }
+
+        DeptComboBox.setSelectedItem(null); //set selected Department to null
+
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+                EmpsTextArea.setText(null); //set text area to null
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void DeptComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeptComboBoxActionPerformed
         // TODO add your handling code here:
          EmpsTextArea.setText(null);
-        int depIndex = DeptComboBox.getSelectedIndex();
-        String empsInformation = "This Department has no employees."
+        int depIndex  =0;
+              depIndex  = DeptComboBox.getSelectedIndex();
+        String empsInformation = "";
+        Department dep = HrSystem.getAllDepartments().get(depIndex);
+        ArrayList<Employee> listOfEmployees = dep.getListOfEmployees();
+        if(listOfEmployees.isEmpty())
+        {
+         empsInformation = "This Department has no employees."
                 + "\n";
-        empsInformation = empsInformation +"dfdf \n";
+        }else{
+            
+            int counter = 0 ;
+            empsInformation = "**List Of Employees**\n"
+                    + "#Name        #ID \n"
+                    + "-----------------------------\n";
+            while(counter < listOfEmployees.size()){
+        
+         empsInformation = empsInformation +listOfEmployees.get(counter).getFirstName() + " "+ listOfEmployees.get(counter).getLastName() + "      " + listOfEmployees.get(counter).getId() +" \n" ;
+        counter++;
+        }
+        }
+        
         
     }//GEN-LAST:event_DeptComboBoxActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
 
-        // TODO add your handling code here:
-MainMenu mainMenu = new MainMenu();
-        mainMenu.setVisible(true);
+  
         this.dispose();
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -163,7 +191,7 @@ MainMenu mainMenu = new MainMenu();
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String args[])  {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

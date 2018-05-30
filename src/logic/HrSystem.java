@@ -15,6 +15,18 @@ public class HrSystem {
     private static ArrayList<Employee> allEmployees;
     private static ArrayList<Department> allDepartments;
      private static ArrayList<PayScale> payScales;
+
+    public static void setAllEmployees(ArrayList<Employee> allEmployees) {
+        HrSystem.allEmployees = allEmployees;
+    }
+
+    public static void setAllDepartments(ArrayList<Department> allDepartments) {
+        HrSystem.allDepartments = allDepartments;
+    }
+
+    public static void setPayScales(ArrayList<PayScale> payScales) {
+        HrSystem.payScales = payScales;
+    }
      
      public HrSystem(){
      

@@ -27,6 +27,15 @@ public Department(String name , String location){
     idCounter++;
     
 }
+
+    public void setListOfEmployees(ArrayList<Employee> listOfEmployees) {
+        this.listOfEmployees = listOfEmployees;
+    }
+
+    public static int getIdCounter() {
+        return idCounter;
+    }
+
     public String getName() {
         return name;
     }
