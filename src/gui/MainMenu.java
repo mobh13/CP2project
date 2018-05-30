@@ -572,6 +572,9 @@ public class MainMenu extends javax.swing.JFrame {
                 }
 
             }
+            departmentId ++;
+            employeeId++;
+            payScaleId++;
             Department.setIdCounter(departmentId);
             Employee.setIdCounter(employeeId);
             PayScale.setIdCounter(payScaleId);
