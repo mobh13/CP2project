@@ -154,6 +154,7 @@ private void depsLoad() {
 
     private void DeptComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeptComboBoxActionPerformed
         // TODO add your handling code here:
+        if(!HrSystem.getAllDepartments().isEmpty()){
          EmpsTextArea.setText(null);
         int depIndex  =0;
               depIndex  = DeptComboBox.getSelectedIndex();
@@ -176,7 +177,7 @@ private void depsLoad() {
         counter++;
         }
         }
-        
+        }
         
     }//GEN-LAST:event_DeptComboBoxActionPerformed
 
