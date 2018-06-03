@@ -184,6 +184,11 @@ public class EditDepartment extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null,
                             "Department has been updated successfully", "Success",
                             JOptionPane.INFORMATION_MESSAGE);
+                    //set the selected item to the updated version 
+                    jComboBox1.setSelectedItem(HrSystem.getAllDepartments().get(i).getName());
+                    //clearing the text boxes after insert/search
+                    jTextField1.setText("");
+                    jTextField3.setText("");
                     //exit the loop
                     cond = true;
                 } else if (depName.length() <= 3) {
@@ -216,10 +221,6 @@ public class EditDepartment extends javax.swing.JFrame {
             }
 
         } while (cond == false && i < HrSystem.getAllDepartments().size());
-
-        //clearing the text boxes after insert/search
-        jTextField1.setText("");
-        jTextField3.setText("");
 
 
     }//GEN-LAST:event_jButton2ActionPerformed
