@@ -5,6 +5,9 @@
  */
 package gui;
 
+import javax.swing.JOptionPane;
+import logic.HrSystem;
+
 /**
  *
  * @author A.A
@@ -16,8 +19,19 @@ public class EditDepartment extends javax.swing.JFrame {
      */
     public EditDepartment() {
         initComponents();
-        java.awt.Color recursiveBG = new java.awt.Color(240, 240,240);
+        java.awt.Color recursiveBG = new java.awt.Color(240, 240, 240);
         getContentPane().setBackground(recursiveBG);
+
+        //remove all items to prepare for adding next items
+        jComboBox1.removeAllItems();
+
+        //for loop to put all the departments into the combo box
+        for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
+            jComboBox1.addItem(HrSystem.getAllDepartments().get(i).getName());
+        }
+
+        //first selected item would be the first department
+        jComboBox1.setSelectedItem(HrSystem.getAllDepartments().get(0).getName());
     }
 
     /**
@@ -51,6 +65,11 @@ public class EditDepartment extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 153, 153));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setText("Close");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 204));
@@ -72,6 +91,11 @@ public class EditDepartment extends javax.swing.JFrame {
         jComboBox1.setEditable(true);
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dep1", "Dep2", "Dep3", "DepN", " " }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         jLabel3.setText("Department Name: ");
@@ -136,8 +160,77 @@ public class EditDepartment extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        //Save selected department in a String variable to use for checking
+        String selected = (String) jComboBox1.getSelectedItem();
+        //boolean condition to exit the do/while loop if met
+        boolean cond = false;
+        //counter to go through all the departments
+        int i = 0;
+        //do loop to go throw all the departments and check for the department that checks the requirements (name)
+        do {
+            //check if the name of department equals the name of selected
+            if (selected.equalsIgnoreCase(HrSystem.getAllDepartments().get(i).getName())) {
+                //get the input variables from the text fields 
+                String depName = jTextField1.getText();
+                String depLoc = jTextField3.getText();
+
+                if (depName.length() > 3 && depLoc.length() > 3
+                        && !jTextField1.getText().isEmpty() && !jTextField3.getText().isEmpty()) {
+
+                    //update the department with the new data
+                    HrSystem.getAllDepartments().get(i).setName(depName);
+                    HrSystem.getAllDepartments().get(i).setLocation(depLoc);
+                    //message confirming the update of the department
+                    JOptionPane.showMessageDialog(null,
+                            "Department has been updated successfully", "Success",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    //exit the loop
+                    cond = true;
+                } else if (depName.length() <= 3) {
+                    JOptionPane.showMessageDialog(null,
+                            "Department Name is Invalid", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    //exit the loop
+                    cond = true;
+                } else if (depLoc.length() <= 3) {
+                    JOptionPane.showMessageDialog(null,
+                            "Department Location is Invalid", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    //exit the loop
+                    cond = true;
+                } else if (jTextField1.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null,
+                            "Department Name is Empty", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    //exit the loop
+                    cond = true;
+                } else if (jTextField3.getText().isEmpty()) {
+                    JOptionPane.showMessageDialog(null,
+                            "Department Location is Empty", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    //exit the loop
+                    cond = true;
+                }
+            } else {
+                i++;
+            }
+
+        } while (cond == false && i < HrSystem.getAllDepartments().size());
+
+        //clearing the text boxes after insert/search
+        jTextField1.setText("");
+        jTextField3.setText("");
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
