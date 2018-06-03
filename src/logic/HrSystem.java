@@ -27,7 +27,11 @@ public class HrSystem {
     public static void setPayScales(ArrayList<PayScale> payScales) {
         HrSystem.payScales = payScales;
     }
-     
+     public static int addEmployee(String firstName, String lastName, String address, char gender, PayScale payLevel){
+         Employee newEmp = new Employee(firstName, lastName, address, gender, payLevel);
+         allEmployees.add(newEmp);
+         return newEmp.getId();
+     }
      public HrSystem(){
      
          allEmployees = new ArrayList<>();

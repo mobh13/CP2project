@@ -5,6 +5,10 @@
  */
 package gui;
 
+import javax.swing.JOptionPane;
+import logic.*;
+
+
 /**
  *
  * @author A.A
@@ -54,14 +58,17 @@ public class AddEmployee extends javax.swing.JFrame {
         jLabel4.setToolTipText("");
 
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField2.setText("i.e. AlHassan");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         jLabel5.setText("Address: ");
         jLabel5.setToolTipText("");
 
         jTextField3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField3.setText("i.e. Manama, 1023, 453\n");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         jLabel6.setText("Pay Level: ");
@@ -73,6 +80,11 @@ public class AddEmployee extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 153, 153));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setText("Close");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 204));
@@ -105,7 +117,6 @@ public class AddEmployee extends javax.swing.JFrame {
         jLabel3.setToolTipText("");
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField1.setText("i.e. Abdulla\n");
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         jLabel8.setText("First Name: ");
@@ -204,7 +215,90 @@ public class AddEmployee extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+                                               
+        if(jTextField1.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,
+                            "First Name is Empty", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+        }else if(jTextField2.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,
+                            "Last Name is Empty", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+        }else if(jTextField3.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,
+                            "Address is Empty", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+        }else if(jTextField4.getText().isEmpty() || (Integer.parseInt(jTextField4.getText()) > 8 
+                || Integer.parseInt(jTextField4.getText()) < 1)){
+            JOptionPane.showMessageDialog(null,
+                            "Pay Level is Invalid", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+        }else if(!jRadioButton1.isSelected() && !jRadioButton2.isSelected()){
+            JOptionPane.showMessageDialog(null,
+                            "You should select a gender for the employee", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+        }else{
+        
+        
+        String fName = jTextField1.getText();
+        String lName = jTextField2.getText();
+        String address = jTextField3.getText();
+        double payLvl = Double.parseDouble(jTextField4.getText());
+        
+        
+        
+        
+        //Output message of invalid pay Level
+        if(payLvl > 8 || payLvl < 1){
+            JOptionPane.showMessageDialog(null,
+                            "Invalid Pay Level", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+        }
+        
+        
+        
+        
+        
+        PayScale ps = new PayScale();
+        char gender = 'M';
+        
+        
+        
+        //get the text of selected gender
+        if(jRadioButton1.isSelected()){
+            gender = 'M';
+        }else if(jRadioButton2.isSelected()){
+            gender = 'F';
+        }
+        
+        
+        
+        int empId = HrSystem.addEmployee(fName, lName, address, gender, ps);
+        
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        buttonGroup1.clearSelection();
+        
+        JOptionPane.showMessageDialog(null,
+                            "Employee added successfully", "Success",
+                            JOptionPane.INFORMATION_MESSAGE);
+        
+        }
+        
+        
+                                           
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+          this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments
