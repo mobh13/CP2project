@@ -5,6 +5,9 @@
  */
 package gui;
 
+import javax.swing.JOptionPane;
+import logic.HrSystem;
+
 /**
  *
  * @author A.A
@@ -18,6 +21,21 @@ public class DeleteEmployee extends javax.swing.JFrame {
         initComponents();
         java.awt.Color recursiveBG = new java.awt.Color(240, 240,240);
         getContentPane().setBackground(recursiveBG);
+        
+        //remove all items to prepare for adding next items
+        jComboBox1.removeAllItems();
+
+        //for loop to put all the employee into the combo box
+        for (int i = 0; i < HrSystem.getAllEmployees().size(); i++) {
+            jComboBox1.addItem(HrSystem.getAllEmployees().get(i).getId() + " - " + 
+                HrSystem.getAllEmployees().get(i).getFirstName() + " " + 
+                HrSystem.getAllEmployees().get(i).getLastName());
+        }
+
+        //first selected item would be the first employee
+        jComboBox1.setSelectedItem(HrSystem.getAllEmployees().get(0).getId() + " - " + 
+                HrSystem.getAllEmployees().get(0).getFirstName() + " " + 
+                HrSystem.getAllEmployees().get(0).getLastName());
     }
 
     /**
@@ -52,6 +70,11 @@ public class DeleteEmployee extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(255, 153, 153));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setText("Close");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(153, 255, 153));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -103,8 +126,36 @@ public class DeleteEmployee extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        //Save selected employee in a String variable to use for checking
+        String selected = (String) jComboBox1.getSelectedItem();
+        //condition to exit the loop when set
+        boolean cond = false;
+        //counter to go through the employees
+        int i = 0;
+        //do loop to loop through the employees and exit when condition is set
+        do{
+            //check if the name and id of the employee matches the one selected 
+            if(selected.equalsIgnoreCase(HrSystem.getAllEmployees().get(i).getId() + " - " + 
+                    HrSystem.getAllEmployees().get(i).getFirstName() + " " + 
+                    HrSystem.getAllEmployees().get(i).getLastName())){
+                //remove the employee
+                HrSystem.getAllEmployees().remove(i);
+                //remove the item from the combo box
+                jComboBox1.removeItem(jComboBox1.getSelectedItem());
+                //message confirming the delete of the employee
+                    JOptionPane.showMessageDialog(null,
+                            "Employee has been deleted successfully", "Success",
+                            JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                i++;
+            }
+        }while(cond == false && i < HrSystem.getAllEmployees().size());
+        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
