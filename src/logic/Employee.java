@@ -20,9 +20,19 @@ public class Employee implements Serializable{
     private char   gender; 
     private PayScale payLevel;
     private Department department;
-   private boolean isHead;
-   private int id;
-   static private int idCounter = 0;
+    private boolean isHead;
+    private int id;
+    static private int idCounter;
+   
+   public Employee(String firstName, String lastName, String address, char gender, PayScale payLevel) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.gender = gender;
+        this.payLevel = payLevel;
+        this.id = idCounter++;
+    }
+    
 
     public static int getIdCounter() {
         return idCounter;

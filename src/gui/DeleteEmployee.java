@@ -5,6 +5,9 @@
  */
 package gui;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author A.A
@@ -16,8 +19,12 @@ public class DeleteEmployee extends javax.swing.JFrame {
      */
     public DeleteEmployee() {
         initComponents();
-        java.awt.Color recursiveBG = new java.awt.Color(240, 240,240);
+        java.awt.Color recursiveBG = new java.awt.Color(240, 240, 240);
         getContentPane().setBackground(recursiveBG);
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
+        int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
+        this.setLocation(x, y);
     }
 
     /**
@@ -39,7 +46,7 @@ public class DeleteEmployee extends javax.swing.JFrame {
 
         jComboBox1.setEditable(true);
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Emp1", "Emp2", "Emp3", "Emp4", "EmpN" }));
+        jComboBox1.setMaximumRowCount(100);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 204));
@@ -81,7 +88,7 @@ public class DeleteEmployee extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(28, 28, 28)))
-                .addContainerGap(228, Short.MAX_VALUE))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
