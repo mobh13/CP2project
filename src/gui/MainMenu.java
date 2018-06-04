@@ -49,22 +49,22 @@ public class MainMenu extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel4 = new javax.swing.JPanel();
-        jButton12 = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        btnDesignateHead = new javax.swing.JButton();
+        btnDepEditInfo = new javax.swing.JButton();
+        btnDepDel = new javax.swing.JButton();
+        btnDesigHead = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jButton11 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
-        btnAssignDep = new javax.swing.JButton();
+        btnEmpEditInfo = new javax.swing.JButton();
+        btnDelEmp = new javax.swing.JButton();
+        btnAssignEmptoDep = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        btnListEmployees = new javax.swing.JButton();
+        btnAddDepartment = new javax.swing.JButton();
+        btnAddEmployee = new javax.swing.JButton();
+        btnPayReport = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        btnSaveChange = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
+        btnCleanInstall = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -83,30 +83,30 @@ public class MainMenu extends javax.swing.JFrame {
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Department", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 22), new java.awt.Color(153, 153, 0))); // NOI18N
 
-        jButton12.setBackground(new java.awt.Color(244, 219, 136));
-        jButton12.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
-        jButton12.setText("Edit Information");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
+        btnDepEditInfo.setBackground(new java.awt.Color(244, 219, 136));
+        btnDepEditInfo.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        btnDepEditInfo.setText("Edit Information");
+        btnDepEditInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+                btnDepEditInfoActionPerformed(evt);
             }
         });
 
-        jButton13.setBackground(new java.awt.Color(244, 219, 136));
-        jButton13.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
-        jButton13.setText("Delete Department");
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
+        btnDepDel.setBackground(new java.awt.Color(244, 219, 136));
+        btnDepDel.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        btnDepDel.setText("Delete Department");
+        btnDepDel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
+                btnDepDelActionPerformed(evt);
             }
         });
 
-        btnDesignateHead.setBackground(new java.awt.Color(244, 219, 136));
-        btnDesignateHead.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
-        btnDesignateHead.setText("Designate Head");
-        btnDesignateHead.addActionListener(new java.awt.event.ActionListener() {
+        btnDesigHead.setBackground(new java.awt.Color(244, 219, 136));
+        btnDesigHead.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        btnDesigHead.setText("Designate Head");
+        btnDesigHead.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDesignateHeadActionPerformed(evt);
+                btnDesigHeadActionPerformed(evt);
             }
         });
 
@@ -116,11 +116,11 @@ public class MainMenu extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDepEditInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22)
-                .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDepDel, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnDesignateHead, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDesigHead, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
         jPanel4Layout.setVerticalGroup(
@@ -128,38 +128,38 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDesignateHead, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnDepEditInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDepDel, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDesigHead, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Employee", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 22), new java.awt.Color(0, 102, 0))); // NOI18N
 
-        jButton11.setBackground(new java.awt.Color(139, 255, 126));
-        jButton11.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
-        jButton11.setText("Edit Information");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        btnEmpEditInfo.setBackground(new java.awt.Color(139, 255, 126));
+        btnEmpEditInfo.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        btnEmpEditInfo.setText("Edit Information");
+        btnEmpEditInfo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                btnEmpEditInfoActionPerformed(evt);
             }
         });
 
-        jButton10.setBackground(new java.awt.Color(139, 255, 126));
-        jButton10.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
-        jButton10.setText("Delete Employee");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        btnDelEmp.setBackground(new java.awt.Color(139, 255, 126));
+        btnDelEmp.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        btnDelEmp.setText("Delete Employee");
+        btnDelEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                btnDelEmpActionPerformed(evt);
             }
         });
 
-        btnAssignDep.setBackground(new java.awt.Color(139, 255, 126));
-        btnAssignDep.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
-        btnAssignDep.setText("Assign Department");
-        btnAssignDep.addActionListener(new java.awt.event.ActionListener() {
+        btnAssignEmptoDep.setBackground(new java.awt.Color(139, 255, 126));
+        btnAssignEmptoDep.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        btnAssignEmptoDep.setText("Assign Department");
+        btnAssignEmptoDep.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAssignDepActionPerformed(evt);
+                btnAssignEmptoDepActionPerformed(evt);
             }
         });
 
@@ -169,11 +169,11 @@ public class MainMenu extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(55, Short.MAX_VALUE)
-                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnEmpEditInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDelEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btnAssignDep, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAssignEmptoDep, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(23, 23, 23))
         );
         jPanel2Layout.setVerticalGroup(
@@ -181,50 +181,50 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAssignDep, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnEmpEditInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAssignEmptoDep, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDelEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19))
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "General", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 22), new java.awt.Color(102, 0, 0))); // NOI18N
 
-        jButton4.setBackground(new java.awt.Color(237, 157, 157));
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
-        jButton4.setText("List Employees ");
-        jButton4.setPreferredSize(new java.awt.Dimension(175, 35));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnListEmployees.setBackground(new java.awt.Color(237, 157, 157));
+        btnListEmployees.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        btnListEmployees.setText("List Employees ");
+        btnListEmployees.setPreferredSize(new java.awt.Dimension(175, 35));
+        btnListEmployees.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnListEmployeesActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(237, 157, 157));
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
-        jButton3.setText("Add Department");
-        jButton3.setPreferredSize(new java.awt.Dimension(175, 35));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnAddDepartment.setBackground(new java.awt.Color(237, 157, 157));
+        btnAddDepartment.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        btnAddDepartment.setText("Add Department");
+        btnAddDepartment.setPreferredSize(new java.awt.Dimension(175, 35));
+        btnAddDepartment.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnAddDepartmentActionPerformed(evt);
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(237, 157, 157));
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
-        jButton1.setText("Add Employee");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnAddEmployee.setBackground(new java.awt.Color(237, 157, 157));
+        btnAddEmployee.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        btnAddEmployee.setText("Add Employee");
+        btnAddEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnAddEmployeeActionPerformed(evt);
             }
         });
 
-        jButton8.setBackground(new java.awt.Color(237, 157, 157));
-        jButton8.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jButton8.setText("Preduce Pay Report");
-        jButton8.setPreferredSize(new java.awt.Dimension(200, 35));
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btnPayReport.setBackground(new java.awt.Color(237, 157, 157));
+        btnPayReport.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        btnPayReport.setText("Preduce Pay Report");
+        btnPayReport.setPreferredSize(new java.awt.Dimension(200, 35));
+        btnPayReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btnPayReportActionPerformed(evt);
             }
         });
 
@@ -234,13 +234,13 @@ public class MainMenu extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAddEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAddDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnListEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnPayReport, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -248,29 +248,29 @@ public class MainMenu extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAddDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAddEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnListEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPayReport, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(17, Short.MAX_VALUE))
         );
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton5.setForeground(new java.awt.Color(0, 102, 0));
-        jButton5.setText("Save Cahnges");
+        btnSaveChange.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnSaveChange.setForeground(new java.awt.Color(0, 102, 0));
+        btnSaveChange.setText("Save Cahnges");
 
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton6.setForeground(new java.awt.Color(250, 0, 0));
-        jButton6.setText("Close");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnClose.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnClose.setForeground(new java.awt.Color(250, 0, 0));
+        btnClose.setText("Close");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnCloseActionPerformed(evt);
             }
         });
 
-        jButton7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(250, 0, 0));
-        jButton7.setText("Clean Install");
+        btnCleanInstall.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnCleanInstall.setForeground(new java.awt.Color(250, 0, 0));
+        btnCleanInstall.setText("Clean Install");
 
         jPanel1.setBackground(new java.awt.Color(102, 0, 0));
 
@@ -333,11 +333,11 @@ public class MainMenu extends javax.swing.JFrame {
                             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(147, 147, 147)
-                                .addComponent(jButton7)
+                                .addComponent(btnCleanInstall)
                                 .addGap(18, 18, 18)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnSaveChange, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(62, 62, 62)
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 633, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -363,9 +363,9 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnSaveChange, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCleanInstall, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18))
         );
 
@@ -374,13 +374,13 @@ public class MainMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+    private void btnEmpEditInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpEditInfoActionPerformed
         // TODO add your handling code here:
         EditEmployee ee1 = new EditEmployee();
         ee1.setVisible(true);
-    }//GEN-LAST:event_jButton11ActionPerformed
+    }//GEN-LAST:event_btnEmpEditInfoActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void btnDelEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelEmpActionPerformed
         //check if the employees exist to enter and if none then display an error message
         if (!HrSystem.getAllEmployees().isEmpty()) {
             DeleteEmployee deleteEmployee = new DeleteEmployee();
@@ -390,9 +390,9 @@ public class MainMenu extends javax.swing.JFrame {
                     "No Employees exist", "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButton10ActionPerformed
+    }//GEN-LAST:event_btnDelEmpActionPerformed
 
-    private void btnAssignDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignDepActionPerformed
+    private void btnAssignEmptoDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignEmptoDepActionPerformed
 
         if (!HrSystem.getAllDepartments().isEmpty()) {
             AssignEmployee assignEmployee = new AssignEmployee();
@@ -402,9 +402,9 @@ public class MainMenu extends javax.swing.JFrame {
                     "No Departments exist", "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_btnAssignDepActionPerformed
+    }//GEN-LAST:event_btnAssignEmptoDepActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+    private void btnDepEditInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepEditInfoActionPerformed
         //check if the departments exist to enter and if none then display an error message
         if (!HrSystem.getAllDepartments().isEmpty()) {
             EditDepartment editDepartment = new EditDepartment();
@@ -414,15 +414,15 @@ public class MainMenu extends javax.swing.JFrame {
                     "No Departments exist", "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_jButton12ActionPerformed
+    }//GEN-LAST:event_btnDepEditInfoActionPerformed
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+    private void btnDepDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepDelActionPerformed
         // TODO add your handling code here:
         DeleteDepartment del_dep = new DeleteDepartment();
         del_dep.setVisible(true);
-    }//GEN-LAST:event_jButton13ActionPerformed
+    }//GEN-LAST:event_btnDepDelActionPerformed
 
-    private void btnDesignateHeadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesignateHeadActionPerformed
+    private void btnDesigHeadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesigHeadActionPerformed
         // TODO add your handling code here:
 
         if (!HrSystem.getAllDepartments().isEmpty()) {
@@ -433,39 +433,39 @@ public class MainMenu extends javax.swing.JFrame {
                     "No Departments exist", "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_btnDesignateHeadActionPerformed
+    }//GEN-LAST:event_btnDesigHeadActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnListEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListEmployeesActionPerformed
         // TODO add your handling code here:
         ListEmployees listEmployees = new ListEmployees();
         listEmployees.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnListEmployeesActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnAddEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmployeeActionPerformed
         // TODO add your handling code here:
         AddEmployee addEmployee = new AddEmployee();
         addEmployee.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnAddEmployeeActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnAddDepartmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDepartmentActionPerformed
         // TODO add your handling code here:
         AddDepartment addDepartment = new AddDepartment();
         addDepartment.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnAddDepartmentActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
         exitPreform();
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btnCloseActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
         exitPreform();
     }//GEN-LAST:event_formWindowClosing
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void btnPayReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayReportActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_btnPayReportActionPerformed
 
     private void exitPreform() {
 
@@ -600,20 +600,20 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAssignDep;
-    private javax.swing.JButton btnDesignateHead;
+    private javax.swing.JButton btnAddDepartment;
+    private javax.swing.JButton btnAddEmployee;
+    private javax.swing.JButton btnAssignEmptoDep;
+    private javax.swing.JButton btnCleanInstall;
+    private javax.swing.JButton btnClose;
+    private javax.swing.JButton btnDelEmp;
+    private javax.swing.JButton btnDepDel;
+    private javax.swing.JButton btnDepEditInfo;
+    private javax.swing.JButton btnDesigHead;
+    private javax.swing.JButton btnEmpEditInfo;
+    private javax.swing.JButton btnListEmployees;
+    private javax.swing.JButton btnPayReport;
+    private javax.swing.JButton btnSaveChange;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
