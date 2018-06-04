@@ -247,6 +247,7 @@ public class DesignateHead extends javax.swing.JFrame {
             }
             this.cmbDepId.setSelectedItem(null);
         }
+        
 
     }
     /**

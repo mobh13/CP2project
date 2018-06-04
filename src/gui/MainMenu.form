@@ -121,7 +121,7 @@
                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                   <Component id="jButton13" min="-2" pref="218" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton14" min="-2" pref="218" max="-2" attributes="0"/>
+                  <Component id="btnDesignateHead" min="-2" pref="218" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -133,7 +133,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton12" alignment="3" min="-2" pref="71" max="-2" attributes="0"/>
                       <Component id="jButton13" alignment="3" min="-2" pref="71" max="-2" attributes="0"/>
-                      <Component id="jButton14" alignment="3" min="-2" pref="71" max="-2" attributes="0"/>
+                      <Component id="btnDesignateHead" alignment="3" min="-2" pref="71" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -169,7 +169,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton13ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton14">
+        <Component class="javax.swing.JButton" name="btnDesignateHead">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="88" green="db" red="f4" type="rgb"/>
@@ -180,7 +180,7 @@
             <Property name="text" type="java.lang.String" value="Designate Head"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton14ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDesignateHeadActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
@@ -209,7 +209,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jButton10" min="-2" pref="218" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton9" min="-2" pref="218" max="-2" attributes="0"/>
+                  <Component id="btnAssignDep" min="-2" pref="218" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -220,7 +220,7 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton11" alignment="3" min="-2" pref="71" max="-2" attributes="0"/>
-                      <Component id="jButton9" alignment="3" min="-2" pref="71" max="-2" attributes="0"/>
+                      <Component id="btnAssignDep" alignment="3" min="-2" pref="71" max="-2" attributes="0"/>
                       <Component id="jButton10" alignment="3" min="-2" pref="71" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -257,7 +257,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton10ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton9">
+        <Component class="javax.swing.JButton" name="btnAssignDep">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="7e" green="ff" red="8b" type="rgb"/>
@@ -268,7 +268,7 @@
             <Property name="text" type="java.lang.String" value="Assign Department"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton9ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAssignDepActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
