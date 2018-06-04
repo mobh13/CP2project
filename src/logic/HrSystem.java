@@ -50,6 +50,8 @@ public class HrSystem {
         return newDep.getId();
     }
 
+ 
+
     public static ArrayList<Employee> getAllEmployees() {
         return allEmployees;
     }

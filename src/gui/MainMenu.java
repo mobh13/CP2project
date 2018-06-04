@@ -381,7 +381,15 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
+        //check if the employees exist to enter and if none then display an error message
+        if (!HrSystem.getAllEmployees().isEmpty()) {
+            DeleteEmployee deleteEmployee = new DeleteEmployee();
+            deleteEmployee.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "No Employees exist", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -392,7 +400,15 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
+        //check if the departments exist to enter and if none then display an error message
+        if (!HrSystem.getAllDepartments().isEmpty()) {
+            EditDepartment editDepartment = new EditDepartment();
+            editDepartment.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "No Departments exist", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
@@ -415,7 +431,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-          AddEmployee addEmployee = new AddEmployee();
+        AddEmployee addEmployee = new AddEmployee();
         addEmployee.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -515,7 +531,7 @@ public class MainMenu extends javax.swing.JFrame {
                 }
 
             }
-            departmentId ++;
+            departmentId++;
             employeeId++;
             payScaleId++;
             Department.setIdCounter(departmentId);
