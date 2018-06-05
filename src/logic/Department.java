@@ -19,7 +19,7 @@ public class Department implements Serializable {
     private int id;
     static private int idCounter = 0;
     private Employee head;
-    private ArrayList<Employee> listOfEmployees;
+    private ArrayList<Employee> listOfEmployees = new ArrayList<>();
 
     public Department(String name, String location) {
 

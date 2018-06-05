@@ -35,6 +35,12 @@ public class HrSystem {
         allEmployees.add(newEmp);
         return newEmp.getId();
     }
+    
+    public static Employee addEmployee(Employee emp, int i) {
+        allEmployees.add(emp);
+        allDepartments.get(i).getListOfEmployees().add(emp);
+        return emp;
+    }
 
     public HrSystem() {
 
