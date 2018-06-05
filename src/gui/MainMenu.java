@@ -376,8 +376,15 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnEmpEditInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpEditInfoActionPerformed
         // TODO add your handling code here:
-        EditEmployee ee1 = new EditEmployee();
-        ee1.setVisible(true);
+        if (!HrSystem.getAllEmployees().isEmpty()) {
+            EditEmployee ee1 = new EditEmployee();
+            ee1.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "No Employees exist", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_btnEmpEditInfoActionPerformed
 
     private void btnDelEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelEmpActionPerformed
@@ -418,8 +425,15 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnDepDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepDelActionPerformed
         // TODO add your handling code here:
-        DeleteDepartment del_dep = new DeleteDepartment();
-        del_dep.setVisible(true);
+        if (!HrSystem.getAllDepartments().isEmpty()) {
+            DeleteDepartment del_dep = new DeleteDepartment();
+            del_dep.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "No Departments exist", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_btnDepDelActionPerformed
 
     private void btnDesigHeadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesigHeadActionPerformed
@@ -437,8 +451,15 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnListEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListEmployeesActionPerformed
         // TODO add your handling code here:
-        ListEmployees listEmployees = new ListEmployees();
-        listEmployees.setVisible(true);
+        if (!HrSystem.getAllEmployees().isEmpty()) {
+            ListEmployees listEmployees = new ListEmployees();
+            listEmployees.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "No Employees exist", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_btnListEmployeesActionPerformed
 
     private void btnAddEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmployeeActionPerformed
