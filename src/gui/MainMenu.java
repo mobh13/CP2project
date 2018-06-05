@@ -271,6 +271,11 @@ public class MainMenu extends javax.swing.JFrame {
         btnCleanInstall.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnCleanInstall.setForeground(new java.awt.Color(250, 0, 0));
         btnCleanInstall.setText("Clean Install");
+        btnCleanInstall.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCleanInstallActionPerformed(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(102, 0, 0));
 
@@ -487,6 +492,13 @@ public class MainMenu extends javax.swing.JFrame {
     private void btnPayReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayReportActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnPayReportActionPerformed
+
+    private void btnCleanInstallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanInstallActionPerformed
+        CleanInstall.clean();
+        JOptionPane.showMessageDialog(null,
+                    "Clean installed", "Success",
+                    JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_btnCleanInstallActionPerformed
 
     private void exitPreform() {
 
