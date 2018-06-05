@@ -33,11 +33,13 @@ public class EditDepartment extends javax.swing.JFrame {
 
         //for loop to put all the departments into the combo box
         for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
-            jComboBox1.addItem(HrSystem.getAllDepartments().get(i).getName());
+            jComboBox1.addItem(HrSystem.getAllDepartments().get(i).getId() + " - " + 
+                    HrSystem.getAllDepartments().get(i).getName());
         }
 
         //first selected item would be the first department
-        jComboBox1.setSelectedItem(HrSystem.getAllDepartments().get(0).getName());
+        jComboBox1.setSelectedItem(HrSystem.getAllDepartments().get(0).getId()+ " - " + 
+                    HrSystem.getAllDepartments().get(0).getName());
     }
 
     /**
