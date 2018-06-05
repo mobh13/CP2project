@@ -192,20 +192,22 @@ private void depsLoad() {
                 int selectedEmployeeId = cmbDepId.getSelectedIndex();
                 Department SelectedDepartment = HrSystem.getAllDepartments().get(selectedDepartmentId);
                 Employee selectedEmployee = HrSystem.getAllEmployees().get(selectedEmployeeId);
-                if (selectedEmployee.getDepartment() == SelectedDepartment) {
-                    JOptionPane.showMessageDialog(null,
-                            "The Selected Employee is already Assigned to the Department", "Error",
-                            JOptionPane.ERROR_MESSAGE);
-                } else {
-                    int response = JOptionPane.showConfirmDialog(null, "The Employee is already assigned to diffrent Department \n Do you Want to change that Department ??", "Confirm",
-                            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                    if (response == JOptionPane.YES_OPTION) {
-                        selectedEmployee.setDepartment(SelectedDepartment);
+                for (int i = 0; i < SelectedDepartment.getListOfEmployees().size(); i++) {
+                    if (SelectedDepartment.getListOfEmployees().get(i).getId() == selectedEmployee.getId()) {
                         JOptionPane.showMessageDialog(null,
-                                "Employee assigned successfully", "Success",
-                                JOptionPane.INFORMATION_MESSAGE);
-                    }
+                                "The Selected Employee is already Assigned to the Department", "Error",
+                                JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        int response = JOptionPane.showConfirmDialog(null, "The Employee is already assigned to diffrent Department \n Do you Want to change that Department ??", "Confirm",
+                                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                        if (response == JOptionPane.YES_OPTION) {
+                            SelectedDepartment.getListOfEmployees().add(selectedEmployee);
+                            JOptionPane.showMessageDialog(null,
+                                    "Employee assigned successfully", "Success",
+                                    JOptionPane.INFORMATION_MESSAGE);
+                        }
 
+                    }
                 }
 
             } else {

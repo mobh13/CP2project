@@ -13,20 +13,22 @@ import java.util.ArrayList;
  * @author madan
  */
 public class Department implements Serializable {
+
     private String name;
     private String location;
     private int id;
-   static  private int idCounter = 0;
-    private Employee head ;
-    private ArrayList<Employee> listOfEmployees ;
-public Department(String name , String location){
-    
-    this.id = idCounter ;
-    this.name = name;
-    this.location = location ;
-    idCounter++;
-    
-}
+    static private int idCounter = 0;
+    private Employee head;
+    private ArrayList<Employee> listOfEmployees;
+
+    public Department(String name, String location) {
+
+        this.id = idCounter;
+        this.name = name;
+        this.location = location;
+        idCounter++;
+
+    }
 
     public void setListOfEmployees(ArrayList<Employee> listOfEmployees) {
         this.listOfEmployees = listOfEmployees;
@@ -56,7 +58,6 @@ public Department(String name , String location){
         return listOfEmployees;
     }
 
-    
     public void setName(String name) {
         this.name = name;
     }
@@ -76,6 +77,5 @@ public Department(String name , String location){
     public void setHead(Employee head) {
         this.head = head;
     }
-    
-    
+
 }

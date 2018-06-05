@@ -22,7 +22,7 @@ public class DesignateHead extends javax.swing.JFrame {
      */
     public DesignateHead() {
         initComponents();
-        java.awt.Color recursiveBG = new java.awt.Color(240, 240,240);
+        java.awt.Color recursiveBG = new java.awt.Color(240, 240, 240);
         getContentPane().setBackground(recursiveBG);
         loadDepartments();
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
@@ -167,12 +167,14 @@ public class DesignateHead extends javax.swing.JFrame {
         if (this.cmbDepId.getSelectedItem() != null) {
             Department dp_temp = HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex());
             this.cmbEmpID.removeAllItems();
-            for (int i = 0; i < HrSystem.getAllEmployees().size(); i++) {
-                if (HrSystem.getAllEmployees().get(i).getDepartment().getId() == dp_temp.getId()) {
-                    String info = HrSystem.getAllEmployees().get(i).getId() + " - "
-                    + HrSystem.getAllEmployees().get(i).getFirstName() + " "
-                    + HrSystem.getAllEmployees().get(i).getLastName();
-                    this.cmbEmpID.addItem(info);
+            for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
+                if (HrSystem.getAllDepartments().get(i).getId() == dp_temp.getId()) {
+                    for (int j = 0; j < HrSystem.getAllDepartments().get(i).getListOfEmployees().size(); j++) {
+                        String info = HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getId() + " - "
+                                + HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getFirstName() + " "
+                                + HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getLastName();
+                        this.cmbEmpID.addItem(info);
+                    }
                 }
             }
             this.cmbEmpID.setSelectedItem(null);
@@ -196,7 +198,7 @@ public class DesignateHead extends javax.swing.JFrame {
 
     private void btnDesignateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesignateActionPerformed
         // TODO add your handling code here:
-         if (this.cmbEmpID.getSelectedItem() != null) {
+        if (this.cmbEmpID.getSelectedItem() != null) {
             int empId = this.cmbEmpID.getSelectedIndex();
             int depId = this.cmbDepId.getSelectedIndex();
 
@@ -247,9 +249,9 @@ public class DesignateHead extends javax.swing.JFrame {
             }
             this.cmbDepId.setSelectedItem(null);
         }
-        
 
     }
+
     /**
      * @param args the command line arguments
      */

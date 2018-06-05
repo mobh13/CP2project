@@ -19,8 +19,6 @@ public class Employee implements Serializable{
     private String address;       
     private char   gender; 
     private PayScale payLevel;
-    private Department department;
-    private boolean isHead;
     private int id;
     static private int idCounter;
    
@@ -63,13 +61,7 @@ public class Employee implements Serializable{
         this.payLevel = payLevel;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
 
-    public void setIsHead(boolean isHead) {
-        this.isHead = isHead;
-    }
 
     public void setId(int id) {
         this.id = id;
@@ -93,14 +85,6 @@ public class Employee implements Serializable{
 
     public PayScale getPayLevel() {
         return payLevel;
-    }
-
-    public Department getDepartment() {
-        return department;
-    }
-
-    public boolean isIsHead() {
-        return isHead;
     }
 
     public int getId() {

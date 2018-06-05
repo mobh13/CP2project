@@ -306,7 +306,7 @@ public class EditEmployee extends javax.swing.JFrame {
             } else {
                 this.rdbtnFemale.setSelected(true);
             }
-            this.cmbPayScale.setSelectedIndex((temp_emp.getPayLevel().getId() - 1));
+            this.cmbPayScale.setSelectedIndex((temp_emp.getPayLevel().getLevel() - 1));
         }
     }//GEN-LAST:event_cmbEmpIdActionPerformed
 
@@ -348,7 +348,7 @@ public class EditEmployee extends javax.swing.JFrame {
         this.cmbPayScale.removeAllItems();
         for (int i = 0; i < HrSystem.getPayScales().size(); i++) {
             PayScale temp_pay = HrSystem.getPayScales().get(i);
-            String payScale = temp_pay.getId() + " - " + temp_pay.getValue();
+            String payScale = temp_pay.getLevel() + " - " + temp_pay.getValue();
             this.cmbPayScale.addItem(payScale);
         }
         this.cmbPayScale.setSelectedItem(null);

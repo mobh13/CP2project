@@ -574,8 +574,8 @@ public class MainMenu extends javax.swing.JFrame {
             counter = 0;
             while (counter < HrSystem.getPayScales().size()) {
 
-                if (HrSystem.getPayScales().get(counter).getId() > payScaleId) {
-                    payScaleId = HrSystem.getPayScales().get(counter).getId();
+                if (HrSystem.getPayScales().get(counter).getLevel() > payScaleId) {
+                    payScaleId = HrSystem.getPayScales().get(counter).getLevel();
                     counter++;
 
                 }

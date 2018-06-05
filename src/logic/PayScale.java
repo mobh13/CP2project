@@ -12,12 +12,12 @@ import java.io.Serializable;
  * @author madan
  */
 public class PayScale implements Serializable {
-    static private int idCounter = 0;
-    private int id ;
+    static private int LevelCounter = 0;
+    private int level ;
     private double value;
 
-    public PayScale(int id, double value) {
-        this.id = id;
+    public PayScale(int Level, double value) {
+        this.level = Level;
         this.value = value;
     }
 
@@ -30,24 +30,24 @@ public class PayScale implements Serializable {
     }
     
     public PayScale(){
-    this.id = idCounter;
-    idCounter++;
+    this.level = LevelCounter;
+    LevelCounter++;
     }
 
-    public int getId() {
-        return id;
+    public int getLevel() {
+        return level;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setLevel(int level) {
+        this.level = level;
     }
 
     public static int getIdCounter() {
-        return idCounter;
+        return LevelCounter;
     }
 
     public static void setIdCounter(int idCounter) {
-        PayScale.idCounter = idCounter;
+        PayScale.LevelCounter = idCounter;
     }
     
     
