@@ -494,10 +494,15 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPayReportActionPerformed
 
     private void btnCleanInstallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanInstallActionPerformed
-        CleanInstall.clean();
-        JOptionPane.showMessageDialog(null,
+        File file = new File("hrsystemdata.data");
+        if (!file.exists()) {
+            CleanInstall.clean();
+            JOptionPane.showMessageDialog(null,
                     "Clean installed", "Success",
                     JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "You already have saved data", "Error", 0);
+        }
     }//GEN-LAST:event_btnCleanInstallActionPerformed
 
     private void exitPreform() {
