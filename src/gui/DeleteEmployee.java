@@ -61,7 +61,6 @@ public class DeleteEmployee extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jComboBox1.setEditable(true);
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jComboBox1.setMaximumRowCount(100);
 

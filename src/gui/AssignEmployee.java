@@ -53,7 +53,6 @@ public class AssignEmployee extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        cmbEmpId.setEditable(true);
         cmbEmpId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         btnClose.setBackground(new java.awt.Color(255, 153, 153));
@@ -73,7 +72,6 @@ public class AssignEmployee extends javax.swing.JFrame {
         lblEmpId.setForeground(new java.awt.Color(255, 0, 0));
         lblEmpId.setText("Employee ID: ");
 
-        cmbDepId.setEditable(true);
         cmbDepId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cmbDepId.setMaximumRowCount(100);
         cmbDepId.addActionListener(new java.awt.event.ActionListener() {

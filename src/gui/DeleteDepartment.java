@@ -78,7 +78,6 @@ public class DeleteDepartment extends javax.swing.JFrame {
             }
         });
 
-        cmbDepId.setEditable(true);
         cmbDepId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cmbDepId.setMaximumRowCount(100);
 

@@ -33,6 +33,7 @@ public class CleanInstall {
         for (int i = 0; i < noDepartments; i++) {
             depName = input.nextLine();
             depLoc = input.nextLine();
+            
             int noEmployees = Integer.parseInt(input.nextLine());
             //add the department
             HrSystem.addDepartment(depName, depLoc);
@@ -46,10 +47,8 @@ public class CleanInstall {
                 empSalScal = Integer.parseInt(input.nextLine().trim());
                 PayScale ps = new PayScale();
                 //insert employee and assign to a department
-                HrSystem.addEmployee(empFName, empLName, empAddress, empGender, ps);
-                
+                HrSystem.addEmployee(empFName, empLName, empAddress, empGender, ps);   
             }
-
         }
     }
 }

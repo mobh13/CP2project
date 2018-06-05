@@ -95,7 +95,6 @@ public class EditDepartment extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 0, 0));
         jLabel2.setText("Department ID: ");
 
-        jComboBox1.setEditable(true);
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jComboBox1.setMaximumRowCount(100);
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {

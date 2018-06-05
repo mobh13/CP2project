@@ -59,7 +59,6 @@ public class ListEmployees extends javax.swing.JFrame {
             }
         });
 
-        DeptComboBox.setEditable(true);
         DeptComboBox.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         DeptComboBox.setMaximumRowCount(100);
         DeptComboBox.addActionListener(new java.awt.event.ActionListener() {

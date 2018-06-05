@@ -27,6 +27,7 @@ public class AddEmployee extends javax.swing.JFrame {
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
         this.setLocation(x, y);
+        loadPayScale();
     }
 
     /**
@@ -44,18 +45,18 @@ public class AddEmployee extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtAdress = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtPayLevel = new javax.swing.JTextField();
         btnClose = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rdbtnMale = new javax.swing.JRadioButton();
+        rdbtnFemale = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         txtFName = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtEmpId = new javax.swing.JTextField();
         btnClear = new javax.swing.JButton();
+        cmbPayLevel = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -79,8 +80,6 @@ public class AddEmployee extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         jLabel6.setText("Pay Level: ");
         jLabel6.setToolTipText("");
-
-        txtPayLevel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         btnClose.setBackground(new java.awt.Color(255, 153, 153));
         btnClose.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -108,13 +107,13 @@ public class AddEmployee extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jRadioButton1.setText("Male");
+        buttonGroup1.add(rdbtnMale);
+        rdbtnMale.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        rdbtnMale.setText("Male");
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        jRadioButton2.setText("Female");
+        buttonGroup1.add(rdbtnFemale);
+        rdbtnFemale.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        rdbtnFemale.setText("Female");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 0, 0));
@@ -138,6 +137,8 @@ public class AddEmployee extends javax.swing.JFrame {
                 btnClearjButton1ActionPerformed(evt);
             }
         });
+
+        cmbPayLevel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -164,10 +165,10 @@ public class AddEmployee extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtPayLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cmbPayLevel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(75, 75, 75))
@@ -176,9 +177,9 @@ public class AddEmployee extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblGender)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(rdbtnMale, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton2))
+                                .addComponent(rdbtnFemale))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -210,17 +211,17 @@ public class AddEmployee extends javax.swing.JFrame {
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel6)
-                        .addComponent(txtPayLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(59, 59, 59)
+                        .addComponent(cmbPayLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGender)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButton2))
+                    .addComponent(rdbtnMale)
+                    .addComponent(rdbtnFemale))
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                     .addComponent(txtEmpId))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -233,7 +234,6 @@ public class AddEmployee extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-
         if (txtFName.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null,
                     "First Name is Empty", "Error",
@@ -246,12 +246,11 @@ public class AddEmployee extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,
                     "Address is Empty", "Error",
                     JOptionPane.ERROR_MESSAGE);
-        } else if (txtPayLevel.getText().isEmpty() || (Integer.parseInt(txtPayLevel.getText()) > 8
-                || Integer.parseInt(txtPayLevel.getText()) < 1)) {
+        } else if (this.cmbPayLevel.getSelectedItem() == null ) {
             JOptionPane.showMessageDialog(null,
-                    "Pay Level is Invalid", "Error",
+                    "Pay Level is not selected", "Error",
                     JOptionPane.ERROR_MESSAGE);
-        } else if (!jRadioButton1.isSelected() && !jRadioButton2.isSelected()) {
+        } else if (!rdbtnMale.isSelected() && !rdbtnFemale.isSelected()) {
             JOptionPane.showMessageDialog(null,
                     "You should select a gender for the employee", "Error",
                     JOptionPane.ERROR_MESSAGE);
@@ -260,34 +259,37 @@ public class AddEmployee extends javax.swing.JFrame {
             String fName = txtFName.getText();
             String lName = txtLName.getText();
             String address = txtAdress.getText();
-            double payLvl = Double.parseDouble(txtPayLevel.getText());
-
-            //Output message of invalid pay Level
-            if (payLvl > 8 || payLvl < 1) {
-                JOptionPane.showMessageDialog(null,
-                        "Invalid Pay Level", "Error",
-                        JOptionPane.ERROR_MESSAGE);
-            }
+            PayScale payLvl = HrSystem.getPayScales().get(this.cmbPayLevel.getSelectedIndex());
             
-            PayScale ps = new PayScale();
-            char gender = 'M';
+            char gender = 0;
 
             //get the text of selected gender
-            if (jRadioButton1.isSelected()) {
+            if (rdbtnMale.isSelected()) {
                 gender = 'M';
-            } else if (jRadioButton2.isSelected()) {
+            } else if (rdbtnFemale.isSelected()) {
                 gender = 'F';
             }
             
-            int empId = HrSystem.addEmployee(fName, lName, address, gender, ps);
+            int empId = HrSystem.addEmployee(fName, lName, address, gender, payLvl);
             
             this.txtEmpId.setText(Integer.toString(empId));
+            
             JOptionPane.showMessageDialog(null,
                     "Employee added successfully", "Success",
                     JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
+    private void loadPayScale(){
+        this.cmbPayLevel.removeAllItems();
+        if(!HrSystem.getPayScales().isEmpty()){
+            for (int i = 0; i < HrSystem.getPayScales().size(); i++) {
+                this.cmbPayLevel.setToolTipText(HrSystem.getPayScales().get(i).getLevel()+" "+
+                        HrSystem.getPayScales().get(i).getValue());
+            }
+        }
+        this.cmbPayLevel.setSelectedItem(null);
+    }
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
         this.dispose();
@@ -312,7 +314,7 @@ public class AddEmployee extends javax.swing.JFrame {
         this.txtAdress.setText(null);
         this.txtFName.setText(null);
         this.txtLName.setText(null);
-        this.txtPayLevel.setText(null);
+        this.cmbPayLevel.setSelectedIndex(-1);
     }//GEN-LAST:event_btnClearjButton1ActionPerformed
 
     /**
@@ -355,19 +357,19 @@ public class AddEmployee extends javax.swing.JFrame {
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnClose;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cmbPayLevel;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JLabel lblGender;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JRadioButton rdbtnFemale;
+    private javax.swing.JRadioButton rdbtnMale;
     private javax.swing.JTextField txtAdress;
     private javax.swing.JTextField txtEmpId;
     private javax.swing.JTextField txtFName;
     private javax.swing.JTextField txtLName;
-    private javax.swing.JTextField txtPayLevel;
     // End of variables declaration//GEN-END:variables
 }
