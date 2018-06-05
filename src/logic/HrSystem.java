@@ -29,6 +29,7 @@ public class HrSystem {
         HrSystem.payScales = payScales;
     }
 
+  
     public static int addEmployee(String firstName, String lastName, String address, char gender, PayScale payLevel) {
         Employee newEmp = new Employee(firstName, lastName, address, gender, payLevel);
         allEmployees.add(newEmp);

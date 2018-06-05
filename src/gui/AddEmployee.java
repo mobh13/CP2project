@@ -55,6 +55,7 @@ public class AddEmployee extends javax.swing.JFrame {
         txtFName = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtEmpId = new javax.swing.JTextField();
+        btnClear = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -65,7 +66,7 @@ public class AddEmployee extends javax.swing.JFrame {
         txtLName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtLName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLNameActionPerformed(evt);
+                jTextField2ActionPerformed(evt);
             }
         });
 
@@ -86,7 +87,7 @@ public class AddEmployee extends javax.swing.JFrame {
         btnClose.setText("Close");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCloseActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -129,6 +130,15 @@ public class AddEmployee extends javax.swing.JFrame {
         txtEmpId.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         txtEmpId.setText("(Auto generated)");
 
+        btnClear.setBackground(new java.awt.Color(255, 153, 153));
+        btnClear.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnClear.setText("Clear");
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClearjButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -164,10 +174,6 @@ public class AddEmployee extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(62, 62, 62)
-                                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(lblGender)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -177,7 +183,14 @@ public class AddEmployee extends javax.swing.JFrame {
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(307, 307, 307))))
+                        .addGap(307, 307, 307))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)
+                        .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(212, 212, 212))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -207,11 +220,12 @@ public class AddEmployee extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                     .addComponent(txtEmpId))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36))
+                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40))
         );
 
         pack();
@@ -242,7 +256,7 @@ public class AddEmployee extends javax.swing.JFrame {
                     "You should select a gender for the employee", "Error",
                     JOptionPane.ERROR_MESSAGE);
         } else {
-
+            
             String fName = txtFName.getText();
             String lName = txtLName.getText();
             String address = txtAdress.getText();
@@ -254,7 +268,7 @@ public class AddEmployee extends javax.swing.JFrame {
                         "Invalid Pay Level", "Error",
                         JOptionPane.ERROR_MESSAGE);
             }
-
+            
             PayScale ps = new PayScale();
             char gender = 'M';
 
@@ -264,22 +278,14 @@ public class AddEmployee extends javax.swing.JFrame {
             } else if (jRadioButton2.isSelected()) {
                 gender = 'F';
             }
-
+            
             int empId = HrSystem.addEmployee(fName, lName, address, gender, ps);
-
-            txtFName.setText("");
-            txtLName.setText("");
-            txtAdress.setText("");
-            txtPayLevel.setText("");
-            buttonGroup1.clearSelection();
-
+            
+            this.txtEmpId.setText(Integer.toString(empId));
             JOptionPane.showMessageDialog(null,
                     "Employee added successfully", "Success",
                     JOptionPane.INFORMATION_MESSAGE);
-
         }
-
-
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
@@ -293,12 +299,21 @@ public class AddEmployee extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-          this.dispose();
+        this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void btnClearjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearjButton1ActionPerformed
+        // TODO add your handling code here:
+        this.buttonGroup1.clearSelection();
+        this.txtAdress.setText(null);
+        this.txtFName.setText(null);
+        this.txtLName.setText(null);
+        this.txtPayLevel.setText(null);
+    }//GEN-LAST:event_btnClearjButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -337,6 +352,7 @@ public class AddEmployee extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnClear;
     private javax.swing.JButton btnClose;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel3;

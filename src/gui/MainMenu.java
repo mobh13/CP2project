@@ -258,6 +258,11 @@ public class MainMenu extends javax.swing.JFrame {
         btnSaveChange.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnSaveChange.setForeground(new java.awt.Color(0, 102, 0));
         btnSaveChange.setText("Save Cahnges");
+        btnSaveChange.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveChangeActionPerformed(evt);
+            }
+        });
 
         btnClose.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnClose.setForeground(new java.awt.Color(250, 0, 0));
@@ -443,7 +448,6 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnDesigHeadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesigHeadActionPerformed
         // TODO add your handling code here:
-
         if (!HrSystem.getAllDepartments().isEmpty()) {
             DesignateHead dh1 = new DesignateHead();
             dh1.setVisible(true);
@@ -504,6 +508,11 @@ public class MainMenu extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "You already have saved data", "Error", 0);
         }
     }//GEN-LAST:event_btnCleanInstallActionPerformed
+
+    private void btnSaveChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveChangeActionPerformed
+        // TODO add your handling code here:
+         doSerialize();
+    }//GEN-LAST:event_btnSaveChangeActionPerformed
 
     private void exitPreform() {
 

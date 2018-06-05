@@ -68,7 +68,6 @@ public class EditDepartment extends javax.swing.JFrame {
         jLabel5.setToolTipText("");
 
         jTextField3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField3.setText("i.e. London");
 
         jButton1.setBackground(new java.awt.Color(255, 153, 153));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -98,7 +97,7 @@ public class EditDepartment extends javax.swing.JFrame {
 
         jComboBox1.setEditable(true);
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dep1", "Dep2", "Dep3", "DepN", " " }));
+        jComboBox1.setMaximumRowCount(100);
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -110,7 +109,6 @@ public class EditDepartment extends javax.swing.JFrame {
         jLabel3.setToolTipText("");
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jTextField1.setText("i.e. Sales ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

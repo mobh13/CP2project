@@ -44,9 +44,9 @@ public class DesignateHead extends javax.swing.JFrame {
         lblTitle = new javax.swing.JLabel();
         btnDesignate = new javax.swing.JButton();
         lblEmpId = new javax.swing.JLabel();
-        cmbDepId = new javax.swing.JComboBox<>();
         lblDepId = new javax.swing.JLabel();
         lblInstructionos = new javax.swing.JLabel();
+        cmbDepId = new javax.swing.JComboBox<>();
         cmbEmpID = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -82,15 +82,6 @@ public class DesignateHead extends javax.swing.JFrame {
         lblEmpId.setForeground(new java.awt.Color(255, 0, 0));
         lblEmpId.setText("Employee ID: ");
 
-        cmbDepId.setEditable(true);
-        cmbDepId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cmbDepId.setMaximumRowCount(100);
-        cmbDepId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbDepIdActionPerformed(evt);
-            }
-        });
-
         lblDepId.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         lblDepId.setForeground(new java.awt.Color(255, 0, 0));
         lblDepId.setText("Department ID:");
@@ -98,14 +89,14 @@ public class DesignateHead extends javax.swing.JFrame {
         lblInstructionos.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         lblInstructionos.setText("* Select a department first to show employees of that department");
 
-        cmbEmpID.setEditable(true);
-        cmbEmpID.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cmbEmpID.setMaximumRowCount(100);
-        cmbEmpID.addActionListener(new java.awt.event.ActionListener() {
+        cmbDepId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cmbDepId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbEmpIDActionPerformed(evt);
+                cmbDepIdActionPerformed(evt);
             }
         });
+
+        cmbEmpID.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,10 +108,17 @@ public class DesignateHead extends javax.swing.JFrame {
                 .addGap(0, 243, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
-                .addComponent(btnDesignate, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(304, 304, 304))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnClose, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbDepId, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(btnDesignate, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(197, 197, 197)
+                        .addComponent(cmbEmpID, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(84, 84, 84))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(86, 86, 86)
@@ -128,20 +126,20 @@ public class DesignateHead extends javax.swing.JFrame {
                         .addComponent(lblInstructionos)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(lblDepId)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(cmbDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(52, 52, 52)
-                            .addComponent(lblEmpId)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(cmbEmpID, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addContainerGap(86, Short.MAX_VALUE)))
+                            .addGap(289, 289, 289)
+                            .addComponent(lblEmpId)))
+                    .addContainerGap(314, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(lblTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
+                .addGap(92, 92, 92)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbDepId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbEmpID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDesignate, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -151,39 +149,14 @@ public class DesignateHead extends javax.swing.JFrame {
                     .addGap(178, 178, 178)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cmbDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cmbEmpID, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGap(18, 18, 18)
                     .addComponent(lblInstructionos)
-                    .addContainerGap(179, Short.MAX_VALUE)))
+                    .addContainerGap(181, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cmbDepIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDepIdActionPerformed
-        // TODO add your handling code here:
-        if (this.cmbDepId.getSelectedItem() != null) {
-            Department dp_temp = HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex());
-            this.cmbEmpID.removeAllItems();
-            for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
-                if (HrSystem.getAllDepartments().get(i).getId() == dp_temp.getId()) {
-                    for (int j = 0; j < HrSystem.getAllDepartments().get(i).getListOfEmployees().size(); j++) {
-                        String info = HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getId() + " - "
-                                + HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getFirstName() + " "
-                                + HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getLastName();
-                        this.cmbEmpID.addItem(info);
-                    }
-                }
-            }
-            this.cmbEmpID.setSelectedItem(null);
-        }
-    }//GEN-LAST:event_cmbDepIdActionPerformed
-
-    private void cmbEmpIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEmpIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbEmpIDActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
@@ -240,8 +213,27 @@ public class DesignateHead extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowClosing
 
+    private void cmbDepIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDepIdActionPerformed
+        // TODO add your handling code here:
+    
+            try{
+            this.cmbEmpID.removeAllItems();
+            for (int i = 0; i < HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().size(); i++) {
+                String info = HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getId() + " - "
+                        + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getFirstName() + " "
+                        + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getLastName();
+                this.cmbEmpID.addItem(info);
+            }
+            this.cmbEmpID.setSelectedItem(null);
+        
+        }catch(NullPointerException ex){
+                
+                }
+    }//GEN-LAST:event_cmbDepIdActionPerformed
+
     private void loadDepartments() {
         if (!HrSystem.getAllDepartments().isEmpty()) {
+            this.cmbDepId.removeAllItems();
             for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
                 String info = HrSystem.getAllDepartments().get(i).getId() + " - "
                         + HrSystem.getAllDepartments().get(i).getName();

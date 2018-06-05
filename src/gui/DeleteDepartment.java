@@ -133,9 +133,8 @@ public class DeleteDepartment extends javax.swing.JFrame {
             if (reply == JOptionPane.YES_OPTION) {
                 if (HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees() == null) {
                     if (HrSystem.deleteDepartment(HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex())) == true) {
-                        JOptionPane.showMessageDialog(null, "The department " + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getName()
-                                + " have been deleted successfully.",
-                                "Message", 2);
+                        JOptionPane.showMessageDialog(null, "The department have been deleted successfully.",
+                                "Message", 1);
                         loadDepartments();
                     } else {
                         JOptionPane.showMessageDialog(null, "The department " + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getName()
@@ -180,6 +179,7 @@ public class DeleteDepartment extends javax.swing.JFrame {
 
     private void loadDepartments() {
         if (!HrSystem.getAllDepartments().isEmpty()) {
+            this.cmbDepId.removeAllItems();
             try {
                 for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
                     String info = HrSystem.getAllDepartments().get(i).getId() + " - "
