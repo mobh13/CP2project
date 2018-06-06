@@ -21,10 +21,9 @@ public class EditEmployee extends javax.swing.JFrame {
     /**
      * Creates new form manageEmployee
      */
-    
     public EditEmployee() {
         initComponents();
-        java.awt.Color recursiveBG = new java.awt.Color(240, 240,240);
+        java.awt.Color recursiveBG = new java.awt.Color(240, 240, 240);
         getContentPane().setBackground(recursiveBG);
         loadEmp();
         loadPayScale();
@@ -295,16 +294,16 @@ public class EditEmployee extends javax.swing.JFrame {
     private void cmbEmpIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEmpIdActionPerformed
         // TODO add your handling code here:
         if (this.cmbEmpId.getSelectedItem() != null) {
-            Employee temp_emp = HrSystem.getAllEmployees().get(this.cmbEmpId.getSelectedIndex());
-            this.txtFName.setText(temp_emp.getFirstName());
-            this.txtLName.setText(temp_emp.getLastName());
-            this.txtAddress.setText(temp_emp.getAddress());
-            if (temp_emp.getGender() == 'M' || temp_emp.getGender() == 'm') {
+            this.txtFName.setText(HrSystem.getAllEmployees().get(this.cmbEmpId.getSelectedIndex()).getFirstName());
+            this.txtLName.setText(HrSystem.getAllEmployees().get(this.cmbEmpId.getSelectedIndex()).getLastName());
+            this.txtAddress.setText(HrSystem.getAllEmployees().get(this.cmbEmpId.getSelectedIndex()).getAddress());
+            if (HrSystem.getAllEmployees().get(this.cmbEmpId.getSelectedIndex()).getGender() == 'M') {
                 this.rdbtnMale.setSelected(true);
-            } else if(temp_emp.getGender() == 'F' || temp_emp.getGender() == 'f'){
+            } else if (HrSystem.getAllEmployees().get(this.cmbEmpId.getSelectedIndex()).getGender() == 'F') {
                 this.rdbtnFemale.setSelected(true);
             }
-            this.cmbPayScale.setSelectedIndex((temp_emp.getPayLevel().getLevel() - 1));
+            //remove coments after
+         //  this.cmbPayScale.setSelectedIndex((HrSystem.getAllEmployees().get(this.cmbEmpId.getSelectedIndex()).getPayLevel().getLevel() - 1));
         }
     }//GEN-LAST:event_cmbEmpIdActionPerformed
 
@@ -330,7 +329,6 @@ public class EditEmployee extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowClosing
 
-    
     private void loadEmp() {
         this.cmbEmpId.removeAllItems();
         for (int i = 0; i < HrSystem.getAllEmployees().size(); i++) {
@@ -340,6 +338,12 @@ public class EditEmployee extends javax.swing.JFrame {
             this.cmbEmpId.addItem(info);
         }
         this.cmbEmpId.setSelectedItem(null);
+        this.cmbPayScale.setSelectedItem(null);
+        this.txtFName.setText(null);
+        this.txtLName.setText(null);
+        this.txtAddress.setText(null);
+        this.rdbtnFemale.setSelected(false);
+        this.rdbtnMale.setSelected(false);
     }
 
     private void loadPayScale() {
@@ -351,6 +355,7 @@ public class EditEmployee extends javax.swing.JFrame {
         }
         this.cmbPayScale.setSelectedItem(null);
     }
+
     /**
      * @param args the command line arguments
      */
