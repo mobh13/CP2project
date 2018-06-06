@@ -499,13 +499,20 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnCleanInstallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanInstallActionPerformed
         File file = new File("hrsystemdata.data");
-        if (!file.exists()) {
+        if (file.exists()) {
+            int reply = JOptionPane.showConfirmDialog(
+                null,"You Already have Saved data, are you sure you want to overwrite?",
+                "Warning", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
             CleanInstall.clean();
-            JOptionPane.showMessageDialog(null,
-                    "Clean installed", "Success",
+            JOptionPane.showMessageDialog(null,"Clean installed", "Success",
                     JOptionPane.INFORMATION_MESSAGE);
+        }
+            
         } else {
-            JOptionPane.showMessageDialog(this, "You already have saved data", "Error", 0);
+            CleanInstall.clean();
+            JOptionPane.showMessageDialog(null,"Clean installed", "Success",
+                    JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnCleanInstallActionPerformed
 
@@ -560,7 +567,7 @@ public class MainMenu extends javax.swing.JFrame {
             int departmentId = 0;
             int employeeId = 0;
             int counter = 0;
-            int inCounter = 0;
+            //int inCounter = 0;
             while (counter < HrSystem.getAllEmployees().size()) {
 
                 if (HrSystem.getAllEmployees().get(counter).getId() > employeeId) {
