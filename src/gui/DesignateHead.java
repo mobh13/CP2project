@@ -8,7 +8,6 @@ package gui;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
-import logic.Department;
 import logic.HrSystem;
 
 /**
@@ -214,21 +213,25 @@ public class DesignateHead extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void cmbDepIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDepIdActionPerformed
-        // TODO add your handling code here:
-    
-            try{
-            this.cmbEmpID.removeAllItems();
-            for (int i = 0; i < HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().size(); i++) {
-                String info = HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getId() + " - "
-                        + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getFirstName() + " "
-                        + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getLastName();
+        // TODO add your handling code here
+        int index = this.cmbDepId.getSelectedIndex();
+        this.cmbEmpID.removeAllItems();
+        if(this.cmbDepId.getSelectedItem() != null){
+            try {
+            for (int i = 0; i < HrSystem.getAllDepartments().get(index).getListOfEmployees().size(); i++) {
+                String info = HrSystem.getAllDepartments().get(index).getListOfEmployees().get(i).getId() + " - "
+                        + HrSystem.getAllDepartments().get(index).getListOfEmployees().get(i).getFirstName() + " "
+                        + HrSystem.getAllDepartments().get(index).getListOfEmployees().get(i).getLastName();
                 this.cmbEmpID.addItem(info);
             }
             this.cmbEmpID.setSelectedItem(null);
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            JOptionPane.showMessageDialog(null,
+                    "There are no employees in the department selected.", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        }
         
-        }catch(NullPointerException ex){
-                
-                }
     }//GEN-LAST:event_cmbDepIdActionPerformed
 
     private void loadDepartments() {
@@ -239,7 +242,7 @@ public class DesignateHead extends javax.swing.JFrame {
                         + HrSystem.getAllDepartments().get(i).getName();
                 this.cmbDepId.addItem(info);
             }
-            this.cmbDepId.setSelectedItem(null);
+            this.cmbDepId.setSelectedIndex(-1);
         }
 
     }
