@@ -237,9 +237,9 @@ public class MainMenu extends javax.swing.JFrame {
                 .addComponent(btnAddEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnAddDepartment, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(btnListEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(btnListEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(btnPayReport, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
@@ -461,8 +461,8 @@ public class MainMenu extends javax.swing.JFrame {
     private void btnListEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListEmployeesActionPerformed
         // TODO add your handling code here:
         if (!HrSystem.getAllEmployees().isEmpty()) {
-            ListEmployees listEmployees = new ListEmployees();
-            listEmployees.setVisible(true);
+            ListEmployees listemp = new ListEmployees();
+            listemp.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null,
                     "No Employees exist", "Error",
