@@ -303,7 +303,7 @@ public class EditEmployee extends javax.swing.JFrame {
                 this.rdbtnFemale.setSelected(true);
             }
             //remove coments after
-         //  this.cmbPayScale.setSelectedIndex((HrSystem.getAllEmployees().get(this.cmbEmpId.getSelectedIndex()).getPayLevel().getLevel() - 1));
+            //  this.cmbPayScale.setSelectedIndex((HrSystem.getAllEmployees().get(this.cmbEmpId.getSelectedIndex()).getPayLevel().getLevel() - 1));
         }
     }//GEN-LAST:event_cmbEmpIdActionPerformed
 

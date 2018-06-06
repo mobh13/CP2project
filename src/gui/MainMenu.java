@@ -461,8 +461,8 @@ public class MainMenu extends javax.swing.JFrame {
     private void btnListEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListEmployeesActionPerformed
         // TODO add your handling code here:
         if (!HrSystem.getAllEmployees().isEmpty()) {
-            ListEmployees listemp = new ListEmployees();
-            listemp.setVisible(true);
+//            ListEmployees listemp = new ListEmployees();
+//            listemp.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null,
                     "No Employees exist", "Error",
