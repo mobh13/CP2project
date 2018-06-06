@@ -19,7 +19,7 @@ public class Department implements Serializable {
     private int id;
     static private int idCounter = 0;
     private Employee head;
-    private ArrayList<Employee> listOfEmployees = new ArrayList<>();
+    private ArrayList<Employee> listOfEmployees ;
 
     public Department(String name, String location) {
 
@@ -27,7 +27,7 @@ public class Department implements Serializable {
         this.name = name;
         this.location = location;
         idCounter++;
-
+        listOfEmployees = new ArrayList<>();
     }
 
     public void setListOfEmployees(ArrayList<Employee> listOfEmployees) {

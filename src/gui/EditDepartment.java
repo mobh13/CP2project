@@ -171,6 +171,8 @@ public class EditDepartment extends javax.swing.JFrame {
         }
         
         this.cmbDepId.setSelectedItem(null);
+        this.txtDepName.setText(null);
+        this.txtLocation.setText(null);
     }
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         //Save selected department in a String variable to use for checking
@@ -181,6 +183,7 @@ public class EditDepartment extends javax.swing.JFrame {
         int i = 0;
         //do loop to go throw all the departments and check for the department that checks the requirements (name)
         do {
+            
             //check if the name of department equals the name of selected
             if (selected.equalsIgnoreCase(HrSystem.getAllDepartments().get(i).getName())) {
                 //get the input variables from the text fields 
@@ -235,11 +238,11 @@ public class EditDepartment extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void cmbDepIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDepIdActionPerformed
-        // TODO add your handling code here:
-//        if(this.cmbDepId.getSelectedItem() != null){
-//            this.txtDepName.setText(HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getName());
-//            this.txtLocation.setText(HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getLocation());
-//        }
+         //TODO add your handling code here:
+        if(this.cmbDepId.getSelectedItem() != null){
+            this.txtDepName.setText(HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getName());
+            this.txtLocation.setText(HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getLocation());
+        }
     }//GEN-LAST:event_cmbDepIdActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
