@@ -39,7 +39,7 @@ public class AddDepartment extends javax.swing.JFrame {
     private void initComponents() {
 
         jDialog1 = new javax.swing.JDialog();
-        jLabel1 = new javax.swing.JLabel();
+        lblTitle = new javax.swing.JLabel();
         lblDepId = new javax.swing.JLabel();
         btnClose = new javax.swing.JButton();
         btnAdd = new javax.swing.JButton();
@@ -61,10 +61,15 @@ public class AddDepartment extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel1.setText("Add Department");
+        lblTitle.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        lblTitle.setForeground(new java.awt.Color(0, 0, 204));
+        lblTitle.setText("Add Department");
 
         lblDepId.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         lblDepId.setForeground(new java.awt.Color(255, 0, 0));
@@ -100,6 +105,7 @@ public class AddDepartment extends javax.swing.JFrame {
 
         txtDepName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
+        depIdField.setEditable(false);
         depIdField.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         depIdField.setText("(Auto Generated)");
         depIdField.setToolTipText("");
@@ -122,7 +128,7 @@ public class AddDepartment extends javax.swing.JFrame {
                         .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(286, 286, 286))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lblTitle)
                         .addGap(323, 323, 323))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +152,7 @@ public class AddDepartment extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(59, 59, 59)
-                .addComponent(jLabel1)
+                .addComponent(lblTitle)
                 .addGap(46, 46, 46)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDepName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -218,10 +224,25 @@ public class AddDepartment extends javax.swing.JFrame {
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
-
-        this.dispose();
-        //dfsdf
+        int reply = JOptionPane.showConfirmDialog(
+                null,
+                "Are you sure you want to close this window?",
+                "Warning", JOptionPane.YES_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
     }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        int reply = JOptionPane.showConfirmDialog(
+                null,
+                "Are you sure you want to close this window?",
+                "Warning", JOptionPane.YES_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -263,10 +284,10 @@ public class AddDepartment extends javax.swing.JFrame {
     private javax.swing.JButton btnClose;
     private javax.swing.JTextField depIdField;
     private javax.swing.JDialog jDialog1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblDepId;
     private javax.swing.JLabel lblDepLocation;
     private javax.swing.JLabel lblDepName;
+    private javax.swing.JLabel lblTitle;
     private javax.swing.JTextField txtDepName;
     private javax.swing.JTextField txtdepLocation;
     // End of variables declaration//GEN-END:variables

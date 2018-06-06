@@ -44,32 +44,32 @@ public class AddEmployee extends javax.swing.JFrame {
         txtLName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtAdress = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
+        lblPayLevel = new javax.swing.JLabel();
         btnClose = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lblLName = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
         rdbtnMale = new javax.swing.JRadioButton();
         rdbtnFemale = new javax.swing.JRadioButton();
-        jLabel3 = new javax.swing.JLabel();
+        lblEmpId = new javax.swing.JLabel();
         txtFName = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        lblFName = new javax.swing.JLabel();
         txtEmpId = new javax.swing.JTextField();
         btnClear = new javax.swing.JButton();
         cmbPayLevel = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         lblGender.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         lblGender.setText("Gender: ");
         lblGender.setToolTipText("");
 
         txtLName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtLName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         jLabel5.setText("Address: ");
@@ -77,16 +77,16 @@ public class AddEmployee extends javax.swing.JFrame {
 
         txtAdress.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
-        jLabel6.setText("Pay Level: ");
-        jLabel6.setToolTipText("");
+        lblPayLevel.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        lblPayLevel.setText("Pay Level: ");
+        lblPayLevel.setToolTipText("");
 
         btnClose.setBackground(new java.awt.Color(255, 153, 153));
         btnClose.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnClose.setText("Close");
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCloseActionPerformed(evt);
             }
         });
 
@@ -94,9 +94,9 @@ public class AddEmployee extends javax.swing.JFrame {
         lblTitle.setForeground(new java.awt.Color(0, 0, 204));
         lblTitle.setText("Add Employee to System");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
-        jLabel7.setText("Last Name: ");
-        jLabel7.setToolTipText("");
+        lblLName.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        lblLName.setText("Last Name: ");
+        lblLName.setToolTipText("");
 
         btnAdd.setBackground(new java.awt.Color(153, 255, 153));
         btnAdd.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -115,17 +115,18 @@ public class AddEmployee extends javax.swing.JFrame {
         rdbtnFemale.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         rdbtnFemale.setText("Female");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel3.setText("Employee ID: ");
-        jLabel3.setToolTipText("");
+        lblEmpId.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        lblEmpId.setForeground(new java.awt.Color(255, 0, 0));
+        lblEmpId.setText("Employee ID: ");
+        lblEmpId.setToolTipText("");
 
         txtFName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
-        jLabel8.setText("First Name: ");
-        jLabel8.setToolTipText("");
+        lblFName.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        lblFName.setText("First Name: ");
+        lblFName.setToolTipText("");
 
+        txtEmpId.setEditable(false);
         txtEmpId.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         txtEmpId.setText("(Auto generated)");
 
@@ -154,17 +155,17 @@ public class AddEmployee extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel7)
+                                .addComponent(lblLName)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtLName, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel8)
+                                .addComponent(lblFName)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                                .addComponent(lblPayLevel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cmbPayLevel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
@@ -181,7 +182,7 @@ public class AddEmployee extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rdbtnFemale))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(lblEmpId)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(txtEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(307, 307, 307))
@@ -203,14 +204,14 @@ public class AddEmployee extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtAdress, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblFName, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtLName, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblLName, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel6)
+                        .addComponent(lblPayLevel)
                         .addComponent(cmbPayLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -219,7 +220,7 @@ public class AddEmployee extends javax.swing.JFrame {
                     .addComponent(rdbtnFemale))
                 .addGap(51, 51, 51)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+                    .addComponent(lblEmpId, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
                     .addComponent(txtEmpId))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -246,7 +247,7 @@ public class AddEmployee extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,
                     "Address is Empty", "Error",
                     JOptionPane.ERROR_MESSAGE);
-        } else if (this.cmbPayLevel.getSelectedItem() == null ) {
+        } else if (this.cmbPayLevel.getSelectedItem() == null) {
             JOptionPane.showMessageDialog(null,
                     "Pay Level is not selected", "Error",
                     JOptionPane.ERROR_MESSAGE);
@@ -255,12 +256,12 @@ public class AddEmployee extends javax.swing.JFrame {
                     "You should select a gender for the employee", "Error",
                     JOptionPane.ERROR_MESSAGE);
         } else {
-            
+
             String fName = txtFName.getText();
             String lName = txtLName.getText();
             String address = txtAdress.getText();
             PayScale payLvl = HrSystem.getPayScales().get(this.cmbPayLevel.getSelectedIndex());
-            
+
             char gender = 0;
 
             //get the text of selected gender
@@ -269,53 +270,68 @@ public class AddEmployee extends javax.swing.JFrame {
             } else if (rdbtnFemale.isSelected()) {
                 gender = 'F';
             }
-            
+
             int empId = HrSystem.addEmployee(fName, lName, address, gender, payLvl);
-            
+
             this.txtEmpId.setText(Integer.toString(empId));
-            
+
             JOptionPane.showMessageDialog(null,
                     "Employee added successfully", "Success",
                     JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnAddActionPerformed
 
-    private void loadPayScale(){
+    private void loadPayScale() {
         this.cmbPayLevel.removeAllItems();
-        if(!HrSystem.getPayScales().isEmpty()){
+        if (!HrSystem.getPayScales().isEmpty()) {
             for (int i = 0; i < HrSystem.getPayScales().size(); i++) {
-                this.cmbPayLevel.setToolTipText(HrSystem.getPayScales().get(i).getLevel()+" "+
-                        HrSystem.getPayScales().get(i).getValue());
+                this.cmbPayLevel.setToolTipText(HrSystem.getPayScales().get(i).getLevel() + " "
+                        + HrSystem.getPayScales().get(i).getValue());
             }
         }
         this.cmbPayLevel.setSelectedItem(null);
     }
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        int reply = JOptionPane.showConfirmDialog(
+                null,
+                "Are you sure you want to close this window?",
+                "Warning", JOptionPane.YES_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void txtLNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLNameActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
     private void btnClearjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearjButton1ActionPerformed
         // TODO add your handling code here:
-        this.buttonGroup1.clearSelection();
-        this.txtAdress.setText(null);
-        this.txtFName.setText(null);
-        this.txtLName.setText(null);
-        this.cmbPayLevel.setSelectedIndex(-1);
+        int reply = JOptionPane.showConfirmDialog(
+                null,
+                "Are you sure you want to clear fields?",
+                "Warning", JOptionPane.YES_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            this.buttonGroup1.clearSelection();
+            this.txtAdress.setText(null);
+            this.txtFName.setText(null);
+            this.txtLName.setText(null);
+            this.cmbPayLevel.setSelectedIndex(-1);
+        }
     }//GEN-LAST:event_btnClearjButton1ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+
+        // TODO add your handling code here:
+        int reply = JOptionPane.showConfirmDialog(
+                null,
+                "Are you sure you want to close this window?",
+                "Warning", JOptionPane.YES_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -358,12 +374,12 @@ public class AddEmployee extends javax.swing.JFrame {
     private javax.swing.JButton btnClose;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cmbPayLevel;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel lblEmpId;
+    private javax.swing.JLabel lblFName;
     private javax.swing.JLabel lblGender;
+    private javax.swing.JLabel lblLName;
+    private javax.swing.JLabel lblPayLevel;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JRadioButton rdbtnFemale;
     private javax.swing.JRadioButton rdbtnMale;
