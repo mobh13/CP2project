@@ -8,6 +8,9 @@ package gui;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import logic.Employee;
 import logic.HrSystem;
@@ -18,7 +21,7 @@ import logic.PayScale;
  * @author A.A
  */
 public class EditEmployee extends javax.swing.JFrame {
-
+private ArrayList<String> payScales = new ArrayList<>();
     private DecimalFormat df2 = new DecimalFormat("BD #,##0.00");
 
     /**
@@ -34,6 +37,7 @@ public class EditEmployee extends javax.swing.JFrame {
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
         this.setLocation(x, y);
+        cmbEmpId.setSelectedIndex(0);
     }
 
     /**
@@ -311,8 +315,9 @@ public class EditEmployee extends javax.swing.JFrame {
                 this.rdbtnFemale.setSelected(true);
             }
             //remove coments after
-            int payindex = HrSystem.getUnAssignedEmployees().get(this.cmbEmpId.getSelectedIndex()).getPayLevel().getLevel() - 1;
-           // this.cmbPayScale.setSelectedIndex(payindex); << this causes error
+            this.cmbPayScale.setModel(new DefaultComboBoxModel(payScales.toArray()));
+            int index = HrSystem.getUnAssignedEmployees().get(cmbEmpId.getSelectedIndex()).getPayLevel().getLevel() - 1;
+            this.cmbPayScale.setSelectedItem(cmbPayScale.getModel().getElementAt(index));
         }
     }//GEN-LAST:event_cmbEmpIdActionPerformed
 
@@ -360,10 +365,11 @@ public class EditEmployee extends javax.swing.JFrame {
     }
 
     private void loadPayScale() {
+        
         this.cmbPayScale.removeAllItems();
         if (!HrSystem.getPayScales().isEmpty()) {
             for (int i = 0; i < HrSystem.getPayScales().size(); i++) {
-                this.cmbPayScale.addItem(HrSystem.getPayScales().get(i).getLevel() + " - "
+                payScales.add(HrSystem.getPayScales().get(i).getLevel() + " - "
                         + df2.format(HrSystem.getPayScales().get(i).getValue()));
             }
         }
