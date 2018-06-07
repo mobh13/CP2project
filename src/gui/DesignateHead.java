@@ -180,8 +180,8 @@ public class DesignateHead extends javax.swing.JFrame {
                         "Warning", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
                     HrSystem.designateHead(empId, depId);
-                    JOptionPane.showMessageDialog(this, "Employee: " + HrSystem.getAllEmployees().get(empId).getFirstName() + " "
-                            + HrSystem.getAllEmployees().get(empId).getLastName() + " is now the head of "
+                    JOptionPane.showMessageDialog(this, "Employee: " + HrSystem.getUnAssignedEmployees().get(empId).getFirstName() + " "
+                            + HrSystem.getUnAssignedEmployees().get(empId).getLastName() + " is now the head of "
                             + HrSystem.getAllDepartments().get(depId).getName() + " Department.", "Designation is successul", 1);
                     this.cmbDepId.setSelectedItem(null);
                     this.cmbEmpID.setSelectedItem(null);
@@ -190,8 +190,8 @@ public class DesignateHead extends javax.swing.JFrame {
                 }
             } else {
                 HrSystem.designateHead(empId, depId);
-                JOptionPane.showMessageDialog(this, "Employee: " + HrSystem.getAllEmployees().get(empId).getFirstName() + " "
-                        + HrSystem.getAllEmployees().get(empId).getLastName() + " is now the head of "
+                JOptionPane.showMessageDialog(this, "Employee: " + HrSystem.getUnAssignedEmployees().get(empId).getFirstName() + " "
+                        + HrSystem.getUnAssignedEmployees().get(empId).getLastName() + " is now the head of "
                         + HrSystem.getAllDepartments().get(depId).getName() + " Department.", "Designation is successul", 1);
                 this.cmbDepId.setSelectedItem(null);
                 this.cmbEmpID.setSelectedItem(null);

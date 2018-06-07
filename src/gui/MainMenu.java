@@ -486,12 +486,12 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
-        exitPreform();
+        exit();
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-        exitPreform();
+        exit();
     }//GEN-LAST:event_formWindowClosing
 
     private void btnPayReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayReportActionPerformed
@@ -538,7 +538,7 @@ public class MainMenu extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSaveChangeActionPerformed
 
-    private void exitPreform() {
+    private void exit() {
 
         int reply = JOptionPane.showConfirmDialog(
                 null,
@@ -559,14 +559,14 @@ public class MainMenu extends javax.swing.JFrame {
             FileOutputStream f = new FileOutputStream("hrsystemdata.data");
             ObjectOutputStream outt = new ObjectOutputStream(f);
             // serialize the data objects
-            outt.writeObject(HrSystem.getAllEmployees());
+            outt.writeObject(HrSystem.getUnAssignedEmployees());
             outt.writeObject(HrSystem.getAllDepartments());
             outt.writeObject(HrSystem.getPayScales());
         } catch (FileNotFoundException ex) { //error message
-            JOptionPane.showMessageDialog(this, ex + "\nThe output file was "
+            JOptionPane.showMessageDialog(this, ex + "\nError:  The output file was "
                     + "not found!", "Output Error", 0);
         } catch (IOException ex) { //error message
-            JOptionPane.showMessageDialog(this, ex + "\nThe output is not "
+            JOptionPane.showMessageDialog(this, ex + "\nError: The output file is not "
                     + "accessible!", "Output Error", 0);
         }
     }
@@ -577,7 +577,7 @@ public class MainMenu extends javax.swing.JFrame {
 
             FileInputStream file = new FileInputStream("hrsystemdata.data");
             ObjectInputStream in = new ObjectInputStream(file);
-            HrSystem.setAllEmployees((ArrayList<Employee>) in.readObject());
+            HrSystem.setUnAssignedEmployees((ArrayList<Employee>) in.readObject());
             HrSystem.setAllDepartments((ArrayList<Department>) in.readObject());
             HrSystem.setPayScales((ArrayList<PayScale>) in.readObject());
             int payScaleId = 0;
@@ -585,10 +585,10 @@ public class MainMenu extends javax.swing.JFrame {
             int employeeId = 0;
             int counter = 0;
             //int inCounter = 0;
-            while (counter < HrSystem.getAllEmployees().size()) {
+            while (counter < HrSystem.getUnAssignedEmployees().size()) {
 
-                if (HrSystem.getAllEmployees().get(counter).getId() > employeeId) {
-                    employeeId = HrSystem.getAllEmployees().get(counter).getId();
+                if (HrSystem.getUnAssignedEmployees().get(counter).getId() > employeeId) {
+                    employeeId = HrSystem.getUnAssignedEmployees().get(counter).getId();
                     counter++;
 
                 }
@@ -621,15 +621,15 @@ public class MainMenu extends javax.swing.JFrame {
             Employee.setIdCounter(employeeId);
             PayScale.setIdCounter(payScaleId);
         } catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(this, "Are you running the "
-                    + "program for the first time? Please install the "
-                    + "startup file by clicking the button in menu. \n");
+            JOptionPane.showMessageDialog(this, "It looks like you are running the programm for the first time .\n"
+                    + " Please install the data by clicking clean innstall button in the main menu\n. "
+                   );
         } catch (IOException ex) {// show error message
-            JOptionPane.showMessageDialog(this, ex + "\nThe data file is not "
-                    + "accessible!", "Input Error", 0);
+            JOptionPane.showMessageDialog(this, ex + "\n Error:The data file is not accessible .\n"
+                  , "Input Error", 0);
         } catch (ClassNotFoundException ex) {// show error message
-            JOptionPane.showMessageDialog(this, ex + "\nThe data cannot be "
-                    + "loaded into the system!", "Internal Input Error", 0);
+            JOptionPane.showMessageDialog(this, ex + "\n Error:The data can't  be loaded into the system. please contact the developer for support. "
+                    , "Internal Input Error", 0);
         }
 
     }

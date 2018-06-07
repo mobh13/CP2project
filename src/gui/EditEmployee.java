@@ -266,8 +266,8 @@ public class EditEmployee extends javax.swing.JFrame {
                                 HrSystem.editEmployee(indx, f_name, l_name, adress, gender, payScale_indx);
                                 JOptionPane.showMessageDialog(this,
                                         "The updates have been saved successfully for employee "
-                                        + HrSystem.getAllEmployees().get(temp_index).getFirstName() + " "
-                                        + HrSystem.getAllEmployees().get(temp_index).getLastName() + ".",
+                                        + HrSystem.getUnAssignedEmployees().get(temp_index).getFirstName() + " "
+                                        + HrSystem.getUnAssignedEmployees().get(temp_index).getLastName() + ".",
                                         "Updated",
                                         JOptionPane.PLAIN_MESSAGE);
                                 this.cmbEmpId.setSelectedItem(null);
@@ -302,16 +302,16 @@ public class EditEmployee extends javax.swing.JFrame {
     private void cmbEmpIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEmpIdActionPerformed
         // TODO add your handling code here:
         if (this.cmbEmpId.getSelectedItem() != null) {
-            this.txtFName.setText(HrSystem.getAllEmployees().get(this.cmbEmpId.getSelectedIndex()).getFirstName());
-            this.txtLName.setText(HrSystem.getAllEmployees().get(this.cmbEmpId.getSelectedIndex()).getLastName());
-            this.txtAddress.setText(HrSystem.getAllEmployees().get(this.cmbEmpId.getSelectedIndex()).getAddress());
-            if (HrSystem.getAllEmployees().get(this.cmbEmpId.getSelectedIndex()).getGender() == 'M') {
+            this.txtFName.setText(HrSystem.getUnAssignedEmployees().get(this.cmbEmpId.getSelectedIndex()).getFirstName());
+            this.txtLName.setText(HrSystem.getUnAssignedEmployees().get(this.cmbEmpId.getSelectedIndex()).getLastName());
+            this.txtAddress.setText(HrSystem.getUnAssignedEmployees().get(this.cmbEmpId.getSelectedIndex()).getAddress());
+            if (HrSystem.getUnAssignedEmployees().get(this.cmbEmpId.getSelectedIndex()).getGender() == 'M') {
                 this.rdbtnMale.setSelected(true);
-            } else if (HrSystem.getAllEmployees().get(this.cmbEmpId.getSelectedIndex()).getGender() == 'F') {
+            } else if (HrSystem.getUnAssignedEmployees().get(this.cmbEmpId.getSelectedIndex()).getGender() == 'F') {
                 this.rdbtnFemale.setSelected(true);
             }
             //remove coments after
-            int payindex = HrSystem.getAllEmployees().get(this.cmbEmpId.getSelectedIndex()).getPayLevel().getLevel() - 1;
+            int payindex = HrSystem.getUnAssignedEmployees().get(this.cmbEmpId.getSelectedIndex()).getPayLevel().getLevel() - 1;
            // this.cmbPayScale.setSelectedIndex(payindex); << this causes error
         }
     }//GEN-LAST:event_cmbEmpIdActionPerformed
@@ -344,10 +344,10 @@ public class EditEmployee extends javax.swing.JFrame {
 
     private void loadEmp() {
         this.cmbEmpId.removeAllItems();
-        for (int i = 0; i < HrSystem.getAllEmployees().size(); i++) {
-            String info = HrSystem.getAllEmployees().get(i).getId() + " - "
-                    + HrSystem.getAllEmployees().get(i).getFirstName() + " "
-                    + HrSystem.getAllEmployees().get(i).getLastName();
+        for (int i = 0; i < HrSystem.getUnAssignedEmployees().size(); i++) {
+            String info = HrSystem.getUnAssignedEmployees().get(i).getId() + " - "
+                    + HrSystem.getUnAssignedEmployees().get(i).getFirstName() + " "
+                    + HrSystem.getUnAssignedEmployees().get(i).getLastName();
             this.cmbEmpId.addItem(info);
         }
         this.cmbEmpId.setSelectedItem(null);

@@ -32,16 +32,16 @@ public class DeleteEmployee extends javax.swing.JFrame {
         jComboBox1.removeAllItems();
 
         //for loop to put all the employee into the combo box
-        for (int i = 0; i < HrSystem.getAllEmployees().size(); i++) {
-            jComboBox1.addItem(HrSystem.getAllEmployees().get(i).getId() + " - " + 
-                HrSystem.getAllEmployees().get(i).getFirstName() + " " + 
-                HrSystem.getAllEmployees().get(i).getLastName());
+        for (int i = 0; i < HrSystem.getUnAssignedEmployees().size(); i++) {
+            jComboBox1.addItem(HrSystem.getUnAssignedEmployees().get(i).getId() + " - " + 
+                HrSystem.getUnAssignedEmployees().get(i).getFirstName() + " " + 
+                HrSystem.getUnAssignedEmployees().get(i).getLastName());
         }
 
         //first selected item would be the first employee
-        jComboBox1.setSelectedItem(HrSystem.getAllEmployees().get(0).getId() + " - " + 
-                HrSystem.getAllEmployees().get(0).getFirstName() + " " + 
-                HrSystem.getAllEmployees().get(0).getLastName());
+        jComboBox1.setSelectedItem(HrSystem.getUnAssignedEmployees().get(0).getId() + " - " + 
+                HrSystem.getUnAssignedEmployees().get(0).getFirstName() + " " + 
+                HrSystem.getUnAssignedEmployees().get(0).getLastName());
     }
 
     /**
@@ -140,11 +140,11 @@ public class DeleteEmployee extends javax.swing.JFrame {
         //do loop to loop through the employees and exit when condition is set
         do{
             //check if the name and id of the employee matches the one selected 
-            if(selected.equalsIgnoreCase(HrSystem.getAllEmployees().get(i).getId() + " - " + 
-                    HrSystem.getAllEmployees().get(i).getFirstName() + " " + 
-                    HrSystem.getAllEmployees().get(i).getLastName())){
+            if(selected.equalsIgnoreCase(HrSystem.getUnAssignedEmployees().get(i).getId() + " - " + 
+                    HrSystem.getUnAssignedEmployees().get(i).getFirstName() + " " + 
+                    HrSystem.getUnAssignedEmployees().get(i).getLastName())){
                 //remove the employee
-                HrSystem.getAllEmployees().remove(i);
+                HrSystem.getUnAssignedEmployees().remove(i);
                 //remove the item from the combo box
                 jComboBox1.removeItem(jComboBox1.getSelectedItem());
                 //message confirming the delete of the employee
@@ -154,7 +154,7 @@ public class DeleteEmployee extends javax.swing.JFrame {
             }else{
                 i++;
             }
-        }while(cond == false && i < HrSystem.getAllEmployees().size());
+        }while(cond == false && i < HrSystem.getUnAssignedEmployees().size());
         
     }//GEN-LAST:event_jButton2ActionPerformed
 

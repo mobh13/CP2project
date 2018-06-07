@@ -13,12 +13,12 @@ import java.util.ArrayList;
  */
 public class HrSystem {
 
-    private static ArrayList<Employee> allEmployees;
+    private static ArrayList<Employee> unAssignedEmployees;
     private static ArrayList<Department> allDepartments;
     private static ArrayList<PayScale> payScales;
 
-    public static void setAllEmployees(ArrayList<Employee> allEmployees) {
-        HrSystem.allEmployees = allEmployees;
+    public static void setUnAssignedEmployees(ArrayList<Employee> unAssignedEmployees) {
+        HrSystem.unAssignedEmployees = unAssignedEmployees;
     }
 
     public static void setAllDepartments(ArrayList<Department> allDepartments) {
@@ -32,19 +32,19 @@ public class HrSystem {
   
     public static int addEmployee(String firstName, String lastName, String address, char gender, PayScale payLevel) {
         Employee newEmp = new Employee(firstName, lastName, address, gender, payLevel);
-        allEmployees.add(newEmp);
+        unAssignedEmployees.add(newEmp);
         return newEmp.getId();
     }
     
     public static Employee addEmployee(Employee emp, int i) {
-        allEmployees.add(emp);
+        unAssignedEmployees.add(emp);
         allDepartments.get(i).getListOfEmployees().add(emp);
         return emp;
     }
 
     public HrSystem() {
 
-        allEmployees = new ArrayList<>();
+        unAssignedEmployees = new ArrayList<>();
         allDepartments = new ArrayList<>();
         payScales = new ArrayList<>();
     }
@@ -59,8 +59,8 @@ public class HrSystem {
 
  
 
-    public static ArrayList<Employee> getAllEmployees() {
-        return allEmployees;
+    public static ArrayList<Employee> getUnAssignedEmployees() {
+        return unAssignedEmployees;
     }
 
     public static ArrayList<Department> getAllDepartments() {
@@ -72,14 +72,14 @@ public class HrSystem {
     }
 
     public static void designateHead(int empId, int depId) {
-        getAllDepartments().get(depId).setHead(getAllEmployees().get(empId));
+        getAllDepartments().get(depId).setHead(getUnAssignedEmployees().get(empId));
     }
 
     public static void editEmployee(int indx, String f_name, String l_name, String address, char gender, int payScale_indx) {
-        getAllEmployees().get(indx).setFirstName(f_name);
-        getAllEmployees().get(indx).setLastName(l_name);
-        getAllEmployees().get(indx).setAddress(address);
-        getAllEmployees().get(indx).setPayLevel(payScales.get(payScale_indx));
+        getUnAssignedEmployees().get(indx).setFirstName(f_name);
+        getUnAssignedEmployees().get(indx).setLastName(l_name);
+        getUnAssignedEmployees().get(indx).setAddress(address);
+        getUnAssignedEmployees().get(indx).setPayLevel(payScales.get(payScale_indx));
     }
 
     public static boolean deleteDepartment(Department dep) {

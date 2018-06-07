@@ -158,12 +158,12 @@ private void depsLoad() {
         int counter = 0;
         cmbEmpId.removeAllItems(); //remove all items
         //while loop to add employees ids and names to combo box
-        while (counter < HrSystem.getAllEmployees().size()) {
-            cmbEmpId.addItem("#" + Integer.toString(HrSystem.getAllEmployees().get(counter).getId())
+        while (counter < HrSystem.getUnAssignedEmployees().size()) {
+            cmbEmpId.addItem("#" + Integer.toString(HrSystem.getUnAssignedEmployees().get(counter).getId())
                     + " "
-                    + HrSystem.getAllEmployees().get(counter).getFirstName()
+                    + HrSystem.getUnAssignedEmployees().get(counter).getFirstName()
                     + " "
-                    + HrSystem.getAllEmployees().get(counter).getLastName());
+                    + HrSystem.getUnAssignedEmployees().get(counter).getLastName());
             counter++;
         }
 
@@ -189,7 +189,7 @@ private void depsLoad() {
                 int selectedDepartmentId = cmbEmpId.getSelectedIndex();
                 int selectedEmployeeId = cmbDepId.getSelectedIndex();
                 Department SelectedDepartment = HrSystem.getAllDepartments().get(selectedDepartmentId);
-                Employee selectedEmployee = HrSystem.getAllEmployees().get(selectedEmployeeId);
+                Employee selectedEmployee = HrSystem.getUnAssignedEmployees().get(selectedEmployeeId);
                 for (int i = 0; i < SelectedDepartment.getListOfEmployees().size(); i++) {
                     if (SelectedDepartment.getListOfEmployees().get(i).getId() == selectedEmployee.getId()) {
                         JOptionPane.showMessageDialog(null,
