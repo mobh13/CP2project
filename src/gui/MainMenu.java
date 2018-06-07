@@ -30,6 +30,7 @@ public class MainMenu extends javax.swing.JFrame {
         getContentPane().setBackground(recursiveBG);
         HrSystem hrSystem = new HrSystem();
         deSerialize();
+        addPayScale();
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
@@ -386,7 +387,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnEmpEditInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEmpEditInfoActionPerformed
         // TODO add your handling code here:
-        if (!HrSystem.getAllEmployees().isEmpty()) {
+        if (check() == true) {
             EditEmployee ee1 = new EditEmployee();
             ee1.setVisible(true);
         } else {
@@ -399,7 +400,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnDelEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDelEmpActionPerformed
         //check if the employees exist to enter and if none then display an error message
-        if (!HrSystem.getAllEmployees().isEmpty()) {
+        if (check() == true) {
             DeleteEmployee deleteEmployee = new DeleteEmployee();
             deleteEmployee.setVisible(true);
         } else {
@@ -411,7 +412,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnAssignEmptoDepActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignEmptoDepActionPerformed
 
-        if (!HrSystem.getAllDepartments().isEmpty()) {
+        if (check() == true) {
             AssignEmployee assignEmployee = new AssignEmployee();
             assignEmployee.setVisible(true);
         } else {
@@ -460,7 +461,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnListEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListEmployeesActionPerformed
         // TODO add your handling code here:
-        if (!HrSystem.getAllEmployees().isEmpty()) {
+        if (check() == true) {
 //            ListEmployees listemp = new ListEmployees();
 //            listemp.setVisible(true);
         } else {
@@ -651,6 +652,37 @@ public class MainMenu extends javax.swing.JFrame {
                 new MainMenu().setVisible(true);
             }
         });
+    }
+    
+    private boolean check(){
+        //condition to exit the loops
+        boolean cond = false;
+        //check if any department exist
+        if(!HrSystem.getAllDepartments().isEmpty()){
+            //to check employees for all departments
+            for(int i = 0; i < HrSystem.getAllDepartments().size() && cond == false; i++){
+                //check if employees in that specific department exist
+                if(!HrSystem.getAllDepartments().get(i).getListOfEmployees().isEmpty()){
+                            //return if any employee found
+                            cond = true;
+                    }
+                }
+        }
+        return cond;
+    }
+    
+    private void addPayScale(){
+        File file = new File("hrsystemdata.data");
+        if (!file.exists()) {
+        HrSystem.getPayScales().add(new PayScale(1, 44245.75));
+        HrSystem.getPayScales().add(new PayScale(2, 48670.32));
+        HrSystem.getPayScales().add(new PayScale(3, 53537.35));
+        HrSystem.getPayScales().add(new PayScale(4, 58891.09));
+        HrSystem.getPayScales().add(new PayScale(5, 64780.20));
+        HrSystem.getPayScales().add(new PayScale(6, 71258.22));
+        HrSystem.getPayScales().add(new PayScale(7, 80946.95));
+        HrSystem.getPayScales().add(new PayScale(8, 96336.34));
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

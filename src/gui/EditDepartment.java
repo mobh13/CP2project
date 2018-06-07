@@ -28,7 +28,6 @@ public class EditDepartment extends javax.swing.JFrame {
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
         this.setLocation(x, y);
 
-
         //call methods to load combo box with departments
         loadDepartments();
     }
@@ -160,16 +159,16 @@ public class EditDepartment extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void loadDepartments(){
+    private void loadDepartments() {
         this.cmbDepId.removeAllItems();
         //for loop to put all the departments into the combo box
-        if(!HrSystem.getAllDepartments().isEmpty()){
+        if (!HrSystem.getAllDepartments().isEmpty()) {
             for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
-            cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getId() + " - "
-                    + HrSystem.getAllDepartments().get(i).getName());
+                cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getId() + " - "
+                        + HrSystem.getAllDepartments().get(i).getName());
+            }
         }
-        }
-        
+
         this.cmbDepId.setSelectedItem(null);
         this.txtDepName.setText(null);
         this.txtLocation.setText(null);
@@ -177,69 +176,51 @@ public class EditDepartment extends javax.swing.JFrame {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         //Save selected department in a String variable to use for checking
         String selected = (String) cmbDepId.getSelectedItem();
-        //boolean condition to exit the do/while loop if met
-        boolean cond = false;
-        //counter to go through all the departments
-        int i = 0;
-        //do loop to go throw all the departments and check for the department that checks the requirements (name)
-        do {
-            
-            //check if the name of department equals the name of selected
-            if (selected.equalsIgnoreCase(HrSystem.getAllDepartments().get(i).getName())) {
-                //get the input variables from the text fields 
-                String depName = txtDepName.getText();
-                String depLoc = txtLocation.getText();
+        //get the input variables from the text fields 
+        String depName = txtDepName.getText();
+        String depLoc = txtLocation.getText();
 
-                if (depName.length() > 3 && depLoc.length() > 3
-                        && !txtDepName.getText().isEmpty() && !txtLocation.getText().isEmpty()) {
-                    //update the department with the new data
-                    HrSystem.getAllDepartments().get(i).setName(depName);
-                    HrSystem.getAllDepartments().get(i).setLocation(depLoc);
-                    //message confirming the update of the department
-                    JOptionPane.showMessageDialog(null,
-                            "Department has been updated successfully", "Success",
-                            JOptionPane.INFORMATION_MESSAGE);
-                    //set the selected item to the updated version 
-                    cmbDepId.setSelectedItem(HrSystem.getAllDepartments().get(i).getName());
-                    //clearing the text boxes after insert/search
-                    txtDepName.setText(null);
-                    txtLocation.setText(null);
-                    //exit the loop
-                    cond = true;
-                } else if (depName.length() <= 3) {
-                    JOptionPane.showMessageDialog(null,
-                            "Department Name is Invalid", "Error",
-                            JOptionPane.ERROR_MESSAGE);
-                    //exit the loop
-                    cond = true;
-                } else if (depLoc.length() <= 3) {
-                    JOptionPane.showMessageDialog(null,
-                            "Department Location is Invalid", "Error",
-                            JOptionPane.ERROR_MESSAGE);
-                    //exit the loop
-                    cond = true;
-                } else if (txtDepName.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null,
-                            "Department Name is Empty", "Error",
-                            JOptionPane.ERROR_MESSAGE);
-                    //exit the loop
-                    cond = true;
-                } else if (txtLocation.getText().isEmpty()) {
-                    JOptionPane.showMessageDialog(null,
-                            "Department Location is Empty", "Error",
-                            JOptionPane.ERROR_MESSAGE);
-                    //exit the loop
-                    cond = true;
-                }
-            } else {
-                i++;
-            }
-        } while (cond == false && i < HrSystem.getAllDepartments().size());
+        if (depName.length() > 3 && depLoc.length() > 3
+                && !txtDepName.getText().isEmpty() && !txtLocation.getText().isEmpty()) {
+            //update the department with the new data
+            int index = cmbDepId.getSelectedIndex();
+            HrSystem.getAllDepartments().get(index).setName(depName);
+            HrSystem.getAllDepartments().get(index).setLocation(depLoc);
+            //message confirming the update of the department
+            JOptionPane.showMessageDialog(null,
+                    "Department has been updated successfully", "Success",
+                    JOptionPane.INFORMATION_MESSAGE);
+            //set the selected item to the updated version 
+            cmbDepId.setSelectedItem(HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getName());
+            //clearing the text boxes after insert/search
+            txtDepName.setText(null);
+            txtLocation.setText(null);
+            loadDepartments();
+            cmbDepId.setSelectedIndex(index);
+        } else if (depName.length() <= 3) {
+            JOptionPane.showMessageDialog(null,
+                    "Department Name is Invalid", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        } else if (depLoc.length() <= 3) {
+            JOptionPane.showMessageDialog(null,
+                    "Department Location is Invalid", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        } else if (txtDepName.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null,
+                    "Department Name is Empty", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        } else if (txtLocation.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null,
+                    "Department Location is Empty", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+
+
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void cmbDepIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDepIdActionPerformed
-         //TODO add your handling code here:
-        if(this.cmbDepId.getSelectedItem() != null){
+        //TODO add your handling code here:
+        if (this.cmbDepId.getSelectedItem() != null) {
             this.txtDepName.setText(HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getName());
             this.txtLocation.setText(HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getLocation());
         }

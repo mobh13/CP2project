@@ -47,8 +47,9 @@ public class CleanInstall {
                 empSalScal = Integer.parseInt(input.nextLine().trim());
                 PayScale ps = new PayScale();
                 //insert employee and assign to a department
-                Employee emp = new Employee(empFName, empLName, empAddress, empGender, ps);
-                HrSystem.addEmployee(emp, i); 
+                Employee emp = new Employee(empFName, empLName, empAddress, empGender, HrSystem.getPayScales().get(empSalScal - 1));
+                HrSystem.addEmployee(emp, i);
+                HrSystem.getAllDepartments().get(i).getListOfEmployees().add(emp);
             }
         }
     }

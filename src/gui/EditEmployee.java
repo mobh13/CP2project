@@ -140,6 +140,11 @@ public class EditEmployee extends javax.swing.JFrame {
 
         cmbPayScale.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cmbPayScale.setMaximumRowCount(100);
+        cmbPayScale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbPayScaleActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -328,6 +333,10 @@ public class EditEmployee extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_formWindowClosing
+
+    private void cmbPayScaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPayScaleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbPayScaleActionPerformed
 
     private void loadEmp() {
         this.cmbEmpId.removeAllItems();

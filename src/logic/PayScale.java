@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 public class PayScale implements Serializable {
     static private int LevelCounter = 0;
-    private int level ;
+    private int level;
     private double value;
 
     public PayScale(int Level, double value) {

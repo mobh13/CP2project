@@ -140,6 +140,11 @@ public class AddEmployee extends javax.swing.JFrame {
         });
 
         cmbPayLevel.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cmbPayLevel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbPayLevelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -285,7 +290,7 @@ public class AddEmployee extends javax.swing.JFrame {
         this.cmbPayLevel.removeAllItems();
         if (!HrSystem.getPayScales().isEmpty()) {
             for (int i = 0; i < HrSystem.getPayScales().size(); i++) {
-                this.cmbPayLevel.setToolTipText(HrSystem.getPayScales().get(i).getLevel() + " "
+                this.cmbPayLevel.addItem(HrSystem.getPayScales().get(i).getLevel() + " "
                         + HrSystem.getPayScales().get(i).getValue());
             }
         }
@@ -333,6 +338,10 @@ public class AddEmployee extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowClosing
 
+    private void cmbPayLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPayLevelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbPayLevelActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -367,6 +376,8 @@ public class AddEmployee extends javax.swing.JFrame {
             }
         });
     }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
