@@ -18,7 +18,9 @@ import logic.PayScale;
  * @author A.A
  */
 public class EditEmployee extends javax.swing.JFrame {
-private DecimalFormat df2 = new DecimalFormat("BD#,##0.00");
+
+    private DecimalFormat df2 = new DecimalFormat("BD #,##0.00");
+
     /**
      * Creates new form manageEmployee
      */
@@ -309,7 +311,8 @@ private DecimalFormat df2 = new DecimalFormat("BD#,##0.00");
                 this.rdbtnFemale.setSelected(true);
             }
             //remove coments after
-            //  this.cmbPayScale.setSelectedIndex((HrSystem.getAllEmployees().get(this.cmbEmpId.getSelectedIndex()).getPayLevel().getLevel() - 1));
+            int payindex = HrSystem.getAllEmployees().get(this.cmbEmpId.getSelectedIndex()).getPayLevel().getLevel() - 1;
+           // this.cmbPayScale.setSelectedIndex(payindex); << this causes error
         }
     }//GEN-LAST:event_cmbEmpIdActionPerformed
 
@@ -317,7 +320,7 @@ private DecimalFormat df2 = new DecimalFormat("BD#,##0.00");
         // TODO add your handling code here:
         int reply = JOptionPane.showConfirmDialog(
                 null,
-                "Are you sure you want to close this window?",
+                "Are you sure you want to close this window?  ",
                 "Warning", JOptionPane.YES_OPTION);
         if (reply == JOptionPane.YES_OPTION) {
             this.dispose();
@@ -358,13 +361,13 @@ private DecimalFormat df2 = new DecimalFormat("BD#,##0.00");
 
     private void loadPayScale() {
         this.cmbPayScale.removeAllItems();
-        for (int i = 0; i < HrSystem.getPayScales().size(); i++) {
-            PayScale temp_pay = HrSystem.getPayScales().get(i);
-            String payScale = HrSystem.getPayScales().get(i).getLevel() + " - "
-                        + df2.format(HrSystem.getPayScales().get(i).getValue());
-            this.cmbPayScale.addItem(payScale);
+        if (!HrSystem.getPayScales().isEmpty()) {
+            for (int i = 0; i < HrSystem.getPayScales().size(); i++) {
+                this.cmbPayScale.addItem(HrSystem.getPayScales().get(i).getLevel() + " - "
+                        + df2.format(HrSystem.getPayScales().get(i).getValue()));
+            }
         }
-        this.cmbPayScale.setSelectedItem(null);
+        this.cmbPayScale.setSelectedIndex(-1);
     }
 
     /**

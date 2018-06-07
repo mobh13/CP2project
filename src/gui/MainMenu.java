@@ -221,7 +221,7 @@ public class MainMenu extends javax.swing.JFrame {
 
         btnPayReport.setBackground(new java.awt.Color(237, 157, 157));
         btnPayReport.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
-        btnPayReport.setText("Preduce Pay Report");
+        btnPayReport.setText("Produce Pay Report");
         btnPayReport.setPreferredSize(new java.awt.Dimension(200, 35));
         btnPayReport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -496,6 +496,15 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnPayReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayReportActionPerformed
         // TODO add your handling code here:
+        if(!HrSystem.getAllDepartments().isEmpty()){
+            PayReport pay_report = new PayReport();
+        pay_report.setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null,
+                    "No Departments exist in the system to produce pay report for.", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        
     }//GEN-LAST:event_btnPayReportActionPerformed
 
     private void btnCleanInstallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanInstallActionPerformed
@@ -519,7 +528,14 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnSaveChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveChangeActionPerformed
         // TODO add your handling code here:
-         doSerialize();
+         int reply = JOptionPane.showConfirmDialog(
+                null,
+                "Do you want to save changes you made to the system before exit?",
+                "Warning", JOptionPane.YES_NO_CANCEL_OPTION);
+        //if condition to check if the reply is yes
+        if (reply == JOptionPane.YES_OPTION) {
+            doSerialize(); //serialize system
+        }
     }//GEN-LAST:event_btnSaveChangeActionPerformed
 
     private void exitPreform() {
@@ -605,9 +621,9 @@ public class MainMenu extends javax.swing.JFrame {
             Employee.setIdCounter(employeeId);
             PayScale.setIdCounter(payScaleId);
         } catch (FileNotFoundException ex) {
-            JOptionPane.showMessageDialog(this, "Are running the "
+            JOptionPane.showMessageDialog(this, "Are you running the "
                     + "program for the first time? Please install the "
-                    + "startup file in the main menu. \n" + ex);
+                    + "startup file by clicking the button in menu. \n");
         } catch (IOException ex) {// show error message
             JOptionPane.showMessageDialog(this, ex + "\nThe data file is not "
                     + "accessible!", "Input Error", 0);

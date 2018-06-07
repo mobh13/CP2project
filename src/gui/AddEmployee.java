@@ -16,7 +16,7 @@ import logic.*;
  * @author A.A
  */
 public class AddEmployee extends javax.swing.JFrame {
-private DecimalFormat df2 = new DecimalFormat("BD#,##0.00");
+private DecimalFormat df2 = new DecimalFormat("BD #,##0.00");
     /**
      * Creates new form AddEmployee
      */
@@ -324,6 +324,7 @@ private DecimalFormat df2 = new DecimalFormat("BD#,##0.00");
             this.txtFName.setText(null);
             this.txtLName.setText(null);
             this.cmbPayLevel.setSelectedIndex(-1);
+            this.txtEmpId.setText(null);
         }
     }//GEN-LAST:event_btnClearjButton1ActionPerformed
 

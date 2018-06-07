@@ -216,8 +216,7 @@ public class DesignateHead extends javax.swing.JFrame {
         // TODO add your handling code here
         int index = this.cmbDepId.getSelectedIndex();
         this.cmbEmpID.removeAllItems();
-        if(this.cmbDepId.getSelectedItem() != null){
-            try {
+        if (this.cmbDepId.getSelectedItem() != null) {
             for (int i = 0; i < HrSystem.getAllDepartments().get(index).getListOfEmployees().size(); i++) {
                 String info = HrSystem.getAllDepartments().get(index).getListOfEmployees().get(i).getId() + " - "
                         + HrSystem.getAllDepartments().get(index).getListOfEmployees().get(i).getFirstName() + " "
@@ -225,13 +224,8 @@ public class DesignateHead extends javax.swing.JFrame {
                 this.cmbEmpID.addItem(info);
             }
             this.cmbEmpID.setSelectedItem(null);
-        } catch (ArrayIndexOutOfBoundsException ex) {
-            JOptionPane.showMessageDialog(null,
-                    "There are no employees in the department selected.", "Error",
-                    JOptionPane.ERROR_MESSAGE);
         }
-        }
-        
+
     }//GEN-LAST:event_cmbDepIdActionPerformed
 
     private void loadDepartments() {

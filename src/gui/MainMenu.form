@@ -373,7 +373,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="20" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Preduce Pay Report"/>
+            <Property name="text" type="java.lang.String" value="Produce Pay Report"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[200, 35]"/>
             </Property>
