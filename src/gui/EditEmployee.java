@@ -37,7 +37,7 @@ private ArrayList<String> payScales = new ArrayList<>();
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
         this.setLocation(x, y);
-        cmbEmpId.setSelectedIndex(0);
+        //cmbEmpId.setSelectedIndex(-1);
     }
 
     /**
