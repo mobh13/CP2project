@@ -314,7 +314,6 @@ private ArrayList<String> payScales = new ArrayList<>();
             } else if (HrSystem.getUnAssignedEmployees().get(this.cmbEmpId.getSelectedIndex()).getGender() == 'F') {
                 this.rdbtnFemale.setSelected(true);
             }
-            //remove coments after
             this.cmbPayScale.setModel(new DefaultComboBoxModel(payScales.toArray()));
             int index = HrSystem.getUnAssignedEmployees().get(cmbEmpId.getSelectedIndex()).getPayLevel().getLevel() - 1;
             this.cmbPayScale.setSelectedItem(cmbPayScale.getModel().getElementAt(index));
