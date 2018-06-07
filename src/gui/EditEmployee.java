@@ -7,6 +7,7 @@ package gui;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import logic.Employee;
 import logic.HrSystem;
@@ -17,7 +18,7 @@ import logic.PayScale;
  * @author A.A
  */
 public class EditEmployee extends javax.swing.JFrame {
-
+private DecimalFormat df2 = new DecimalFormat("BD#,##0.00");
     /**
      * Creates new form manageEmployee
      */
@@ -359,7 +360,8 @@ public class EditEmployee extends javax.swing.JFrame {
         this.cmbPayScale.removeAllItems();
         for (int i = 0; i < HrSystem.getPayScales().size(); i++) {
             PayScale temp_pay = HrSystem.getPayScales().get(i);
-            String payScale = temp_pay.getLevel() + " - " + temp_pay.getValue();
+            String payScale = HrSystem.getPayScales().get(i).getLevel() + " - "
+                        + df2.format(HrSystem.getPayScales().get(i).getValue());
             this.cmbPayScale.addItem(payScale);
         }
         this.cmbPayScale.setSelectedItem(null);
