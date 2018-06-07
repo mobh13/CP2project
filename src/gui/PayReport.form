@@ -115,7 +115,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="cc" green="0" red="0" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Preduce Pay Report"/>
+        <Property name="text" type="java.lang.String" value="Produce Pay Report"/>
       </Properties>
     </Component>
   </SubComponents>
