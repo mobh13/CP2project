@@ -47,10 +47,13 @@ public class EditEmployee extends javax.swing.JFrame {
         if (!HrSystem.getAllDepartments().isEmpty()) {
             this.cmbDepId.removeAllItems();
             for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
-                String info = HrSystem.getAllDepartments().get(i).getId() + " - "
-                        + HrSystem.getAllDepartments().get(i).getName();
-                this.cmbDepId.addItem(info);
+            if(HrSystem.getAllDepartments().get(i).getId() == 0){
+                cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getName());
+            }else{
+            cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getId() + " - " + 
+                HrSystem.getAllDepartments().get(i).getName());
             }
+        }
             this.cmbDepId.setSelectedIndex(-1);
         }
 
@@ -316,6 +319,7 @@ public class EditEmployee extends javax.swing.JFrame {
                                 this.txtAddress.setText(null);
                                 this.rdbtnFemale.setSelected(false);
                                 this.rdbtnMale.setSelected(false);
+                                this.cmbDepId.setSelectedItem(null);
                             } else {
                                 JOptionPane.showMessageDialog(this, "Please select either one of the genders", "Error", 2);
                             }

@@ -163,7 +163,7 @@ public class EditDepartment extends javax.swing.JFrame {
         this.cmbDepId.removeAllItems();
         //for loop to put all the departments into the combo box
         if (!HrSystem.getAllDepartments().isEmpty()) {
-            for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
+            for (int i = 1; i < HrSystem.getAllDepartments().size(); i++) {
                 cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getId() + " - "
                         + HrSystem.getAllDepartments().get(i).getName());
             }

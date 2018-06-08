@@ -235,10 +235,14 @@ public class DeleteEmployee extends javax.swing.JFrame {
     
     //method to load the departments
     private void loadDepartments(){
-        //for loop to put all the employee into the combo box
+        //for loop to put all the departments into the combo box
         for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
+            if(HrSystem.getAllDepartments().get(i).getId() == 0){
+                cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getName());
+            }else{
             cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getId() + " - " + 
                 HrSystem.getAllDepartments().get(i).getName());
+            }
         }
         //set the first item to null
         cmbDepId.setSelectedItem(null);

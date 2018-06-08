@@ -231,7 +231,7 @@ public class DesignateHead extends javax.swing.JFrame {
     private void loadDepartments() {
         if (!HrSystem.getAllDepartments().isEmpty()) {
             this.cmbDepId.removeAllItems();
-            for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
+            for (int i = 1; i < HrSystem.getAllDepartments().size(); i++) {
                 String info = HrSystem.getAllDepartments().get(i).getId() + " - "
                         + HrSystem.getAllDepartments().get(i).getName();
                 this.cmbDepId.addItem(info);

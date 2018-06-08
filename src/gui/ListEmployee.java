@@ -34,10 +34,13 @@ public class ListEmployee extends javax.swing.JFrame {
         if (!HrSystem.getAllDepartments().isEmpty()) {
             this.cmbDepId.removeAllItems();
             for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
-                String info = HrSystem.getAllDepartments().get(i).getId() + " - "
-                        + HrSystem.getAllDepartments().get(i).getName();
-                this.cmbDepId.addItem(info);
+            if(HrSystem.getAllDepartments().get(i).getId() == 0){
+                cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getName());
+            }else{
+            cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getId() + " - " + 
+                HrSystem.getAllDepartments().get(i).getName());
             }
+        }
             this.cmbDepId.setSelectedIndex(-1);
         }
 

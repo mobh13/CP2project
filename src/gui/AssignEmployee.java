@@ -140,22 +140,23 @@ public class AssignEmployee extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 private void depsLoad() {
-
         int counter = 0;
         cmbDepId.removeAllItems(); //remove all itemsz
         //while loop to add Departments names to combo box
         while (counter < HrSystem.getAllDepartments().size()) {
-
-            cmbDepId.addItem(HrSystem.getAllDepartments().get(counter).getName());
+            if (HrSystem.getAllDepartments().get(counter).getId() == 0) {
+                cmbDepId.addItem(HrSystem.getAllDepartments().get(counter).getName());
+            } else {
+                cmbDepId.addItem(HrSystem.getAllDepartments().get(counter).getId() + " - "
+                        + HrSystem.getAllDepartments().get(counter).getName());
+            }
             counter++;
         }
-
         cmbDepId.setSelectedItem(null); //set selected Department to null
-
     }
 
     private void empsLoad() {
-        int counter = 0;
+        int counter = 1;
         cmbEmpId.removeAllItems(); //remove all items
         //while loop to add employees ids and names to combo box
         while (counter < HrSystem.getUnAssignedEmployees().size()) {

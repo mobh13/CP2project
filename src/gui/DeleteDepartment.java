@@ -180,7 +180,7 @@ public class DeleteDepartment extends javax.swing.JFrame {
         if (!HrSystem.getAllDepartments().isEmpty()) {
             this.cmbDepId.removeAllItems();
             try {
-                for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
+                for (int i = 1; i < HrSystem.getAllDepartments().size(); i++) {
                     String info = HrSystem.getAllDepartments().get(i).getId() + " - "
                             + HrSystem.getAllDepartments().get(i).getName();
                     this.cmbDepId.addItem(info);
