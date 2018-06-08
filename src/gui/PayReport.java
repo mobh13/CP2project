@@ -7,13 +7,20 @@ package gui;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintStream;
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
+import logic.HrSystem;
 
 /**
  *
  * @author 201601016
  */
 public class PayReport extends javax.swing.JFrame {
+
+    private DecimalFormat df2 = new DecimalFormat("##.00");
 
     /**
      * Creates new form PayReport
@@ -42,9 +49,14 @@ public class PayReport extends javax.swing.JFrame {
         txtAreaReport = new javax.swing.JTextArea();
         btnDispReport = new javax.swing.JButton();
         lblPayReport = new javax.swing.JLabel();
-        btnExport1 = new javax.swing.JButton();
+        btnExport = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         btnClose.setBackground(new java.awt.Color(255, 153, 153));
         btnClose.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -76,13 +88,13 @@ public class PayReport extends javax.swing.JFrame {
         lblPayReport.setForeground(new java.awt.Color(0, 0, 204));
         lblPayReport.setText("Produce Pay Report");
 
-        btnExport1.setBackground(new java.awt.Color(153, 255, 153));
-        btnExport1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnExport1.setText("Export to File");
-        btnExport1.setToolTipText("");
-        btnExport1.addActionListener(new java.awt.event.ActionListener() {
+        btnExport.setBackground(new java.awt.Color(153, 255, 153));
+        btnExport.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnExport.setText("Export to File");
+        btnExport.setToolTipText("");
+        btnExport.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnExport1ActionPerformed(evt);
+                btnExportActionPerformed(evt);
             }
         });
 
@@ -90,33 +102,35 @@ public class PayReport extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(174, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(93, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblPayReport)
+                        .addGap(272, 272, 272))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(62, 62, 62)
                         .addComponent(btnDispReport)
                         .addGap(67, 67, 67)
-                        .addComponent(btnExport1))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblPayReport)
-                        .addGap(110, 110, 110)))
-                .addGap(153, 153, 153))
+                        .addComponent(btnExport)
+                        .addGap(153, 153, 153))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 753, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(60, 60, 60))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(41, 41, 41)
                 .addComponent(lblPayReport)
-                .addGap(29, 29, 29)
+                .addGap(28, 28, 28)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnDispReport, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnExport1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
@@ -125,6 +139,28 @@ public class PayReport extends javax.swing.JFrame {
 
     private void btnDispReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDispReportActionPerformed
         // TODO add your handling code here:
+        if (!HrSystem.getAllDepartments().isEmpty()) {
+            double dep_sum;
+            double total_sum = 0;
+            this.txtAreaReport.append("Pay Report for the company\n");
+            for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
+                dep_sum = 0.0;
+                if (!HrSystem.getAllDepartments().get(i).getListOfEmployees().isEmpty()) {
+                    this.txtAreaReport.append("\nDepartment ID: " + HrSystem.getAllDepartments().get(i).getId());
+                    this.txtAreaReport.append("\t\tDepartment Name: " + HrSystem.getAllDepartments().get(i).getName());
+                    for (int j = 0; j < HrSystem.getAllDepartments().get(i).getListOfEmployees().size(); j++) {
+                        this.txtAreaReport.append("\n\tName: " + HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getFirstName() + " "
+                                + HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getLastName());
+                        this.txtAreaReport.append("\tID: " + Integer.toString(HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getId()));
+                        this.txtAreaReport.append("\tPay: " + df2.format(HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getPayLevel().getValue() / 26));
+                        dep_sum += HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getPayLevel().getValue() / 26;
+                    }
+                    total_sum += dep_sum;
+                    this.txtAreaReport.append("\nThe total amount for department (BD): " + df2.format(dep_sum) + "\n");
+                }
+            }
+            this.txtAreaReport.append("\nTotal amount to be paid by the compnay (BD): " + df2.format(total_sum));
+        }
     }//GEN-LAST:event_btnDispReportActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
@@ -138,9 +174,53 @@ public class PayReport extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    private void btnExport1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExport1ActionPerformed
+    private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnExport1ActionPerformed
+        try {
+            File f_temp = new File("payroll.txt");
+            PrintStream ps = new PrintStream(f_temp);
+            if (!HrSystem.getAllDepartments().isEmpty()) {
+                double dep_sum;
+                double total_sum = 0;
+                ps.append("Pay Report for the company\n");
+                for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
+                    dep_sum = 0.0;
+                    if (!HrSystem.getAllDepartments().get(i).getListOfEmployees().isEmpty()) {
+                        ps.append("\r\nDepartment ID: " + HrSystem.getAllDepartments().get(i).getId());
+                        ps.append("\t\tDepartment Name: " + HrSystem.getAllDepartments().get(i).getName());
+                        for (int j = 0; j < HrSystem.getAllDepartments().get(i).getListOfEmployees().size(); j++) {
+                            ps.append("\r\ntName: " + HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getFirstName() + " "
+                                    + HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getLastName());
+                            ps.append("\tID: " + Integer.toString(HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getId()));
+                            ps.append("\tPay: " + df2.format(HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getPayLevel().getValue() / 26));
+                            dep_sum += HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getPayLevel().getValue() / 26;
+                        }
+                        total_sum += dep_sum;
+                        ps.append("\r\nThe total amount for department (BD): " + df2.format(dep_sum) );
+                    }
+                }
+                ps.append("\r\nTotal amount to be paid by the compnay (BD): " + df2.format(total_sum));
+                JOptionPane.showMessageDialog(null,
+                    "PayRoll file has been successfully created", "Success",
+                    JOptionPane.INFORMATION_MESSAGE);
+            }
+        } catch (FileNotFoundException ex) {
+           JOptionPane.showMessageDialog(null,
+                    "File not found and was unable to create it.\nError: "+ex, "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnExportActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        int reply = JOptionPane.showConfirmDialog(
+                null,
+                "Are you sure you want to close this window?",
+                "Warning", JOptionPane.YES_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -180,7 +260,7 @@ public class PayReport extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnDispReport;
-    private javax.swing.JButton btnExport1;
+    private javax.swing.JButton btnExport;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblPayReport;
     private javax.swing.JTextArea txtAreaReport;
