@@ -134,6 +134,11 @@ public class AddEmployee extends javax.swing.JFrame {
         txtEmpId.setEditable(false);
         txtEmpId.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         txtEmpId.setText("(Auto generated)");
+        txtEmpId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmpIdActionPerformed(evt);
+            }
+        });
 
         btnClear.setBackground(new java.awt.Color(255, 153, 153));
         btnClear.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -349,6 +354,10 @@ public class AddEmployee extends javax.swing.JFrame {
     private void cmbPayLevelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPayLevelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbPayLevelActionPerformed
+
+    private void txtEmpIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmpIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmpIdActionPerformed
 
     /**
      * @param args the command line arguments

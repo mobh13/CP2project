@@ -238,8 +238,7 @@ public class DeleteEmployee extends javax.swing.JFrame {
         //for loop to put all the employee into the combo box
         for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
             cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getId() + " - " + 
-                HrSystem.getAllDepartments().get(i).getName() + " " + 
-                HrSystem.getAllDepartments().get(i).getLocation());
+                HrSystem.getAllDepartments().get(i).getName());
         }
         //set the first item to null
         cmbDepId.setSelectedItem(null);
