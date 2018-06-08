@@ -55,7 +55,7 @@ public class ListEmployee extends javax.swing.JFrame {
         lblDepId = new javax.swing.JLabel();
         cmbDepId = new javax.swing.JComboBox<>();
         btnClose = new javax.swing.JButton();
-        btnSave = new javax.swing.JButton();
+        btnList = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaListEmp = new javax.swing.JTextArea();
 
@@ -71,6 +71,11 @@ public class ListEmployee extends javax.swing.JFrame {
 
         cmbDepId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cmbDepId.setMaximumRowCount(100);
+        cmbDepId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbDepIdActionPerformed(evt);
+            }
+        });
 
         btnClose.setBackground(new java.awt.Color(255, 153, 153));
         btnClose.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -81,9 +86,14 @@ public class ListEmployee extends javax.swing.JFrame {
             }
         });
 
-        btnSave.setBackground(new java.awt.Color(153, 255, 153));
-        btnSave.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnSave.setText("Save");
+        btnList.setBackground(new java.awt.Color(153, 255, 153));
+        btnList.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnList.setText("List");
+        btnList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListActionPerformed(evt);
+            }
+        });
 
         txtAreaListEmp.setColumns(20);
         txtAreaListEmp.setRows(5);
@@ -108,7 +118,7 @@ public class ListEmployee extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
-                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnList, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(261, 261, 261))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -124,10 +134,10 @@ public class ListEmployee extends javax.swing.JFrame {
                     .addComponent(lblDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 236, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnList, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -145,6 +155,14 @@ public class ListEmployee extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void cmbDepIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDepIdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbDepIdActionPerformed
+
+    private void btnListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnListActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,7 +201,7 @@ public class ListEmployee extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
-    private javax.swing.JButton btnSave;
+    private javax.swing.JButton btnList;
     private javax.swing.JComboBox<String> cmbDepId;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDepId;
