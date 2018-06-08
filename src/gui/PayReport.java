@@ -180,6 +180,9 @@ public class PayReport extends javax.swing.JFrame {
             File f_temp = new File("payroll.txt");
             PrintStream ps = new PrintStream(f_temp);
             if (!HrSystem.getAllDepartments().isEmpty()) {
+                if(f_temp.exists()){
+                   ps.print("");
+                }
                 double dep_sum;
                 double total_sum = 0;
                 ps.append("Pay Report for the company\n");
