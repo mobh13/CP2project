@@ -701,10 +701,13 @@ public class MainMenu extends javax.swing.JFrame {
             HrSystem.getPayScales().add(new PayScale(8, 96336.34));
         }
     }
-    
-    private void addUnassignedDepartment(){
-        HrSystem.addDepartment("Unassigned Employees", "");
-        HrSystem.getAllDepartments().get(0).setListOfEmployees(HrSystem.getUnAssignedEmployees());
+
+    private void addUnassignedDepartment() {
+        File file = new File("hrsystemdata.data");
+        if(!file.exists()){
+            HrSystem.addDepartment("Unassigned Employees", "");
+            HrSystem.getAllDepartments().get(0).setListOfEmployees(HrSystem.getUnAssignedEmployees());
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

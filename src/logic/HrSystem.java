@@ -74,11 +74,11 @@ public class HrSystem {
         getAllDepartments().get(depId).setHead(getUnAssignedEmployees().get(empId));
     }
 
-    public static void editEmployee(int indx, String f_name, String l_name, String address, char gender, int payScale_indx) {
-        getUnAssignedEmployees().get(indx).setFirstName(f_name);
-        getUnAssignedEmployees().get(indx).setLastName(l_name);
-        getUnAssignedEmployees().get(indx).setAddress(address);
-        getUnAssignedEmployees().get(indx).setPayLevel(payScales.get(payScale_indx));
+    public static void editEmployee(int indx, String f_name, String l_name, String address, char gender, int payScale_indx, int depIndx) {
+        getAllDepartments().get(depIndx).getListOfEmployees().get(indx).setFirstName(f_name);
+        getAllDepartments().get(depIndx).getListOfEmployees().get(indx).setLastName(l_name);
+        getAllDepartments().get(depIndx).getListOfEmployees().get(indx).setAddress(address);
+        getAllDepartments().get(depIndx).getListOfEmployees().get(indx).setPayLevel(payScales.get(payScale_indx));
     }
 
     public static boolean deleteDepartment(Department dep) {

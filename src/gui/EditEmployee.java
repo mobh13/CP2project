@@ -302,7 +302,7 @@ public class EditEmployee extends javax.swing.JFrame {
                                 if (this.rdbtnMale.isSelected()) {
                                     gender = 'M';
                                 }
-                                HrSystem.editEmployee(indx, f_name, l_name, adress, gender, payScale_indx);
+                                HrSystem.editEmployee(indx, f_name, l_name, adress, gender, payScale_indx, cmbDepId.getSelectedIndex());
                                 JOptionPane.showMessageDialog(this,
                                         "The updates have been saved successfully for employee "
                                         + HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(indx).getFirstName() + " "

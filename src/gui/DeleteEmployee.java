@@ -28,8 +28,10 @@ public class DeleteEmployee extends javax.swing.JFrame {
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
         this.setLocation(x, y);
         
-        //remove all items to prepare for adding next items
-        jComboBox1.removeAllItems();
+        //set the selected employee to null when first selected
+        cmbEmpId.setSelectedItem(null);
+        
+        //load all the departments from this method
         loadDepartments();
     }
 
@@ -42,7 +44,7 @@ public class DeleteEmployee extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmbEmpId = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -52,11 +54,11 @@ public class DeleteEmployee extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jComboBox1.setMaximumRowCount(100);
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cmbEmpId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cmbEmpId.setMaximumRowCount(100);
+        cmbEmpId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cmbEmpIdActionPerformed(evt);
             }
         });
 
@@ -113,7 +115,7 @@ public class DeleteEmployee extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmbEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(28, 28, 28)))
@@ -137,7 +139,7 @@ public class DeleteEmployee extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(108, 108, 108)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -149,36 +151,52 @@ public class DeleteEmployee extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       
-        
-                //remove the employee
-                HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().remove(jComboBox1.getSelectedIndex());
-                
-            
-        
-        
+        //check if user selects any data and show the appropriate message if he doesn't select one
+        if(cmbDepId.getSelectedItem() != null && cmbEmpId.getSelectedItem() != null){
+        //remove the employee
+        HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().remove(cmbEmpId.getSelectedIndex());
+        JOptionPane.showMessageDialog(null, "The Employee: " + cmbEmpId.getSelectedItem().toString() + "has been deleted", "Success",
+                    JOptionPane.INFORMATION_MESSAGE);
+        //clear the combo boxes
+        this.cmbDepId.setSelectedItem(null);
+        this.cmbEmpId.setSelectedItem(null);
+        }else if(cmbDepId.getSelectedItem() == null){
+            JOptionPane.showMessageDialog(null, "Enter a department to delete the employee from",
+                                "Message", 2);
+        }else{
+            JOptionPane.showMessageDialog(null, "Choose an employee to delete",
+                                "Message", 2);
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        this.dispose();
+        int reply = JOptionPane.showConfirmDialog(
+                null,
+                "Are you sure you want to close this window?",
+                "Warning", JOptionPane.YES_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void cmbDepIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDepIdActionPerformed
-        //for loop to put all the employee into the combo box
+        //check if the selected item is not null
         if (this.cmbDepId.getSelectedItem() != null) {
-            jComboBox1.removeAllItems();
+            //clear selected items
+            cmbEmpId.removeAllItems();
+        //for loop to load the employees based on the department selected by user    
         for (int i = 0; i < HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().size(); i++) {
-            jComboBox1.addItem(HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getId() + " - " + 
+            cmbEmpId.addItem(HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getId() + " - " + 
                 HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getFirstName() + " " + 
                 HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getLastName());
         }
-        this.jComboBox1.setSelectedItem(null);
+        this.cmbEmpId.setSelectedItem(null);
         }
     }//GEN-LAST:event_cmbDepIdActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cmbEmpIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEmpIdActionPerformed
         
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cmbEmpIdActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,6 +233,7 @@ public class DeleteEmployee extends javax.swing.JFrame {
         });
     }
     
+    //method to load the departments
     private void loadDepartments(){
         //for loop to put all the employee into the combo box
         for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
@@ -222,13 +241,15 @@ public class DeleteEmployee extends javax.swing.JFrame {
                 HrSystem.getAllDepartments().get(i).getName() + " " + 
                 HrSystem.getAllDepartments().get(i).getLocation());
         }
+        //set the first item to null
+        cmbDepId.setSelectedItem(null);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cmbDepId;
+    private javax.swing.JComboBox<String> cmbEmpId;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblDepId;
