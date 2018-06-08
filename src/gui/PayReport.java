@@ -20,6 +20,8 @@ public class PayReport extends javax.swing.JFrame {
      */
     public PayReport() {
         initComponents();
+        java.awt.Color recursiveBG = new java.awt.Color(240, 240, 240);
+        getContentPane().setBackground(recursiveBG);
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
