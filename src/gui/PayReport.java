@@ -7,6 +7,7 @@ package gui;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +20,7 @@ public class PayReport extends javax.swing.JFrame {
      */
     public PayReport() {
         initComponents();
-         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
         this.setLocation(x, y);
@@ -34,38 +35,54 @@ public class PayReport extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        txtAreaReport = new javax.swing.JTextArea();
+        btnDispReport = new javax.swing.JButton();
+        lblPayReport = new javax.swing.JLabel();
+        btnExport1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jButton1.setBackground(new java.awt.Color(255, 153, 153));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton1.setText("Close");
-
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Monospaced", 0, 17)); // NOI18N
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
-        jButton2.setBackground(new java.awt.Color(153, 255, 153));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton2.setText("Export to File");
-        jButton2.setToolTipText("");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnClose.setBackground(new java.awt.Color(255, 153, 153));
+        btnClose.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnClose.setText("Close");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnCloseActionPerformed(evt);
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 204));
-        jLabel1.setText("Produce Pay Report");
+        txtAreaReport.setEditable(false);
+        txtAreaReport.setColumns(20);
+        txtAreaReport.setFont(new java.awt.Font("Monospaced", 0, 17)); // NOI18N
+        txtAreaReport.setLineWrap(true);
+        txtAreaReport.setRows(5);
+        jScrollPane1.setViewportView(txtAreaReport);
+
+        btnDispReport.setBackground(new java.awt.Color(153, 255, 153));
+        btnDispReport.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnDispReport.setText("Display Report");
+        btnDispReport.setToolTipText("");
+        btnDispReport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDispReportActionPerformed(evt);
+            }
+        });
+
+        lblPayReport.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        lblPayReport.setForeground(new java.awt.Color(0, 0, 204));
+        lblPayReport.setText("Produce Pay Report");
+
+        btnExport1.setBackground(new java.awt.Color(153, 255, 153));
+        btnExport1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnExport1.setText("Export to File");
+        btnExport1.setToolTipText("");
+        btnExport1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExport1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -73,39 +90,55 @@ public class PayReport extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(174, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDispReport)
+                        .addGap(67, 67, 67)
+                        .addComponent(btnExport1))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lblPayReport)
                         .addGap(110, 110, 110)))
                 .addGap(153, 153, 153))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(267, 267, 267)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
-                .addComponent(jButton2)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(jLabel1)
+                .addComponent(lblPayReport)
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 306, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDispReport, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExport1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnDispReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDispReportActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnDispReportActionPerformed
+
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
+        // TODO add your handling code here:
+        int reply = JOptionPane.showConfirmDialog(
+                null,
+                "Are you sure you want to close this window?",
+                "Warning", JOptionPane.YES_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
+    }//GEN-LAST:event_btnCloseActionPerformed
+
+    private void btnExport1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExport1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExport1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -143,10 +176,11 @@ public class PayReport extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnClose;
+    private javax.swing.JButton btnDispReport;
+    private javax.swing.JButton btnExport1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel lblPayReport;
+    private javax.swing.JTextArea txtAreaReport;
     // End of variables declaration//GEN-END:variables
 }

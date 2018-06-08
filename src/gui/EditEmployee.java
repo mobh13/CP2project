@@ -21,8 +21,10 @@ import logic.PayScale;
  * @author A.A
  */
 public class EditEmployee extends javax.swing.JFrame {
-private ArrayList<String> payScales = new ArrayList<>();
+
+    private ArrayList<String> payScales = new ArrayList<>();
     private DecimalFormat df2 = new DecimalFormat("BD #,##0.00");
+    static private int dep_index = 0;
 
     /**
      * Creates new form manageEmployee
@@ -31,13 +33,27 @@ private ArrayList<String> payScales = new ArrayList<>();
         initComponents();
         java.awt.Color recursiveBG = new java.awt.Color(240, 240, 240);
         getContentPane().setBackground(recursiveBG);
-        loadEmp();
+        loadDepartments();
         loadPayScale();
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
         this.setLocation(x, y);
         //cmbEmpId.setSelectedIndex(-1);
+
+    }
+
+    private void loadDepartments() {
+        if (!HrSystem.getAllDepartments().isEmpty()) {
+            this.cmbDepId.removeAllItems();
+            for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
+                String info = HrSystem.getAllDepartments().get(i).getId() + " - "
+                        + HrSystem.getAllDepartments().get(i).getName();
+                this.cmbDepId.addItem(info);
+            }
+            this.cmbDepId.setSelectedIndex(-1);
+        }
+
     }
 
     /**
@@ -53,7 +69,7 @@ private ArrayList<String> payScales = new ArrayList<>();
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         lblTitle = new javax.swing.JLabel();
-        lblEmpId = new javax.swing.JLabel();
+        lblDepId = new javax.swing.JLabel();
         cmbEmpId = new javax.swing.JComboBox<>();
         lblFName = new javax.swing.JLabel();
         txtFName = new javax.swing.JTextField();
@@ -68,6 +84,8 @@ private ArrayList<String> payScales = new ArrayList<>();
         btnClose = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
         cmbPayScale = new javax.swing.JComboBox<>();
+        lblEmpId1 = new javax.swing.JLabel();
+        cmbDepId = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Manage Employees");
@@ -81,9 +99,9 @@ private ArrayList<String> payScales = new ArrayList<>();
         lblTitle.setForeground(new java.awt.Color(0, 0, 204));
         lblTitle.setText("Edit Information of Employee");
 
-        lblEmpId.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
-        lblEmpId.setForeground(new java.awt.Color(255, 0, 0));
-        lblEmpId.setText("Employee ID: ");
+        lblDepId.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        lblDepId.setForeground(new java.awt.Color(255, 0, 0));
+        lblDepId.setText("Department ID: ");
 
         cmbEmpId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cmbEmpId.setMaximumRowCount(100);
@@ -147,9 +165,16 @@ private ArrayList<String> payScales = new ArrayList<>();
 
         cmbPayScale.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cmbPayScale.setMaximumRowCount(100);
-        cmbPayScale.addActionListener(new java.awt.event.ActionListener() {
+
+        lblEmpId1.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        lblEmpId1.setForeground(new java.awt.Color(255, 0, 0));
+        lblEmpId1.setText("Employee ID: ");
+
+        cmbDepId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cmbDepId.setMaximumRowCount(100);
+        cmbDepId.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbPayScaleActionPerformed(evt);
+                cmbDepIdActionPerformed(evt);
             }
         });
 
@@ -162,34 +187,8 @@ private ArrayList<String> payScales = new ArrayList<>();
                 .addComponent(lblTitle)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(114, Short.MAX_VALUE)
+                .addContainerGap(74, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblLName)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtLName, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblFName)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(44, 44, 44)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblPayLevel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmbPayScale, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblAddress)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(66, 66, 66))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblEmpId)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(265, 265, 265))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -202,18 +201,54 @@ private ArrayList<String> payScales = new ArrayList<>();
                                 .addComponent(rdbtnMale, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(rdbtnFemale)))
-                        .addGap(292, 292, 292))))
+                        .addGap(292, 292, 292))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblEmpId1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(lblLName)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtLName, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(lblFName)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(txtFName, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblDepId)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cmbDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(44, 44, 44)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblPayLevel)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cmbPayScale, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblAddress)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(66, 66, 66))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(43, 43, 43)
                 .addComponent(lblTitle)
-                .addGap(37, 37, 37)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cmbEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblEmpId1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lblFName, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -248,8 +283,8 @@ private ArrayList<String> payScales = new ArrayList<>();
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
+
         if (this.cmbEmpId.getSelectedItem() != null) {
-            int temp_index = this.cmbEmpId.getSelectedIndex();
             if (this.txtFName.getText() != null && this.txtFName.getText().length() > 2) {
                 if (this.txtLName.getText() != null && this.txtLName.getText().length() > 2) {
                     if (this.txtAddress.getText() != null && this.txtAddress.getText().length() > 2) {
@@ -270,8 +305,8 @@ private ArrayList<String> payScales = new ArrayList<>();
                                 HrSystem.editEmployee(indx, f_name, l_name, adress, gender, payScale_indx);
                                 JOptionPane.showMessageDialog(this,
                                         "The updates have been saved successfully for employee "
-                                        + HrSystem.getUnAssignedEmployees().get(temp_index).getFirstName() + " "
-                                        + HrSystem.getUnAssignedEmployees().get(temp_index).getLastName() + ".",
+                                        + HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(indx).getFirstName() + " "
+                                        + HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(indx).getLastName() + ".",
                                         "Updated",
                                         JOptionPane.PLAIN_MESSAGE);
                                 this.cmbEmpId.setSelectedItem(null);
@@ -306,17 +341,17 @@ private ArrayList<String> payScales = new ArrayList<>();
     private void cmbEmpIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEmpIdActionPerformed
         // TODO add your handling code here:
         if (this.cmbEmpId.getSelectedItem() != null) {
-            this.txtFName.setText(HrSystem.getUnAssignedEmployees().get(this.cmbEmpId.getSelectedIndex()).getFirstName());
-            this.txtLName.setText(HrSystem.getUnAssignedEmployees().get(this.cmbEmpId.getSelectedIndex()).getLastName());
-            this.txtAddress.setText(HrSystem.getUnAssignedEmployees().get(this.cmbEmpId.getSelectedIndex()).getAddress());
-            if (HrSystem.getUnAssignedEmployees().get(this.cmbEmpId.getSelectedIndex()).getGender() == 'M') {
+            this.txtFName.setText(HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getFirstName());
+            this.txtLName.setText(HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getLastName());
+            this.txtAddress.setText(HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getAddress());
+            if (HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getGender() == 'M') {
                 this.rdbtnMale.setSelected(true);
-            } else if (HrSystem.getUnAssignedEmployees().get(this.cmbEmpId.getSelectedIndex()).getGender() == 'F') {
+            } else if (HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getGender() == 'F') {
                 this.rdbtnFemale.setSelected(true);
             }
             this.cmbPayScale.setModel(new DefaultComboBoxModel(payScales.toArray()));
-            int index = HrSystem.getUnAssignedEmployees().get(cmbEmpId.getSelectedIndex()).getPayLevel().getLevel() - 1;
-            this.cmbPayScale.setSelectedItem(cmbPayScale.getModel().getElementAt(index));
+            int pay_lvl = (HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getPayLevel().getLevel()) - 1;
+            this.cmbPayScale.setSelectedItem(cmbPayScale.getModel().getElementAt(pay_lvl));
         }
     }//GEN-LAST:event_cmbEmpIdActionPerformed
 
@@ -342,17 +377,18 @@ private ArrayList<String> payScales = new ArrayList<>();
         }
     }//GEN-LAST:event_formWindowClosing
 
-    private void cmbPayScaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPayScaleActionPerformed
+    private void cmbDepIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDepIdActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmbPayScaleActionPerformed
-
-    private void loadEmp() {
+        dep_index = this.cmbDepId.getSelectedIndex();
         this.cmbEmpId.removeAllItems();
-        for (int i = 0; i < HrSystem.getUnAssignedEmployees().size(); i++) {
-            String info = HrSystem.getUnAssignedEmployees().get(i).getId() + " - "
-                    + HrSystem.getUnAssignedEmployees().get(i).getFirstName() + " "
-                    + HrSystem.getUnAssignedEmployees().get(i).getLastName();
-            this.cmbEmpId.addItem(info);
+        if (this.cmbDepId.getSelectedItem() != null) {
+            for (int i = 0; i < HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().size(); i++) {
+                String info = HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(i).getId() + " - "
+                        + HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(i).getFirstName() + " "
+                        + HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(i).getLastName();
+                this.cmbEmpId.addItem(info);
+            }
+            this.cmbEmpId.setSelectedItem(null);
         }
         this.cmbEmpId.setSelectedItem(null);
         this.cmbPayScale.setSelectedItem(null);
@@ -361,10 +397,10 @@ private ArrayList<String> payScales = new ArrayList<>();
         this.txtAddress.setText(null);
         this.rdbtnFemale.setSelected(false);
         this.rdbtnMale.setSelected(false);
-    }
+    }//GEN-LAST:event_cmbDepIdActionPerformed
 
     private void loadPayScale() {
-        
+
         this.cmbPayScale.removeAllItems();
         if (!HrSystem.getPayScales().isEmpty()) {
             for (int i = 0; i < HrSystem.getPayScales().size(); i++) {
@@ -372,7 +408,7 @@ private ArrayList<String> payScales = new ArrayList<>();
                         + df2.format(HrSystem.getPayScales().get(i).getValue()));
             }
         }
-        this.cmbPayScale.setSelectedIndex(-1);
+        this.cmbPayScale.setSelectedItem(null);
     }
 
     /**
@@ -416,11 +452,13 @@ private ArrayList<String> payScales = new ArrayList<>();
     private javax.swing.JButton btnSave;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.JComboBox<String> cmbDepId;
     private javax.swing.JComboBox<String> cmbEmpId;
     private javax.swing.JComboBox<String> cmbPayScale;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblAddress;
-    private javax.swing.JLabel lblEmpId;
+    private javax.swing.JLabel lblDepId;
+    private javax.swing.JLabel lblEmpId1;
     private javax.swing.JLabel lblFName;
     private javax.swing.JLabel lblGender;
     private javax.swing.JLabel lblLName;

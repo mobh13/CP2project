@@ -18,6 +18,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowClosing" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowClosing"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -36,16 +39,16 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
               <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="200" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="80" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="btnClose" min="-2" pref="136" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                       <Component id="btnAssign" min="-2" pref="136" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="353" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="349" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="lblEmpId" min="-2" max="-2" attributes="0"/>
@@ -55,7 +58,7 @@
                       <Component id="lblDepId" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="cmbDepId" min="-2" pref="264" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -66,19 +69,19 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
               <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="60" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblEmpId" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="cmbEmpId" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="lblDepId" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                   <Component id="cmbDepId" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+              <EmptySpace pref="106" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnClose" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
                   <Component id="btnAssign" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="102" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -145,9 +148,6 @@
           <StringArray count="0"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbDepIdActionPerformed"/>
-      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>

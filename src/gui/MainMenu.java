@@ -462,8 +462,8 @@ public class MainMenu extends javax.swing.JFrame {
     private void btnListEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListEmployeesActionPerformed
         // TODO add your handling code here:
         if (check() == true) {
-//            ListEmployees listemp = new ListEmployees();
-//            listemp.setVisible(true);
+            ListEmployee listemp = new ListEmployee();
+            listemp.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null,
                     "No Employees exist", "Error",
@@ -496,39 +496,39 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnPayReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayReportActionPerformed
         // TODO add your handling code here:
-        if(!HrSystem.getAllDepartments().isEmpty()){
+        if (!HrSystem.getAllDepartments().isEmpty()) {
             PayReport pay_report = new PayReport();
-        pay_report.setVisible(true);
-        }else{
+            pay_report.setVisible(true);
+        } else {
             JOptionPane.showMessageDialog(null,
                     "No Departments exist in the system to produce pay report for.", "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
-        
+
     }//GEN-LAST:event_btnPayReportActionPerformed
 
     private void btnCleanInstallActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCleanInstallActionPerformed
         File file = new File("hrsystemdata.data");
         if (file.exists()) {
             int reply = JOptionPane.showConfirmDialog(
-                null,"You Already have Saved data, are you sure you want to overwrite?",
-                "Warning", JOptionPane.YES_NO_OPTION);
-        if (reply == JOptionPane.YES_OPTION) {
-            CleanInstall.clean();
-            JOptionPane.showMessageDialog(null,"Clean installed", "Success",
-                    JOptionPane.INFORMATION_MESSAGE);
-        }
-            
+                    null, "You Already have Saved data, are you sure you want to overwrite?",
+                    "Warning", JOptionPane.YES_NO_OPTION);
+            if (reply == JOptionPane.YES_OPTION) {
+                CleanInstall.clean();
+                JOptionPane.showMessageDialog(null, "Clean installed", "Success",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+
         } else {
             CleanInstall.clean();
-            JOptionPane.showMessageDialog(null,"Clean installed", "Success",
+            JOptionPane.showMessageDialog(null, "Clean installed", "Success",
                     JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnCleanInstallActionPerformed
 
     private void btnSaveChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveChangeActionPerformed
         // TODO add your handling code here:
-         int reply = JOptionPane.showConfirmDialog(
+        int reply = JOptionPane.showConfirmDialog(
                 null,
                 "Do you want to save changes you made to the system before exit?",
                 "Warning", JOptionPane.YES_NO_CANCEL_OPTION);
@@ -623,13 +623,13 @@ public class MainMenu extends javax.swing.JFrame {
         } catch (FileNotFoundException ex) {
             JOptionPane.showMessageDialog(this, "It looks like you are running the programm for the first time .\n"
                     + " Please install the data by clicking clean innstall button in the main menu\n. "
-                   );
+            );
         } catch (IOException ex) {// show error message
-            JOptionPane.showMessageDialog(this, ex + "\n Error:The data file is not accessible .\n"
-                  , "Input Error", 0);
+            JOptionPane.showMessageDialog(this, ex + "\n Error:The data file is not accessible .\n",
+                    "Input Error", 0);
         } catch (ClassNotFoundException ex) {// show error message
-            JOptionPane.showMessageDialog(this, ex + "\n Error:The data can't  be loaded into the system. please contact the developer for support. "
-                    , "Internal Input Error", 0);
+            JOptionPane.showMessageDialog(this, ex + "\n Error:The data can't  be loaded into the system. please contact the developer for support. ",
+                    "Internal Input Error", 0);
         }
 
     }
@@ -669,35 +669,35 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
     }
-    
-    private boolean check(){
+
+    private boolean check() {
         //condition to exit the loops
         boolean cond = false;
         //check if any department exist
-        if(!HrSystem.getAllDepartments().isEmpty()){
+        if (!HrSystem.getAllDepartments().isEmpty()) {
             //to check employees for all departments
-            for(int i = 0; i < HrSystem.getAllDepartments().size() && cond == false; i++){
+            for (int i = 0; i < HrSystem.getAllDepartments().size() && cond == false; i++) {
                 //check if employees in that specific department exist
-                if(!HrSystem.getAllDepartments().get(i).getListOfEmployees().isEmpty()){
-                            //return if any employee found
-                            cond = true;
-                    }
+                if (!HrSystem.getAllDepartments().get(i).getListOfEmployees().isEmpty()) {
+                    //return if any employee found
+                    cond = true;
                 }
+            }
         }
         return cond;
     }
-    
-    private void addPayScale(){
+
+    private void addPayScale() {
         File file = new File("hrsystemdata.data");
         if (!file.exists()) {
-        HrSystem.getPayScales().add(new PayScale(1, 44245.75));
-        HrSystem.getPayScales().add(new PayScale(2, 48670.32));
-        HrSystem.getPayScales().add(new PayScale(3, 53537.35));
-        HrSystem.getPayScales().add(new PayScale(4, 58891.09));
-        HrSystem.getPayScales().add(new PayScale(5, 64780.20));
-        HrSystem.getPayScales().add(new PayScale(6, 71258.22));
-        HrSystem.getPayScales().add(new PayScale(7, 80946.95));
-        HrSystem.getPayScales().add(new PayScale(8, 96336.34));
+            HrSystem.getPayScales().add(new PayScale(1, 44245.75));
+            HrSystem.getPayScales().add(new PayScale(2, 48670.32));
+            HrSystem.getPayScales().add(new PayScale(3, 53537.35));
+            HrSystem.getPayScales().add(new PayScale(4, 58891.09));
+            HrSystem.getPayScales().add(new PayScale(5, 64780.20));
+            HrSystem.getPayScales().add(new PayScale(6, 71258.22));
+            HrSystem.getPayScales().add(new PayScale(7, 80946.95));
+            HrSystem.getPayScales().add(new PayScale(8, 96336.34));
         }
     }
 

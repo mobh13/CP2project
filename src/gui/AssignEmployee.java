@@ -52,6 +52,11 @@ public class AssignEmployee extends javax.swing.JFrame {
         btnAssign = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         cmbEmpId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
@@ -74,11 +79,6 @@ public class AssignEmployee extends javax.swing.JFrame {
 
         cmbDepId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cmbDepId.setMaximumRowCount(100);
-        cmbDepId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbDepIdActionPerformed(evt);
-            }
-        });
 
         lblDepId.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         lblDepId.setForeground(new java.awt.Color(255, 0, 0));
@@ -100,15 +100,15 @@ public class AssignEmployee extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(176, 176, 176)
                 .addComponent(lblTitle)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 200, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(80, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(67, 67, 67)
                         .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(353, 353, 353))
+                        .addGap(349, 349, 349))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lblEmpId)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -117,24 +117,24 @@ public class AssignEmployee extends javax.swing.JFrame {
                         .addComponent(lblDepId)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmbDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59))))
+                        .addGap(63, 63, 63))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(lblTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addGap(79, 79, 79)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(102, 102, 102)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(102, 102, 102))
+                .addGap(39, 39, 39))
         );
 
         pack();
@@ -167,17 +167,19 @@ private void depsLoad() {
             counter++;
         }
 
-        cmbDepId.setSelectedItem(null); //set selected Department to null
+        this.cmbEmpId.setSelectedItem(null); //set selected Department to null
 
     }
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
-        this.dispose();
+        int reply = JOptionPane.showConfirmDialog(
+                null,
+                "Are you sure you want to close this window?",
+                "Warning", JOptionPane.YES_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
     }//GEN-LAST:event_btnCloseActionPerformed
-
-    private void cmbDepIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDepIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbDepIdActionPerformed
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
 
@@ -223,6 +225,17 @@ private void depsLoad() {
 
 
     }//GEN-LAST:event_btnAssignActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        int reply = JOptionPane.showConfirmDialog(
+                null,
+                "Are you sure you want to close this window?",
+                "Warning", JOptionPane.YES_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
