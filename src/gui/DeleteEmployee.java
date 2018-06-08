@@ -30,17 +30,7 @@ public class DeleteEmployee extends javax.swing.JFrame {
         
         //remove all items to prepare for adding next items
         jComboBox1.removeAllItems();
-        
-        //for loop to put all the employee into the combo box
-        for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
-            cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getId() + " - " + 
-                HrSystem.getAllDepartments().get(i).getName() + " " + 
-                HrSystem.getAllDepartments().get(i).getLocation());
-        }
-
-        
-
-        
+        loadDepartments();
     }
 
     /**
@@ -223,6 +213,15 @@ public class DeleteEmployee extends javax.swing.JFrame {
                 new DeleteEmployee().setVisible(true);
             }
         });
+    }
+    
+    private void loadDepartments(){
+        //for loop to put all the employee into the combo box
+        for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
+            cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getId() + " - " + 
+                HrSystem.getAllDepartments().get(i).getName() + " " + 
+                HrSystem.getAllDepartments().get(i).getLocation());
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

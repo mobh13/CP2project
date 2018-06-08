@@ -29,6 +29,7 @@ public class MainMenu extends javax.swing.JFrame {
         java.awt.Color recursiveBG = new java.awt.Color(240, 240, 240);
         getContentPane().setBackground(recursiveBG);
         HrSystem hrSystem = new HrSystem();
+        addUnassignedDepartment();
         deSerialize();
         addPayScale();
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
@@ -699,6 +700,11 @@ public class MainMenu extends javax.swing.JFrame {
             HrSystem.getPayScales().add(new PayScale(7, 80946.95));
             HrSystem.getPayScales().add(new PayScale(8, 96336.34));
         }
+    }
+    
+    private void addUnassignedDepartment(){
+        HrSystem.addDepartment("Unassigned Employees", "");
+        HrSystem.getAllDepartments().get(0).setListOfEmployees(HrSystem.getUnAssignedEmployees());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -22,6 +22,9 @@ public class CleanInstall {
         //clear all the departments and employees to prepare for a clean start
         HrSystem.getAllDepartments().clear();
         HrSystem.getUnAssignedEmployees().clear();
+        Department.setIdCounter(0);
+        HrSystem.addDepartment("Unassigned Employees", "");
+        HrSystem.getAllDepartments().get(0).setListOfEmployees(HrSystem.getUnAssignedEmployees());
         //create a scanner object to scan the file containing the data
         Scanner input;
         Department.setIdCounter(1);
@@ -46,7 +49,8 @@ public class CleanInstall {
                 empSalScal = Integer.parseInt(input.nextLine().trim());
                 //insert employee and assign to a department
                 Employee emp = new Employee(empFName, empLName, empAddress, empGender, HrSystem.getPayScales().get(empSalScal - 1)); 
-                HrSystem.addEmployee(emp, i);
+                //skip the unassigned department
+                HrSystem.addEmployee(emp, i + 1);
             }
         }
     }

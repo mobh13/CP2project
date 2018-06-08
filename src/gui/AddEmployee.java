@@ -19,7 +19,7 @@ import logic.*;
 public class AddEmployee extends javax.swing.JFrame {
 
     private DecimalFormat df2 = new DecimalFormat("BD #,##0.00");
-    private static boolean executed = false;
+
 
     /**
      * Creates new form AddEmployee
@@ -283,18 +283,7 @@ public class AddEmployee extends javax.swing.JFrame {
 
             int empId = HrSystem.addEmployee(fName, lName, address, gender, payLvl);
 
-            if (!executed) {
-                File file = new File("hrsystemdata.data");
-                int i;
-                if (HrSystem.getAllDepartments().isEmpty()) {
-                    i = HrSystem.addDepartment("Unassigned Employees", "");
-                    HrSystem.getAllDepartments().get(i).setListOfEmployees(HrSystem.getUnAssignedEmployees());
-                } else if(!HrSystem.getAllDepartments().isEmpty() && !file.exists()) {
-                    i = HrSystem.addDepartment("Unassigned Employees", "");
-                    HrSystem.getAllDepartments().get(i - 1).setListOfEmployees(HrSystem.getUnAssignedEmployees());
-                }
-                executed = true;
-            }
+            
 
             this.txtEmpId.setText(Integer.toString(empId));
 
