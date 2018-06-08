@@ -20,7 +20,7 @@ import logic.HrSystem;
  */
 public class PayReport extends javax.swing.JFrame {
 
-    private DecimalFormat df2 = new DecimalFormat("##.00");
+    private DecimalFormat df2 = new DecimalFormat("#,###.00");
 
     /**
      * Creates new form PayReport
@@ -180,8 +180,8 @@ public class PayReport extends javax.swing.JFrame {
             File f_temp = new File("payroll.txt");
             PrintStream ps = new PrintStream(f_temp);
             if (!HrSystem.getAllDepartments().isEmpty()) {
-                if(f_temp.exists()){
-                   ps.print("");
+                if (f_temp.exists()) {
+                    ps.print("");
                 }
                 double dep_sum;
                 double total_sum = 0;
@@ -199,17 +199,17 @@ public class PayReport extends javax.swing.JFrame {
                             dep_sum += HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getPayLevel().getValue() / 26;
                         }
                         total_sum += dep_sum;
-                        ps.append("\r\nThe total amount for department (BD): " + df2.format(dep_sum) );
+                        ps.append("\r\nThe total amount for department (BD): " + df2.format(dep_sum));
                     }
                 }
                 ps.append("\r\nTotal amount to be paid by the compnay (BD): " + df2.format(total_sum));
                 JOptionPane.showMessageDialog(null,
-                    "PayRoll file has been successfully created", "Success",
-                    JOptionPane.INFORMATION_MESSAGE);
+                        "PayRoll file has been successfully created", "Success",
+                        JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (FileNotFoundException ex) {
-           JOptionPane.showMessageDialog(null,
-                    "File not found and was unable to create it.\nError: "+ex, "Error",
+            JOptionPane.showMessageDialog(null,
+                    "File not found and was unable to create it.\nError: " + ex, "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnExportActionPerformed

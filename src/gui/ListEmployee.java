@@ -7,6 +7,7 @@ package gui;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import logic.HrSystem;
 
@@ -15,6 +16,8 @@ import logic.HrSystem;
  * @author A.A
  */
 public class ListEmployee extends javax.swing.JFrame {
+
+    private DecimalFormat df2 = new DecimalFormat("#,###.00");
 
     /**
      * Creates new form ListEmployee
@@ -34,17 +37,18 @@ public class ListEmployee extends javax.swing.JFrame {
         if (!HrSystem.getAllDepartments().isEmpty()) {
             this.cmbDepId.removeAllItems();
             for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
-            if(HrSystem.getAllDepartments().get(i).getId() == 0){
-                cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getName());
-            }else{
-            cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getId() + " - " + 
-                HrSystem.getAllDepartments().get(i).getName());
+                if (HrSystem.getAllDepartments().get(i).getId() == 0) {
+                    cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getName());
+                } else {
+                    cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getId() + " - "
+                            + HrSystem.getAllDepartments().get(i).getName());
+                }
             }
-        }
             this.cmbDepId.setSelectedIndex(-1);
         }
 
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,6 +67,11 @@ public class ListEmployee extends javax.swing.JFrame {
         txtAreaListEmp = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         lblTitle.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lblTitle.setForeground(new java.awt.Color(0, 0, 204));
@@ -74,11 +83,6 @@ public class ListEmployee extends javax.swing.JFrame {
 
         cmbDepId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cmbDepId.setMaximumRowCount(100);
-        cmbDepId.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbDepIdActionPerformed(evt);
-            }
-        });
 
         btnClose.setBackground(new java.awt.Color(255, 153, 153));
         btnClose.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -99,6 +103,7 @@ public class ListEmployee extends javax.swing.JFrame {
         });
 
         txtAreaListEmp.setColumns(20);
+        txtAreaListEmp.setFont(new java.awt.Font("Calibri", 0, 20)); // NOI18N
         txtAreaListEmp.setRows(5);
         jScrollPane1.setViewportView(txtAreaListEmp);
 
@@ -122,10 +127,10 @@ public class ListEmployee extends javax.swing.JFrame {
                         .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
                         .addComponent(btnList, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(261, 261, 261))
+                        .addGap(260, 260, 260))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 585, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(120, 120, 120))))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 764, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,13 +141,13 @@ public class ListEmployee extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnList, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -151,21 +156,43 @@ public class ListEmployee extends javax.swing.JFrame {
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
         int reply = JOptionPane.showConfirmDialog(
-            null,
-            "Are you sure you want to close this window? ",
-            "Warning", JOptionPane.YES_NO_OPTION);
+                null,
+                "Are you sure you want to close this window? ",
+                "Warning", JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION) {
             this.dispose();
         }
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    private void cmbDepIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDepIdActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbDepIdActionPerformed
-
     private void btnListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListActionPerformed
         // TODO add your handling code here:
+        if (!HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().isEmpty()) {
+            this.txtAreaListEmp.setText("");
+            this.txtAreaListEmp.append("Employees assigned to department " + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getName()
+                    + " :");
+            for (int i = 0; i < HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().size(); i++) {
+                this.txtAreaListEmp.append("\nEmployee " + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getId());
+                this.txtAreaListEmp.append("\tName: " + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getFirstName()
+                        + " " + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getLastName());
+                this.txtAreaListEmp.append("\tAnnual Pay (BD): " + df2.format(HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getPayLevel().getValue()));
+            }
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "Department has no employees assigned to it.", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnListActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        int reply = JOptionPane.showConfirmDialog(
+                null,
+                "Are you sure you want to close this window? ",
+                "Warning", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            this.dispose();
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
