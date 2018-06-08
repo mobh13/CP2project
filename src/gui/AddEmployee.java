@@ -7,6 +7,7 @@ package gui;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.File;
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import logic.*;
@@ -16,7 +17,10 @@ import logic.*;
  * @author A.A
  */
 public class AddEmployee extends javax.swing.JFrame {
-private DecimalFormat df2 = new DecimalFormat("BD #,##0.00");
+
+    private DecimalFormat df2 = new DecimalFormat("BD #,##0.00");
+    private static boolean executed = false;
+
     /**
      * Creates new form AddEmployee
      */
@@ -279,6 +283,19 @@ private DecimalFormat df2 = new DecimalFormat("BD #,##0.00");
 
             int empId = HrSystem.addEmployee(fName, lName, address, gender, payLvl);
 
+            if (!executed) {
+                File file = new File("hrsystemdata.data");
+                int i;
+                if (HrSystem.getAllDepartments().isEmpty()) {
+                    i = HrSystem.addDepartment("Unassigned Employees", "");
+                    HrSystem.getAllDepartments().get(i).setListOfEmployees(HrSystem.getUnAssignedEmployees());
+                } else if(!HrSystem.getAllDepartments().isEmpty() && !file.exists()) {
+                    i = HrSystem.addDepartment("Unassigned Employees", "");
+                    HrSystem.getAllDepartments().get(i - 1).setListOfEmployees(HrSystem.getUnAssignedEmployees());
+                }
+                executed = true;
+            }
+
             this.txtEmpId.setText(Integer.toString(empId));
 
             JOptionPane.showMessageDialog(null,
@@ -378,8 +395,7 @@ private DecimalFormat df2 = new DecimalFormat("BD #,##0.00");
             }
         });
     }
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;

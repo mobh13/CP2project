@@ -37,7 +37,6 @@ public class HrSystem {
     }
     
     public static Employee addEmployee(Employee emp, int i) {
-        unAssignedEmployees.add(emp);
         allDepartments.get(i).getListOfEmployees().add(emp);
         return emp;
     }

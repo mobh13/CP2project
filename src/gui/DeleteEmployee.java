@@ -30,18 +30,17 @@ public class DeleteEmployee extends javax.swing.JFrame {
         
         //remove all items to prepare for adding next items
         jComboBox1.removeAllItems();
-
+        
         //for loop to put all the employee into the combo box
-        for (int i = 0; i < HrSystem.getUnAssignedEmployees().size(); i++) {
-            jComboBox1.addItem(HrSystem.getUnAssignedEmployees().get(i).getId() + " - " + 
-                HrSystem.getUnAssignedEmployees().get(i).getFirstName() + " " + 
-                HrSystem.getUnAssignedEmployees().get(i).getLastName());
+        for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
+            cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getId() + " - " + 
+                HrSystem.getAllDepartments().get(i).getName() + " " + 
+                HrSystem.getAllDepartments().get(i).getLocation());
         }
 
-        //first selected item would be the first employee
-        jComboBox1.setSelectedItem(HrSystem.getUnAssignedEmployees().get(0).getId() + " - " + 
-                HrSystem.getUnAssignedEmployees().get(0).getFirstName() + " " + 
-                HrSystem.getUnAssignedEmployees().get(0).getLastName());
+        
+
+        
     }
 
     /**
@@ -58,11 +57,18 @@ public class DeleteEmployee extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        lblDepId = new javax.swing.JLabel();
+        cmbDepId = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jComboBox1.setMaximumRowCount(100);
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 204));
@@ -90,6 +96,18 @@ public class DeleteEmployee extends javax.swing.JFrame {
             }
         });
 
+        lblDepId.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        lblDepId.setForeground(new java.awt.Color(255, 0, 0));
+        lblDepId.setText("Department ID: ");
+
+        cmbDepId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cmbDepId.setMaximumRowCount(100);
+        cmbDepId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbDepIdActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -110,13 +128,23 @@ public class DeleteEmployee extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addGap(28, 28, 28)))
                 .addContainerGap(162, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblDepId)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(162, 162, 162))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addComponent(jLabel1)
-                .addGap(96, 96, 96)
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -131,36 +159,36 @@ public class DeleteEmployee extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //Save selected employee in a String variable to use for checking
-        String selected = (String) jComboBox1.getSelectedItem();
-        //condition to exit the loop when set
-        boolean cond = false;
-        //counter to go through the employees
-        int i = 0;
-        //do loop to loop through the employees and exit when condition is set
-        do{
-            //check if the name and id of the employee matches the one selected 
-            if(selected.equalsIgnoreCase(HrSystem.getUnAssignedEmployees().get(i).getId() + " - " + 
-                    HrSystem.getUnAssignedEmployees().get(i).getFirstName() + " " + 
-                    HrSystem.getUnAssignedEmployees().get(i).getLastName())){
+       
+        
                 //remove the employee
-                HrSystem.getUnAssignedEmployees().remove(i);
-                //remove the item from the combo box
-                jComboBox1.removeItem(jComboBox1.getSelectedItem());
-                //message confirming the delete of the employee
-                    JOptionPane.showMessageDialog(null,
-                            "Employee has been deleted successfully", "Success",
-                            JOptionPane.INFORMATION_MESSAGE);
-            }else{
-                i++;
-            }
-        }while(cond == false && i < HrSystem.getUnAssignedEmployees().size());
+                HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().remove(jComboBox1.getSelectedIndex());
+                
+            
+        
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cmbDepIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDepIdActionPerformed
+        //for loop to put all the employee into the combo box
+        if (this.cmbDepId.getSelectedItem() != null) {
+            jComboBox1.removeAllItems();
+        for (int i = 0; i < HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().size(); i++) {
+            jComboBox1.addItem(HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getId() + " - " + 
+                HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getFirstName() + " " + 
+                HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getLastName());
+        }
+        this.jComboBox1.setSelectedItem(null);
+        }
+    }//GEN-LAST:event_cmbDepIdActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,10 +226,12 @@ public class DeleteEmployee extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbDepId;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel lblDepId;
     // End of variables declaration//GEN-END:variables
 }
