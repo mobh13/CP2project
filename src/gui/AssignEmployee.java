@@ -340,7 +340,7 @@ private void depsLoad() {
         if (cmbDepId1.getSelectedIndex() < cmbDepId.getSelectedIndex()) {
             HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex() + 1).getListOfEmployees().add(emp);
         }else if (cmbDepId.getSelectedIndex() == cmbDepId1.getSelectedIndex()){
-            HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex() - 1).getListOfEmployees().add(emp);
+            HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex() + 1).getListOfEmployees().add(emp);
         }else {
             HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().add(emp);
         }
