@@ -10,11 +10,8 @@ import java.awt.Toolkit;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import logic.Employee;
 import logic.HrSystem;
-import logic.PayScale;
 
 /**
  *
@@ -22,8 +19,9 @@ import logic.PayScale;
  */
 public class EditEmployee extends javax.swing.JFrame {
 
-    private ArrayList<String> payScales = new ArrayList<>();
+    //the code of formating the values of each pay scale
     private DecimalFormat df2 = new DecimalFormat("BD #,##0.00");
+    //a static int to be used to determince which dep does the emp belong to
     static private int dep_index = 0;
 
     /**
@@ -31,22 +29,29 @@ public class EditEmployee extends javax.swing.JFrame {
      */
     public EditEmployee() {
         initComponents();
+        //background color
         java.awt.Color recursiveBG = new java.awt.Color(240, 240, 240);
         getContentPane().setBackground(recursiveBG);
+        //call method to load deps
         loadDepartments();
+        //call method to load pay scales 
         loadPayScale();
+        //center the window
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
         this.setLocation(x, y);
-        //cmbEmpId.setSelectedIndex(-1);
-
     }
 
     private void loadDepartments() {
+        //populating the dep combo box
+        //checking if there are any deps
         if (!HrSystem.getAllDepartments().isEmpty()) {
+            //removing exisitng deps
             this.cmbDepId.removeAllItems();
+            //for loop to add each dep
             for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
+                //no not show the ID of unassigned emp
                 if (HrSystem.getAllDepartments().get(i).getId() == 0) {
                     cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getName());
                 } else {
@@ -54,6 +59,7 @@ public class EditEmployee extends javax.swing.JFrame {
                             + HrSystem.getAllDepartments().get(i).getName());
                 }
             }
+            //setting selected item as null
             this.cmbDepId.setSelectedIndex(-1);
         }
 
@@ -286,32 +292,37 @@ public class EditEmployee extends javax.swing.JFrame {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-
+        // series of if statmnets used to valdiate the input in each field before saving
         if (this.cmbEmpId.getSelectedItem() != null) {
             if (this.txtFName.getText() != null && this.txtFName.getText().length() > 2) {
                 if (this.txtLName.getText() != null && this.txtLName.getText().length() > 2) {
                     if (this.txtAddress.getText() != null && this.txtAddress.getText().length() > 2) {
                         if (this.cmbPayScale.getSelectedIndex() >= 0) {
                             if (this.rdbtnFemale.isSelected() || this.rdbtnMale.isSelected()) {
+                                //saving the information added
                                 int indx = this.cmbEmpId.getSelectedIndex();
                                 String f_name = this.txtFName.getText();
                                 String l_name = this.txtLName.getText();
                                 String adress = this.txtAddress.getText();
                                 int payScale_indx = this.cmbPayScale.getSelectedIndex();
                                 char gender = 0;
+                                //checking which radio button is used
                                 if (this.rdbtnFemale.isSelected()) {
                                     gender = 'F';
                                 }
                                 if (this.rdbtnMale.isSelected()) {
                                     gender = 'M';
                                 }
+                                //passing parameters to a method in the hr system to edit the infroatiom of that employee
                                 HrSystem.editEmployee(indx, f_name, l_name, adress, gender, payScale_indx, cmbDepId.getSelectedIndex());
+                                //confimation message is shown 
                                 JOptionPane.showMessageDialog(this,
                                         "The updates have been saved successfully for employee "
                                         + HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(indx).getFirstName() + " "
                                         + HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(indx).getLastName() + ".",
                                         "Updated",
                                         JOptionPane.PLAIN_MESSAGE);
+                                //clearing all fields 
                                 this.cmbEmpId.setSelectedItem(null);
                                 this.cmbPayScale.setSelectedItem(null);
                                 this.txtFName.setText(null);
@@ -320,6 +331,7 @@ public class EditEmployee extends javax.swing.JFrame {
                                 this.rdbtnFemale.setSelected(false);
                                 this.rdbtnMale.setSelected(false);
                                 this.cmbDepId.setSelectedItem(null);
+                                //messages to be prompted if the input was invalid
                             } else {
                                 JOptionPane.showMessageDialog(this, "Please select either one of the genders", "Error", 2);
                             }
@@ -345,6 +357,7 @@ public class EditEmployee extends javax.swing.JFrame {
     private void cmbEmpIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEmpIdActionPerformed
         // TODO add your handling code here:
         if (this.cmbEmpId.getSelectedItem() != null) {
+            //displaying the information of the employee before changing them
             this.txtFName.setText(HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getFirstName());
             this.txtLName.setText(HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getLastName());
             this.txtAddress.setText(HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getAddress());
@@ -353,14 +366,14 @@ public class EditEmployee extends javax.swing.JFrame {
             } else if (HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getGender() == 'F') {
                 this.rdbtnFemale.setSelected(true);
             }
-            this.cmbPayScale.setModel(new DefaultComboBoxModel(payScales.toArray()));
             int pay_lvl = (HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getPayLevel().getLevel()) - 1;
-            this.cmbPayScale.setSelectedItem(cmbPayScale.getModel().getElementAt(pay_lvl));
+            this.cmbPayScale.setSelectedIndex(pay_lvl);
         }
     }//GEN-LAST:event_cmbEmpIdActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
+        //confirming to exit the window
         int reply = JOptionPane.showConfirmDialog(
                 null,
                 "Are you sure you want to close this window?  ",
@@ -372,6 +385,7 @@ public class EditEmployee extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
+        //confirming to exit the window
         int reply = JOptionPane.showConfirmDialog(
                 null,
                 "Are you sure you want to close this window?",
@@ -383,15 +397,18 @@ public class EditEmployee extends javax.swing.JFrame {
 
     private void cmbDepIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDepIdActionPerformed
         // TODO add your handling code here:
+        //this 
         dep_index = this.cmbDepId.getSelectedIndex();
         this.cmbEmpId.removeAllItems();
         if (this.cmbDepId.getSelectedItem() != null) {
+            //for loop to put items in the emp combo box
             for (int i = 0; i < HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().size(); i++) {
                 String info = HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(i).getId() + " - "
                         + HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(i).getFirstName() + " "
                         + HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(i).getLastName();
                 this.cmbEmpId.addItem(info);
             }
+            //setting the initial item as null
             this.cmbEmpId.setSelectedItem(null);
         }
         this.cmbEmpId.setSelectedItem(null);
@@ -404,14 +421,16 @@ public class EditEmployee extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbDepIdActionPerformed
 
     private void loadPayScale() {
-
         this.cmbPayScale.removeAllItems();
+        //if to chek if there are payscale objects created
         if (!HrSystem.getPayScales().isEmpty()) {
+            //for loop to load payscale objects in the combo box
             for (int i = 0; i < HrSystem.getPayScales().size(); i++) {
-                payScales.add(HrSystem.getPayScales().get(i).getLevel() + " - "
+                this.cmbPayScale.addItem(HrSystem.getPayScales().get(i).getLevel() + " - "
                         + df2.format(HrSystem.getPayScales().get(i).getValue()));
             }
         }
+        //setting the item to null at first
         this.cmbPayScale.setSelectedItem(null);
     }
 

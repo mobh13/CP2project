@@ -21,9 +21,12 @@ public class DeleteDepartment extends javax.swing.JFrame {
      */
     public DeleteDepartment() {
         initComponents();
+        //code to change the background of the jframe
         java.awt.Color recursiveBG = new java.awt.Color(240, 240, 240);
         getContentPane().setBackground(recursiveBG);
+        //calling a method to load deps in combo box
         loadDepartments();
+        //centerting the window
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
@@ -123,14 +126,19 @@ public class DeleteDepartment extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //method that would run after clicking delete button
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
+        //if statment to check if the user selected something
         if (this.cmbDepId.getSelectedItem() != null) {
+            //asking confirmation
             int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete department "
                     + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getName() + "?",
                     "Warning", JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
-                if (HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees() == null) {
+                //checking if there is no employes in the department 
+                if (!HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().isEmpty()) {
+                    //deleting the department and validating results
                     if (HrSystem.deleteDepartment(HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex())) == true) {
                         JOptionPane.showMessageDialog(null, "The department have been deleted successfully.",
                                 "Message", 1);
@@ -140,14 +148,14 @@ public class DeleteDepartment extends javax.swing.JFrame {
                                 + "Could not have been deleted",
                                 "Message", 2);
                     }
+                    //if there are still employes working at the department
                 } else {
                     JOptionPane.showMessageDialog(null, "The department " + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getName()
                             + " still have employees assigned to it, please remove employees before deleting department.",
                             "Error", 2);
                 }
-            } else if (reply == JOptionPane.NO_OPTION) {
-                //Empty if statment to 
-            }
+            } 
+            //if the user did not choose anything
         } else {
             JOptionPane.showMessageDialog(this, "Please select a department from combo box.",
                     "Error", 2);
@@ -156,6 +164,7 @@ public class DeleteDepartment extends javax.swing.JFrame {
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
+        //confirmation before exiting the window by clikcing on close button
         int reply = JOptionPane.showConfirmDialog(
                 null,
                 "Are you sure you want to close this window?",
@@ -167,6 +176,7 @@ public class DeleteDepartment extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
+        //confirmation before exiting the window by clikcing on X (top right) button
         int reply = JOptionPane.showConfirmDialog(
                 null,
                 "Are you sure you want to close this window?",
@@ -175,23 +185,29 @@ public class DeleteDepartment extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_formWindowClosing
-
+    //method to populate combo box
     private void loadDepartments() {
+        //checking if the system has departments entered 
         if (!HrSystem.getAllDepartments().isEmpty()) {
+            //clearing coombo box
             this.cmbDepId.removeAllItems();
             try {
+                //for loop to add all departments
                 for (int i = 1; i < HrSystem.getAllDepartments().size(); i++) {
                     String info = HrSystem.getAllDepartments().get(i).getId() + " - "
                             + HrSystem.getAllDepartments().get(i).getName();
                     this.cmbDepId.addItem(info);
                 }
+                //to catch the exception of array's index out of bound
             } catch (IndexOutOfBoundsException ex) {
                 JOptionPane.showMessageDialog(this, "While loading the departments in "
                         + "the combo box, an error has occured:\n" + ex, null, 0);
+            //general exception to prvent the application from crashing 
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(this, "An error has occured:\n" + ex, null, 0);
             }
 
+            //setting the initial selected item null
             this.cmbDepId.setSelectedItem(null);
         }
 

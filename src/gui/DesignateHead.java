@@ -21,9 +21,12 @@ public class DesignateHead extends javax.swing.JFrame {
      */
     public DesignateHead() {
         initComponents();
+        //background color changing 
         java.awt.Color recursiveBG = new java.awt.Color(240, 240, 240);
         getContentPane().setBackground(recursiveBG);
+        //calling the method for departments 
         loadDepartments();
+        //centering the window
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
@@ -159,6 +162,7 @@ public class DesignateHead extends javax.swing.JFrame {
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
+        //confirmation message before exiting the window
         int reply = JOptionPane.showConfirmDialog(
                 null,
                 "Are you sure you want to close this window?",
@@ -170,39 +174,48 @@ public class DesignateHead extends javax.swing.JFrame {
 
     private void btnDesignateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesignateActionPerformed
         // TODO add your handling code here:
+        //checking user's selection
         if (this.cmbEmpID.getSelectedItem() != null) {
+            //saving the selected item's index
             int empId = this.cmbEmpID.getSelectedIndex();
             int depId = this.cmbDepId.getSelectedIndex();
-
+            //cehcking if there isn't a head for the department
             if (HrSystem.getAllDepartments().get(depId).getHead() != null) {
+                //printing a message for user confirmation
                 int reply = JOptionPane.showConfirmDialog(
                         null, "The department already has a head, are you sure you want to replace?",
                         "Warning", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
+                    //calling method from HR System to designate head
                     HrSystem.designateHead(empId, depId);
+                    //prompting a message box to confirm 
                     JOptionPane.showMessageDialog(this, "Employee: " + HrSystem.getUnAssignedEmployees().get(empId).getFirstName() + " "
                             + HrSystem.getUnAssignedEmployees().get(empId).getLastName() + " is now the head of "
                             + HrSystem.getAllDepartments().get(depId).getName() + " Department.", "Designation is successul", 1);
+                    //setting both combo boxes to null
                     this.cmbDepId.setSelectedItem(null);
                     this.cmbEmpID.setSelectedItem(null);
-                } else if (reply == JOptionPane.NO_OPTION) {
-                    //do nothing
                 }
             } else {
+                // calling the method to designate head from HR System
                 HrSystem.designateHead(empId, depId);
+                //prompting a message box to confirm 
                 JOptionPane.showMessageDialog(this, "Employee: " + HrSystem.getUnAssignedEmployees().get(empId).getFirstName() + " "
                         + HrSystem.getUnAssignedEmployees().get(empId).getLastName() + " is now the head of "
                         + HrSystem.getAllDepartments().get(depId).getName() + " Department.", "Designation is successul", 1);
+                //setting both combo boxes to null
                 this.cmbDepId.setSelectedItem(null);
                 this.cmbEmpID.setSelectedItem(null);
             }
         } else {
+            //if the user did not choose any item show a message
             JOptionPane.showMessageDialog(this, "Please select items in both boxes", "Items not Selected", 2);
         }
     }//GEN-LAST:event_btnDesignateActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
+        //validating before closing window
         int reply = JOptionPane.showConfirmDialog(
                 null,
                 "Are you sure you want to close this window?",
@@ -214,28 +227,38 @@ public class DesignateHead extends javax.swing.JFrame {
 
     private void cmbDepIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDepIdActionPerformed
         // TODO add your handling code here
+        //method to list all employees of a selected department
         int index = this.cmbDepId.getSelectedIndex();
+        //removing all previous items from combo box
         this.cmbEmpID.removeAllItems();
+        //checking if there are employees in the department
         if (this.cmbDepId.getSelectedItem() != null) {
+            //for loop to add all employees
             for (int i = 0; i < HrSystem.getAllDepartments().get(index).getListOfEmployees().size(); i++) {
                 String info = HrSystem.getAllDepartments().get(index).getListOfEmployees().get(i).getId() + " - "
                         + HrSystem.getAllDepartments().get(index).getListOfEmployees().get(i).getFirstName() + " "
                         + HrSystem.getAllDepartments().get(index).getListOfEmployees().get(i).getLastName();
                 this.cmbEmpID.addItem(info);
             }
+            //setting selected item in combo box to null
             this.cmbEmpID.setSelectedItem(null);
         }
 
     }//GEN-LAST:event_cmbDepIdActionPerformed
 
     private void loadDepartments() {
+        //method to load departmnets in the combo box
+        //if there are no departments
         if (!HrSystem.getAllDepartments().isEmpty()) {
+            //clearing the box
             this.cmbDepId.removeAllItems();
+            //looping to add all departments
             for (int i = 1; i < HrSystem.getAllDepartments().size(); i++) {
                 String info = HrSystem.getAllDepartments().get(i).getId() + " - "
                         + HrSystem.getAllDepartments().get(i).getName();
                 this.cmbDepId.addItem(info);
             }
+            //setting initail selection to null/nothing
             this.cmbDepId.setSelectedIndex(-1);
         }
 
