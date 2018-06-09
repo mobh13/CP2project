@@ -497,7 +497,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnPayReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayReportActionPerformed
         // TODO add your handling code here:
-        if (!HrSystem.getAllDepartments().isEmpty() && check()==true) {
+        if (!HrSystem.getAllDepartments().isEmpty() && check() == true) {
             PayReport pay_report = new PayReport();
             pay_report.setVisible(true);
         } else {
@@ -704,7 +704,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void addUnassignedDepartment() {
         File file = new File("hrsystemdata.data");
-        if(!file.exists()){
+        if (!file.exists()) {
             HrSystem.addDepartment("Unassigned Employees", "");
             HrSystem.getAllDepartments().get(0).setListOfEmployees(HrSystem.getUnAssignedEmployees());
         }

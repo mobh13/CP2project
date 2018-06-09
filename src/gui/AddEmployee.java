@@ -20,7 +20,6 @@ public class AddEmployee extends javax.swing.JFrame {
 
     private DecimalFormat df2 = new DecimalFormat("BD #,##0.00");
 
-
     /**
      * Creates new form AddEmployee
      */
@@ -287,8 +286,6 @@ public class AddEmployee extends javax.swing.JFrame {
             }
 
             int empId = HrSystem.addEmployee(fName, lName, address, gender, payLvl);
-
-            
 
             this.txtEmpId.setText(Integer.toString(empId));
 

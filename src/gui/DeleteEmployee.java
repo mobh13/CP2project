@@ -27,10 +27,10 @@ public class DeleteEmployee extends javax.swing.JFrame {
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
         this.setLocation(x, y);
-        
+
         //set the selected employee to null when first selected
         cmbEmpId.setSelectedItem(null);
-        
+
         //load all the departments from this method
         loadDepartments();
     }
@@ -152,20 +152,20 @@ public class DeleteEmployee extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //check if user selects any data and show the appropriate message if he doesn't select one
-        if(cmbDepId.getSelectedItem() != null && cmbEmpId.getSelectedItem() != null){
-        //remove the employee
-        HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().remove(cmbEmpId.getSelectedIndex());
-        JOptionPane.showMessageDialog(null, "The Employee: " + cmbEmpId.getSelectedItem().toString() + "has been deleted", "Success",
+        if (cmbDepId.getSelectedItem() != null && cmbEmpId.getSelectedItem() != null) {
+            //remove the employee
+            HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().remove(cmbEmpId.getSelectedIndex());
+            JOptionPane.showMessageDialog(null, "The Employee: " + cmbEmpId.getSelectedItem().toString() + "has been deleted", "Success",
                     JOptionPane.INFORMATION_MESSAGE);
-        //clear the combo boxes
-        this.cmbDepId.setSelectedItem(null);
-        this.cmbEmpId.setSelectedItem(null);
-        }else if(cmbDepId.getSelectedItem() == null){
+            //clear the combo boxes
+            this.cmbDepId.setSelectedItem(null);
+            this.cmbEmpId.setSelectedItem(null);
+        } else if (cmbDepId.getSelectedItem() == null) {
             JOptionPane.showMessageDialog(null, "Enter a department to delete the employee from",
-                                "Message", 2);
-        }else{
+                    "Message", 2);
+        } else {
             JOptionPane.showMessageDialog(null, "Choose an employee to delete",
-                                "Message", 2);
+                    "Message", 2);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -184,18 +184,18 @@ public class DeleteEmployee extends javax.swing.JFrame {
         if (this.cmbDepId.getSelectedItem() != null) {
             //clear selected items
             cmbEmpId.removeAllItems();
-        //for loop to load the employees based on the department selected by user    
-        for (int i = 0; i < HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().size(); i++) {
-            cmbEmpId.addItem(HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getId() + " - " + 
-                HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getFirstName() + " " + 
-                HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getLastName());
-        }
-        this.cmbEmpId.setSelectedItem(null);
+            //for loop to load the employees based on the department selected by user    
+            for (int i = 0; i < HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().size(); i++) {
+                cmbEmpId.addItem(HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getId() + " - "
+                        + HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getFirstName() + " "
+                        + HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getLastName());
+            }
+            this.cmbEmpId.setSelectedItem(null);
         }
     }//GEN-LAST:event_cmbDepIdActionPerformed
 
     private void cmbEmpIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEmpIdActionPerformed
-        
+
     }//GEN-LAST:event_cmbEmpIdActionPerformed
 
     /**
@@ -232,16 +232,16 @@ public class DeleteEmployee extends javax.swing.JFrame {
             }
         });
     }
-    
+
     //method to load the departments
-    private void loadDepartments(){
+    private void loadDepartments() {
         //for loop to put all the departments into the combo box
         for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
-            if(HrSystem.getAllDepartments().get(i).getId() == 0){
+            if (HrSystem.getAllDepartments().get(i).getId() == 0) {
                 cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getName());
-            }else{
-            cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getId() + " - " + 
-                HrSystem.getAllDepartments().get(i).getName());
+            } else {
+                cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getId() + " - "
+                        + HrSystem.getAllDepartments().get(i).getName());
             }
         }
         //set the first item to null
