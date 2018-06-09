@@ -28,7 +28,6 @@ public class AssignEmployee extends javax.swing.JFrame {
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
         this.setLocation(x, y);
         depsLoad();
-        empsLoad();
 
     }
 
@@ -50,6 +49,10 @@ public class AssignEmployee extends javax.swing.JFrame {
         cmbDepId = new javax.swing.JComboBox<>();
         lblDepId = new javax.swing.JLabel();
         btnAssign = new javax.swing.JButton();
+        cmbDepId1 = new javax.swing.JComboBox<>();
+        lblDepId1 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -93,6 +96,22 @@ public class AssignEmployee extends javax.swing.JFrame {
             }
         });
 
+        cmbDepId1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cmbDepId1.setMaximumRowCount(100);
+        cmbDepId1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbDepId1ActionPerformed(evt);
+            }
+        });
+
+        lblDepId1.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
+        lblDepId1.setForeground(new java.awt.Color(255, 0, 0));
+        lblDepId1.setText("Department ID:");
+
+        jLabel1.setText("* Assign to");
+
+        jLabel2.setText("* Assign from");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -102,35 +121,59 @@ public class AssignEmployee extends javax.swing.JFrame {
                 .addComponent(lblTitle)
                 .addGap(0, 200, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(68, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67)
-                        .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(349, 349, 349))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblEmpId)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67)
-                        .addComponent(lblDepId)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmbDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63))))
+                    .addComponent(jLabel2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblDepId1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cmbDepId1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblEmpId)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(67, 67, 67)
+                                .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblDepId)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cmbDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addGap(68, 68, 68))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(lblTitle)
-                .addGap(79, 79, 79)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDepId1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbDepId1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAssign, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -140,37 +183,51 @@ public class AssignEmployee extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 private void depsLoad() {
-        int counter = 0;
-        cmbDepId.removeAllItems(); //remove all itemsz
+        cmbDepId1.removeAllItems(); //remove all itemsz
         //while loop to add Departments names to combo box
-        while (counter < HrSystem.getAllDepartments().size()) {
-            if (HrSystem.getAllDepartments().get(counter).getId() == 0) {
-                cmbDepId.addItem(HrSystem.getAllDepartments().get(counter).getName());
+        for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
+            if (HrSystem.getAllDepartments().get(i).getId() == 0) {
+                cmbDepId1.addItem(HrSystem.getAllDepartments().get(i).getName());
             } else {
-                cmbDepId.addItem(HrSystem.getAllDepartments().get(counter).getId() + " - "
-                        + HrSystem.getAllDepartments().get(counter).getName());
+                cmbDepId1.addItem(HrSystem.getAllDepartments().get(i).getId() + " - "
+                        + HrSystem.getAllDepartments().get(i).getName());
             }
-            counter++;
         }
-        cmbDepId.setSelectedItem(null); //set selected Department to null
+        cmbDepId1.setSelectedItem(null); //set selected Department to null
     }
 
     private void empsLoad() {
-        int counter = 1;
+
         cmbEmpId.removeAllItems(); //remove all items
         //while loop to add employees ids and names to combo box
-        while (counter < HrSystem.getUnAssignedEmployees().size()) {
-            cmbEmpId.addItem("#" + Integer.toString(HrSystem.getUnAssignedEmployees().get(counter).getId())
-                    + " "
-                    + HrSystem.getUnAssignedEmployees().get(counter).getFirstName()
-                    + " "
-                    + HrSystem.getUnAssignedEmployees().get(counter).getLastName());
-            counter++;
+        if (cmbDepId1.getSelectedItem() != null) {
+            for (int i = 0; i < HrSystem.getAllDepartments().get(cmbDepId1.getSelectedIndex()).getListOfEmployees().size(); i++) {
+                cmbEmpId.addItem(HrSystem.getAllDepartments().get(cmbDepId1.getSelectedIndex()).getListOfEmployees().get(i).getId()
+                        + " - " + HrSystem.getAllDepartments().get(cmbDepId1.getSelectedIndex()).getListOfEmployees().get(i).getFirstName()
+                        + " " + HrSystem.getAllDepartments().get(cmbDepId1.getSelectedIndex()).getListOfEmployees().get(i).getLastName());
+            }
         }
 
         this.cmbEmpId.setSelectedItem(null); //set selected Department to null
 
     }
+
+    private void toDepsLoad() {
+        cmbDepId.removeAllItems(); //remove all itemsz
+        //while loop to add Departments names to combo box
+        for (int counter = 0; counter < HrSystem.getAllDepartments().size(); counter++) {
+            if (HrSystem.getAllDepartments().get(counter).getId() == 0 && HrSystem.getAllDepartments().get(counter).getId() != cmbDepId1.getSelectedIndex()) {
+                cmbDepId.addItem(HrSystem.getAllDepartments().get(counter).getName());
+            } else if (counter == cmbDepId1.getSelectedIndex()) {
+                //do nothing
+            } else {
+                cmbDepId.addItem(HrSystem.getAllDepartments().get(counter).getId() + " - "
+                        + HrSystem.getAllDepartments().get(counter).getName());
+            }
+        }
+        cmbDepId.setSelectedItem(null); //set selected Department to null
+    }
+
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
         int reply = JOptionPane.showConfirmDialog(
@@ -185,46 +242,45 @@ private void depsLoad() {
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
 
         // TODO add your handling code here:
-        if (cmbEmpId.getSelectedItem() != null) {
+        if (cmbDepId1.getSelectedItem() != null) {
 
-            if (cmbDepId.getSelectedItem() != null) {
+            if (cmbEmpId.getSelectedItem() != null) {
 
-                int selectedDepartmentId = cmbEmpId.getSelectedIndex();
-                int selectedEmployeeId = cmbDepId.getSelectedIndex();
-                Department SelectedDepartment = HrSystem.getAllDepartments().get(selectedDepartmentId);
-                Employee selectedEmployee = HrSystem.getUnAssignedEmployees().get(selectedEmployeeId);
-                for (int i = 0; i < SelectedDepartment.getListOfEmployees().size(); i++) {
-                    if (SelectedDepartment.getListOfEmployees().get(i).getId() == selectedEmployee.getId()) {
-                        JOptionPane.showMessageDialog(null,
-                                "The Selected Employee is already Assigned to the Department", "Error",
-                                JOptionPane.ERROR_MESSAGE);
-                    } else {
-                        int response = JOptionPane.showConfirmDialog(null, "The Employee is already assigned to diffrent Department \n Do you Want to change that Department ??", "Confirm",
-                                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                        if (response == JOptionPane.YES_OPTION) {
-                            SelectedDepartment.getListOfEmployees().add(selectedEmployee);
+                if (cmbDepId.getSelectedItem() != null) {
+
+                    if (HrSystem.getAllDepartments().get(cmbDepId1.getSelectedIndex()).getHead() != null) {
+
+                        if (HrSystem.getAllDepartments().get(cmbDepId1.getSelectedIndex()).getListOfEmployees().get(cmbEmpId.getSelectedIndex())
+                                .getId() != HrSystem.getAllDepartments().get(cmbDepId1.getSelectedIndex()).getHead().getId()) {
+
+                            assigningEmployee();
+
+                        } else {
                             JOptionPane.showMessageDialog(null,
-                                    "Employee assigned successfully", "Success",
-                                    JOptionPane.INFORMATION_MESSAGE);
+                                    "The Employee is the head of a department, you can't assign him/her", "Error",
+                                    JOptionPane.ERROR_MESSAGE);
                         }
 
+                    } else {
+                        assigningEmployee();
                     }
+
+                } else {
+                    JOptionPane.showMessageDialog(null,
+                            "No Department  was  selected to assign the employee to", "Error",
+                            JOptionPane.ERROR_MESSAGE);
                 }
 
             } else {
                 JOptionPane.showMessageDialog(null,
-                        "No Department  was  selected", "Error",
+                        "No Employee Was selected", "Error",
                         JOptionPane.ERROR_MESSAGE);
-
             }
         } else {
             JOptionPane.showMessageDialog(null,
-                    "No Employee Was selected", "Error",
+                    "No Department  was  selected", "Error",
                     JOptionPane.ERROR_MESSAGE);
-
         }
-
-
     }//GEN-LAST:event_btnAssignActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
@@ -237,6 +293,11 @@ private void depsLoad() {
             this.dispose();
         }
     }//GEN-LAST:event_formWindowClosing
+
+    private void cmbDepId1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDepId1ActionPerformed
+        toDepsLoad();
+        empsLoad();
+    }//GEN-LAST:event_cmbDepId1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -273,14 +334,38 @@ private void depsLoad() {
         });
     }
 
+    private void assigningEmployee() {
+        Employee emp = HrSystem.getAllDepartments().get(cmbDepId1.getSelectedIndex()).getListOfEmployees().remove(cmbEmpId.getSelectedIndex());
+        
+        if (cmbDepId.getSelectedIndex() > cmbDepId1.getSelectedIndex()) {
+            HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex() - 1).getListOfEmployees().add(emp);
+        }else if (cmbDepId.getSelectedIndex() == cmbDepId1.getSelectedIndex()){
+            HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex() + 1).getListOfEmployees().add(emp);
+        }else {
+            HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().add(emp);
+        }
+
+        JOptionPane.showMessageDialog(null,
+                "Employee assigned successfully", "Success",
+                JOptionPane.INFORMATION_MESSAGE);
+
+        cmbDepId1.setSelectedItem(null);
+        cmbDepId.setSelectedItem(null);
+        cmbEmpId.setSelectedItem(null);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssign;
     private javax.swing.JButton btnClose;
     private javax.swing.JComboBox<String> cmbDepId;
+    private javax.swing.JComboBox<String> cmbDepId1;
     private javax.swing.JComboBox<String> cmbEmpId;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JLabel lblDepId;
+    private javax.swing.JLabel lblDepId1;
     private javax.swing.JLabel lblEmpId;
     private javax.swing.JLabel lblTitle;
     // End of variables declaration//GEN-END:variables
