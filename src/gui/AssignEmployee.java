@@ -319,9 +319,8 @@ private void depsLoad() {
 
     private void assigningEmployee() {
         Employee emp = HrSystem.getAllDepartments().get(cmbDepIdfrom.getSelectedIndex()).getListOfEmployees().remove(cmbEmpId.getSelectedIndex());
-        if (cmbDepIdfrom.getSelectedIndex() < cmbDepIdto.getSelectedIndex()) {
-            HrSystem.getAllDepartments().get(cmbDepIdto.getSelectedIndex() + 1).getListOfEmployees().add(emp);
-        }else if (cmbDepIdto.getSelectedIndex() == cmbDepIdfrom.getSelectedIndex()){
+        
+        if (cmbDepIdfrom.getSelectedIndex() <= cmbDepIdto.getSelectedIndex()) {
             HrSystem.getAllDepartments().get(cmbDepIdto.getSelectedIndex() + 1).getListOfEmployees().add(emp);
         }else {
             HrSystem.getAllDepartments().get(cmbDepIdto.getSelectedIndex()).getListOfEmployees().add(emp);
