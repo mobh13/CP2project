@@ -180,29 +180,29 @@ public class DesignateHead extends javax.swing.JFrame {
             int empId = this.cmbEmpID.getSelectedIndex();
             int depId = this.cmbDepId.getSelectedIndex();
             //cehcking if there isn't a head for the department
-            if (HrSystem.getAllDepartments().get(depId).getHead() != null) {
+            if (HrSystem.getAllDepartments().get(depId + 1).getHead() != null) {
                 //printing a message for user confirmation
                 int reply = JOptionPane.showConfirmDialog(
                         null, "The department already has a head, are you sure you want to replace?",
                         "Warning", JOptionPane.YES_NO_OPTION);
                 if (reply == JOptionPane.YES_OPTION) {
                     //calling method from HR System to designate head
-                    HrSystem.designateHead(empId, depId);
+                    HrSystem.designateHead(empId, depId + 1);
                     //prompting a message box to confirm 
-                    JOptionPane.showMessageDialog(this, "Employee: " + HrSystem.getAllDepartments().get(depId).getListOfEmployees().get(empId).getFirstName()
-                            +" "+HrSystem.getAllDepartments().get(depId).getListOfEmployees().get(empId).getLastName() + " is now the head of "
-                            + HrSystem.getAllDepartments().get(depId).getName() + " Department.", "Designation is successul", 1);
+                    JOptionPane.showMessageDialog(this, "Employee: " + HrSystem.getAllDepartments().get(depId + 1).getListOfEmployees().get(empId).getFirstName()
+                            +" "+HrSystem.getAllDepartments().get(depId + 1).getListOfEmployees().get(empId).getLastName() + " is now the head of "
+                            + HrSystem.getAllDepartments().get(depId + 1).getName() + " Department.", "Designation is successul", 1);
                     //setting both combo boxes to null
                     this.cmbDepId.setSelectedItem(null);
                     this.cmbEmpID.setSelectedItem(null);
                 }
             } else {
                 // calling the method to designate head from HR System
-                HrSystem.designateHead(empId, depId);
+                HrSystem.designateHead(empId, depId + 1);
                 //prompting a message box to confirm 
-                JOptionPane.showMessageDialog(this, "Employee: " + HrSystem.getAllDepartments().get(depId).getListOfEmployees().get(empId).getFirstName() + " "
-                        + HrSystem.getAllDepartments().get(depId).getListOfEmployees().get(empId).getLastName() + " is now the head of "
-                        + HrSystem.getAllDepartments().get(depId).getName() + " Department.", "Designation is successul", 1);
+                JOptionPane.showMessageDialog(this, "Employee: " + HrSystem.getAllDepartments().get(depId + 1).getListOfEmployees().get(empId).getFirstName() + " "
+                        + HrSystem.getAllDepartments().get(depId + 1).getListOfEmployees().get(empId).getLastName() + " is now the head of "
+                        + HrSystem.getAllDepartments().get(depId + 1).getName() + " Department.", "Designation is successul", 1);
                 //setting both combo boxes to null
                 this.cmbDepId.setSelectedItem(null);
                 this.cmbEmpID.setSelectedItem(null);

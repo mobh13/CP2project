@@ -152,7 +152,9 @@ public class DeleteEmployee extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //check if user selects any data and show the appropriate message if he doesn't select one
-        if (cmbDepId.getSelectedItem() != null && cmbEmpId.getSelectedItem() != null) {
+        if (cmbDepId.getSelectedItem() != null && cmbEmpId.getSelectedItem() != null && 
+                HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().get(cmbEmpId.getSelectedIndex()).getId() 
+                != HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getHead().getId()) {
             //remove the employee
             HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().remove(cmbEmpId.getSelectedIndex());
             JOptionPane.showMessageDialog(null, "The Employee: " + cmbEmpId.getSelectedItem().toString() + "has been deleted", "Success",
@@ -163,8 +165,11 @@ public class DeleteEmployee extends javax.swing.JFrame {
         } else if (cmbDepId.getSelectedItem() == null) {
             JOptionPane.showMessageDialog(null, "Enter a department to delete the employee from",
                     "Message", 2);
-        } else {
+        } else if (cmbEmpId.getSelectedItem() == null){
             JOptionPane.showMessageDialog(null, "Choose an employee to delete",
+                    "Message", 2);
+        }else{
+            JOptionPane.showMessageDialog(null, "The employee is the head of the department, change the head of the department to delete him",
                     "Message", 2);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
