@@ -46,7 +46,7 @@ public class DeleteDepartment extends javax.swing.JFrame {
         lblDepId = new javax.swing.JLabel();
         btnClose = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
-        cmbDepId = new javax.swing.JComboBox<>();
+        cmbDepId = new javax.swing.JComboBox<String>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -133,24 +133,24 @@ public class DeleteDepartment extends javax.swing.JFrame {
         if (this.cmbDepId.getSelectedItem() != null) {
             //asking confirmation
             int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete department "
-                    + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getName() + "?",
+                    + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()+1).getName() + "?",
                     "Warning", JOptionPane.YES_NO_OPTION);
             if (reply == JOptionPane.YES_OPTION) {
                 //checking if there is no employes in the department 
-                if (!HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().isEmpty()) {
+                if (HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()+1).getListOfEmployees().isEmpty()) {
                     //deleting the department and validating results
-                    if (HrSystem.deleteDepartment(HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex())) == true) {
+                    if (HrSystem.deleteDepartment(HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()+1)) == true) {
                         JOptionPane.showMessageDialog(null, "The department have been deleted successfully.",
                                 "Message", 1);
                         loadDepartments();
                     } else {
-                        JOptionPane.showMessageDialog(null, "The department " + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getName()
+                        JOptionPane.showMessageDialog(null, "The department " + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()+1).getName()
                                 + "Could not have been deleted",
                                 "Message", 2);
                     }
                     //if there are still employes working at the department
                 } else {
-                    JOptionPane.showMessageDialog(null, "The department " + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getName()
+                    JOptionPane.showMessageDialog(null, "The department " + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()+1).getName()
                             + " still have employees assigned to it, please remove employees before deleting department.",
                             "Error", 2);
                 }
