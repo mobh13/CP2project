@@ -356,7 +356,8 @@ public class EditEmployee extends javax.swing.JFrame {
 
     private void cmbEmpIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEmpIdActionPerformed
         // TODO add your handling code here:
-        if (this.cmbEmpId.getSelectedItem() != null) {
+//        try{
+            if (this.cmbEmpId.getSelectedItem() != null) {
             //displaying the information of the employee before changing them
             this.txtFName.setText(HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getFirstName());
             this.txtLName.setText(HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getLastName());
@@ -367,8 +368,12 @@ public class EditEmployee extends javax.swing.JFrame {
                 this.rdbtnFemale.setSelected(true);
             }
             int pay_lvl = (HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getPayLevel().getLevel()) - 1;
-//            this.cmbPayScale.setSelectedIndex(pay_lvl);
+           this.cmbPayScale.setSelectedIndex(pay_lvl);
         }
+//        }catch(IllegalArgumentException ex){
+//            //
+//        }
+        
     }//GEN-LAST:event_cmbEmpIdActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
