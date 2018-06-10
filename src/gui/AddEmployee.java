@@ -274,7 +274,7 @@ public class AddEmployee extends javax.swing.JFrame {
             String fName = txtFName.getText();
             String lName = txtLName.getText();
             String address = txtAdress.getText();
-            PayScale payLvl = HrSystem.getPayScales().get(this.cmbPayLevel.getSelectedIndex());
+            int payLvl = this.cmbPayLevel.getSelectedIndex();
 
             char gender = 0;
 

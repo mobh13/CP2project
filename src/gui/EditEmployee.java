@@ -75,11 +75,10 @@ public class EditEmployee extends javax.swing.JFrame {
     private void initComponents() {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
+        radBtnGrp = new javax.swing.ButtonGroup();
         lblTitle = new javax.swing.JLabel();
         lblDepId = new javax.swing.JLabel();
-        cmbEmpId = new javax.swing.JComboBox<>();
+        cmbEmpId = new javax.swing.JComboBox<String>();
         lblFName = new javax.swing.JLabel();
         txtFName = new javax.swing.JTextField();
         lblGender = new javax.swing.JLabel();
@@ -92,9 +91,9 @@ public class EditEmployee extends javax.swing.JFrame {
         rdbtnFemale = new javax.swing.JRadioButton();
         btnClose = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
-        cmbPayScale = new javax.swing.JComboBox<>();
+        cmbPayScale = new javax.swing.JComboBox<String>();
         lblEmpId1 = new javax.swing.JLabel();
-        cmbDepId = new javax.swing.JComboBox<>();
+        cmbDepId = new javax.swing.JComboBox<String>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Manage Employees");
@@ -146,11 +145,11 @@ public class EditEmployee extends javax.swing.JFrame {
         lblLName.setText("Last Name: ");
         lblLName.setToolTipText("");
 
-        buttonGroup2.add(rdbtnMale);
+        radBtnGrp.add(rdbtnMale);
         rdbtnMale.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         rdbtnMale.setText("Male");
 
-        buttonGroup2.add(rdbtnFemale);
+        radBtnGrp.add(rdbtnFemale);
         rdbtnFemale.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         rdbtnFemale.setText("Female");
 
@@ -174,6 +173,7 @@ public class EditEmployee extends javax.swing.JFrame {
 
         cmbPayScale.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cmbPayScale.setMaximumRowCount(100);
+        cmbPayScale.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "  " }));
 
         lblEmpId1.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         lblEmpId1.setForeground(new java.awt.Color(255, 0, 0));
@@ -328,8 +328,7 @@ public class EditEmployee extends javax.swing.JFrame {
                                 this.txtFName.setText(null);
                                 this.txtLName.setText(null);
                                 this.txtAddress.setText(null);
-                                this.rdbtnFemale.setSelected(false);
-                                this.rdbtnMale.setSelected(false);
+                                this.radBtnGrp.clearSelection();
                                 this.cmbDepId.setSelectedItem(null);
                                 //messages to be prompted if the input was invalid
                             } else {
@@ -367,7 +366,7 @@ public class EditEmployee extends javax.swing.JFrame {
                 this.rdbtnFemale.setSelected(true);
             }
             int pay_lvl = (HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getPayLevel().getLevel()) - 1;
-//            this.cmbPayScale.setSelectedIndex(pay_lvl);
+            this.cmbPayScale.setSelectedIndex(pay_lvl);
         }
     }//GEN-LAST:event_cmbEmpIdActionPerformed
 
@@ -416,8 +415,7 @@ public class EditEmployee extends javax.swing.JFrame {
         this.txtFName.setText(null);
         this.txtLName.setText(null);
         this.txtAddress.setText(null);
-        this.rdbtnFemale.setSelected(false);
-        this.rdbtnMale.setSelected(false);
+        this.radBtnGrp.clearSelection();
     }//GEN-LAST:event_cmbDepIdActionPerformed
 
     private void loadPayScale() {
@@ -473,8 +471,6 @@ public class EditEmployee extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnSave;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> cmbDepId;
     private javax.swing.JComboBox<String> cmbEmpId;
     private javax.swing.JComboBox<String> cmbPayScale;
@@ -487,6 +483,7 @@ public class EditEmployee extends javax.swing.JFrame {
     private javax.swing.JLabel lblLName;
     private javax.swing.JLabel lblPayLevel;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.ButtonGroup radBtnGrp;
     private javax.swing.JRadioButton rdbtnFemale;
     private javax.swing.JRadioButton rdbtnMale;
     private javax.swing.JTextField txtAddress;

@@ -29,8 +29,9 @@ public class HrSystem {
     }
 
   
-    public static int addEmployee(String firstName, String lastName, String address, char gender, PayScale payLevel) {
-        Employee newEmp = new Employee(firstName, lastName, address, gender, payLevel);
+    public static int addEmployee(String firstName, String lastName, String address, char gender, int payLevel) {
+        PayScale ps1 = payScales.get(payLevel);
+        Employee newEmp = new Employee(firstName, lastName, address, gender, ps1);
         HrSystem.getAllDepartments().get(0).getListOfEmployees().add(newEmp);
 //       
         return newEmp.getId();
@@ -75,6 +76,7 @@ public class HrSystem {
         getAllDepartments().get(depIndx).getListOfEmployees().get(indx).setFirstName(f_name);
         getAllDepartments().get(depIndx).getListOfEmployees().get(indx).setLastName(l_name);
         getAllDepartments().get(depIndx).getListOfEmployees().get(indx).setAddress(address);
+        getAllDepartments().get(depIndx).getListOfEmployees().get(indx).setGender(gender);
         getAllDepartments().get(depIndx).getListOfEmployees().get(indx).setPayLevel(payScales.get(payScale_indx));
     }
 
