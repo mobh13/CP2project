@@ -49,6 +49,10 @@ public class PayScale implements Serializable {
     public static void setIdCounter(int idCounter) {
         PayScale.LevelCounter = idCounter;
     }
+
+    public Object[] toArray() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 

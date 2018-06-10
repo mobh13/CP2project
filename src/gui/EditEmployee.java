@@ -23,6 +23,7 @@ public class EditEmployee extends javax.swing.JFrame {
     private DecimalFormat df2 = new DecimalFormat("BD #,##0.00");
     //a static int to be used to determince which dep does the emp belong to
     static private int dep_index = 0;
+    private final ArrayList<String> payScales = new ArrayList<>();
 
     /**
      * Creates new form manageEmployee
@@ -78,7 +79,7 @@ public class EditEmployee extends javax.swing.JFrame {
         radBtnGrp = new javax.swing.ButtonGroup();
         lblTitle = new javax.swing.JLabel();
         lblDepId = new javax.swing.JLabel();
-        cmbEmpId = new javax.swing.JComboBox<String>();
+        cmbEmpId = new javax.swing.JComboBox<>();
         lblFName = new javax.swing.JLabel();
         txtFName = new javax.swing.JTextField();
         lblGender = new javax.swing.JLabel();
@@ -91,9 +92,9 @@ public class EditEmployee extends javax.swing.JFrame {
         rdbtnFemale = new javax.swing.JRadioButton();
         btnClose = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
-        cmbPayScale = new javax.swing.JComboBox<String>();
+        cmbPayScale = new javax.swing.JComboBox<>();
         lblEmpId1 = new javax.swing.JLabel();
-        cmbDepId = new javax.swing.JComboBox<String>();
+        cmbDepId = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Manage Employees");
@@ -173,7 +174,11 @@ public class EditEmployee extends javax.swing.JFrame {
 
         cmbPayScale.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cmbPayScale.setMaximumRowCount(100);
-        cmbPayScale.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "  " }));
+        cmbPayScale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbPayScaleActionPerformed(evt);
+            }
+        });
 
         lblEmpId1.setFont(new java.awt.Font("Tahoma", 0, 22)); // NOI18N
         lblEmpId1.setForeground(new java.awt.Color(255, 0, 0));
@@ -359,7 +364,6 @@ public class EditEmployee extends javax.swing.JFrame {
 
     private void cmbEmpIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEmpIdActionPerformed
         // TODO add your handling code here:
-        try{
         if (this.cmbEmpId.getSelectedItem() != null) {
             //displaying the information of the employee before changing them
             this.txtFName.setText(HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getFirstName());
@@ -370,10 +374,9 @@ public class EditEmployee extends javax.swing.JFrame {
             } else if (HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getGender() == 'F') {
                 this.rdbtnFemale.setSelected(true);
             }
+            this.cmbPayScale.setModel(new DefaultComboBoxModel(payScales.toArray()));
             int pay_lvl = (HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getPayLevel().getLevel()) - 1;
-            this.cmbPayScale.setSelectedIndex(pay_lvl);
-        }}catch(IllegalArgumentException ex){
-            //
+            this.cmbPayScale.setSelectedItem(cmbPayScale.getModel().getElementAt(pay_lvl));
         }
     }//GEN-LAST:event_cmbEmpIdActionPerformed
 
@@ -425,13 +428,17 @@ public class EditEmployee extends javax.swing.JFrame {
         this.radBtnGrp.clearSelection();
     }//GEN-LAST:event_cmbDepIdActionPerformed
 
+    private void cmbPayScaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbPayScaleActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbPayScaleActionPerformed
+
     private void loadPayScale() {
         this.cmbPayScale.removeAllItems();
         //if to chek if there are payscale objects created
         if (!HrSystem.getPayScales().isEmpty()) {
             //for loop to load payscale objects in the combo box
             for (int i = 0; i < HrSystem.getPayScales().size(); i++) {
-                this.cmbPayScale.addItem(HrSystem.getPayScales().get(i).getLevel() + " - "
+                payScales.add(HrSystem.getPayScales().get(i).getLevel() + " - "
                         + df2.format(HrSystem.getPayScales().get(i).getValue()));
             }
         }
