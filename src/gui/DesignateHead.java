@@ -12,7 +12,11 @@ import logic.HrSystem;
 
 /**
  *
- * @author A.A
+ * @author Abdulla Ali 
+ * Purpose: to prompt the user to select a department and en employee to be 
+ *          as head of department.
+ * @version 1
+ * 
  */
 public class DesignateHead extends javax.swing.JFrame {
 

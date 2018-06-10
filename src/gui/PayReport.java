@@ -23,9 +23,11 @@ public class PayReport extends javax.swing.JFrame {
     private DecimalFormat df2 = new DecimalFormat("#,###.00");
 
     /**
-     * Creates new form PayReport
+     * Purpose: Creates new form PayReport
+     * @author: Abdulla Ali - Malik Kamal
      */
     public PayReport() {
+        //centers the window and changes backgorund color
         initComponents();
         java.awt.Color recursiveBG = new java.awt.Color(240, 240, 240);
         getContentPane().setBackground(recursiveBG);
@@ -138,11 +140,13 @@ public class PayReport extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDispReportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDispReportActionPerformed
-        // TODO add your handling code here:
+        // checking if there are any data in the system 
         if (!HrSystem.getAllDepartments().isEmpty()) {
             double dep_sum;
             double total_sum = 0;
+            //title for the pay report
             this.txtAreaReport.append("Pay Report for the company\n");
+            //for loop to print all deparmnets and all the employees within them
             for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
                 dep_sum = 0.0;
                 if (!HrSystem.getAllDepartments().get(i).getListOfEmployees().isEmpty()) {
@@ -153,8 +157,10 @@ public class PayReport extends javax.swing.JFrame {
                                 + HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getLastName());
                         this.txtAreaReport.append("\tID: " + Integer.toString(HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getId()));
                         this.txtAreaReport.append("\tPay: " + df2.format(HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getPayLevel().getValue() / 26));
+                        //calulating the sum per department
                         dep_sum += HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getPayLevel().getValue() / 26;
                     }
+                    //the sum for the whole company
                     total_sum += dep_sum;
                     this.txtAreaReport.append("\nThe total amount for department (BD): " + df2.format(dep_sum) + "\n");
                 }
@@ -165,6 +171,7 @@ public class PayReport extends javax.swing.JFrame {
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         // TODO add your handling code here:
+        //validtion before exiting
         int reply = JOptionPane.showConfirmDialog(
                 null,
                 "Are you sure you want to close this window?",
@@ -176,9 +183,11 @@ public class PayReport extends javax.swing.JFrame {
 
     private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
         // TODO add your handling code here:
+        //exporting the pay report to a plain simple text file
         try {
             File f_temp = new File("payroll.txt");
             PrintStream ps = new PrintStream(f_temp);
+            //clearing exiting files
             if (!HrSystem.getAllDepartments().isEmpty()) {
                 if (f_temp.exists()) {
                     ps.print("");
@@ -186,6 +195,7 @@ public class PayReport extends javax.swing.JFrame {
                 double dep_sum;
                 double total_sum = 0;
                 ps.append("Pay Report for the company\n");
+                //loop for deparments and employees and output to file.
                 for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
                     dep_sum = 0.0;
                     if (!HrSystem.getAllDepartments().get(i).getListOfEmployees().isEmpty()) {
@@ -195,6 +205,7 @@ public class PayReport extends javax.swing.JFrame {
                             ps.append("\r\ntName: " + HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getFirstName() + " "
                                     + HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getLastName());
                             ps.append("\tID: " + Integer.toString(HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getId()));
+                            //formating the output to two decimal places.
                             ps.append("\tPay: " + df2.format(HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getPayLevel().getValue() / 26));
                             dep_sum += HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getPayLevel().getValue() / 26;
                         }
@@ -207,6 +218,7 @@ public class PayReport extends javax.swing.JFrame {
                         "PayRoll file has been successfully created", "Success",
                         JOptionPane.INFORMATION_MESSAGE);
             }
+            //catching the exception if the file is not found
         } catch (FileNotFoundException ex) {
             JOptionPane.showMessageDialog(null,
                     "File not found and was unable to create it.\nError: " + ex, "Error",
@@ -216,6 +228,7 @@ public class PayReport extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
+         //validtion before exiting
         int reply = JOptionPane.showConfirmDialog(
                 null,
                 "Are you sure you want to close this window?",

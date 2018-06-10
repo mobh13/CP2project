@@ -11,13 +11,17 @@ import javax.swing.JOptionPane;
 import logic.HrSystem;
 
 /**
- *
- * @author A.A
+ * Name: Delete Department
+ * @author Abdulla Ali
+ * Purpose: used to provide an interface to delete a department with 
+ *          checking of set of conditions.
+ * @version 1
  */
 public class DeleteDepartment extends javax.swing.JFrame {
 
     /**
      * Creates new form DeleteDepartment
+     * @author: Abdulla Ali 
      */
     public DeleteDepartment() {
         initComponents();
@@ -126,6 +130,10 @@ public class DeleteDepartment extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Name: action to be performed when the button of delete employee is clicked.
+     * @param evt 
+     */
     //method that would run after clicking delete button
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:

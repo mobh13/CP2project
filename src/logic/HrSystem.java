@@ -8,8 +8,8 @@ package logic;
 import java.util.ArrayList;
 
 /**
- *
  * @author madan
+ * 
  */
 public class HrSystem {
 
