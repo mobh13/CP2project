@@ -374,7 +374,6 @@ public class EditEmployee extends javax.swing.JFrame {
             } else if (HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getGender() == 'F') {
                 this.rdbtnFemale.setSelected(true);
             }
-            this.cmbPayScale.setModel(new DefaultComboBoxModel(payScales.toArray()));
             int pay_lvl = (HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getPayLevel().getLevel()) - 1;
             this.cmbPayScale.setSelectedItem(cmbPayScale.getModel().getElementAt(pay_lvl));
         }
@@ -444,6 +443,7 @@ public class EditEmployee extends javax.swing.JFrame {
         }
         //setting the item to null at first
         this.cmbPayScale.setSelectedItem(null);
+        this.cmbPayScale.setModel(new DefaultComboBoxModel(payScales.toArray()));
     }
 
     /**
