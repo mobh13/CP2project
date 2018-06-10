@@ -76,6 +76,7 @@ public class HrSystem {
         getAllDepartments().get(depIndx).getListOfEmployees().get(indx).setFirstName(f_name);
         getAllDepartments().get(depIndx).getListOfEmployees().get(indx).setLastName(l_name);
         getAllDepartments().get(depIndx).getListOfEmployees().get(indx).setAddress(address);
+        getAllDepartments().get(depIndx).getListOfEmployees().get(indx).setGender(gender);
         getAllDepartments().get(depIndx).getListOfEmployees().get(indx).setPayLevel(payScales.get(payScale_indx));
     }
 
