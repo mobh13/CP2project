@@ -16,7 +16,10 @@ import logic.HrSystem;
 
 /**
  *
- * @author 201601016
+ * @author Abdulla Ali - Malik Kamal
+ * Name: Produce Pay Report
+ * purpose: to prompt the user to display and export the pay report for the company 
+ * @version 2
  */
 public class PayReport extends javax.swing.JFrame {
 
@@ -25,6 +28,7 @@ public class PayReport extends javax.swing.JFrame {
     /**
      * Purpose: Creates new form PayReport
      * @author: Abdulla Ali - Malik Kamal
+     * Name: Pay Report
      */
     public PayReport() {
         //centers the window and changes backgorund color

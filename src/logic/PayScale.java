@@ -8,8 +8,10 @@ package logic;
 import java.io.Serializable;
 
 /**
- *
+ * Name: Pay Scales
+ * purpose: to be used to create pay scale objects for each level
  * @author madan
+ * @version 1
  */
 public class PayScale implements Serializable {
     static private int LevelCounter = 0;
@@ -50,6 +52,12 @@ public class PayScale implements Serializable {
         PayScale.LevelCounter = idCounter;
     }
 
+    /**
+     * @author: moosa hammad
+     * Name: toArray 
+     * Purpose: to convert the array list of employee to an array.
+     * @return object - to be used to set the appropriate  pay scale of the employee
+     */
     public Object[] toArray() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

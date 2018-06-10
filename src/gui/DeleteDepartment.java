@@ -11,10 +11,9 @@ import javax.swing.JOptionPane;
 import logic.HrSystem;
 
 /**
- * Name: Delete Department
  * @author Abdulla Ali
- * Purpose: used to provide an interface to delete a department with 
- *          checking of set of conditions.
+ * Name: Delete Department
+ * Purpose: used to provide an interface to delete a department with checking of set of conditions.
  * @version 1
  */
 public class DeleteDepartment extends javax.swing.JFrame {
@@ -194,6 +193,10 @@ public class DeleteDepartment extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowClosing
     //method to populate combo box
+    /**
+     * @Author: abdulla ali
+     * purpose: to load departments in the combo box
+     */
     private void loadDepartments() {
         //checking if the system has departments entered 
         if (!HrSystem.getAllDepartments().isEmpty()) {

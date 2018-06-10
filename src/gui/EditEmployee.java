@@ -14,8 +14,9 @@ import javax.swing.JOptionPane;
 import logic.HrSystem;
 
 /**
- *
- * @author A.A
+ *Name: Edit Employee
+ * @author Abdulla ali
+ * purpose: used to alter the details of a specified employee.
  */
 public class EditEmployee extends javax.swing.JFrame {
 
@@ -431,6 +432,11 @@ public class EditEmployee extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbPayScaleActionPerformed
 
+      /**
+       * Name: Load Payscales
+     * @Author: abdulla ali
+     * purpose: used to populate the payscales objects in the combo box
+     */
     private void loadPayScale() {
         this.cmbPayScale.removeAllItems();
         //if to chek if there are payscale objects created

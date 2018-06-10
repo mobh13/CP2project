@@ -11,10 +11,9 @@ import javax.swing.JOptionPane;
 import logic.HrSystem;
 
 /**
- *
  * @author Abdulla Ali 
- * Purpose: to prompt the user to select a department and en employee to be 
- *          as head of department.
+ *Name: Designate Head
+ * Purpose: to prompt the user to select a department and en employee to be as head of department.
  * @version 1
  * 
  */
@@ -249,7 +248,10 @@ public class DesignateHead extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_cmbDepIdActionPerformed
-
+  /**
+     * @Author: abdulla ali
+     * purpose: to load departments in the combo box
+     */
     private void loadDepartments() {
         //method to load departmnets in the combo box
         //if there are no departments
