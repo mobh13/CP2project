@@ -60,7 +60,7 @@ public class ListEmployee extends javax.swing.JFrame {
 
         lblTitle = new javax.swing.JLabel();
         lblDepId = new javax.swing.JLabel();
-        cmbDepId = new javax.swing.JComboBox<>();
+        cmbDepId = new javax.swing.JComboBox<String>();
         btnClose = new javax.swing.JButton();
         btnList = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -83,6 +83,11 @@ public class ListEmployee extends javax.swing.JFrame {
 
         cmbDepId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         cmbDepId.setMaximumRowCount(100);
+        cmbDepId.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbDepIdActionPerformed(evt);
+            }
+        });
 
         btnClose.setBackground(new java.awt.Color(255, 153, 153));
         btnClose.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -193,6 +198,11 @@ public class ListEmployee extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_formWindowClosing
+
+    private void cmbDepIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDepIdActionPerformed
+        // TODO add your handling code here:
+        this.txtAreaListEmp.setText("");
+    }//GEN-LAST:event_cmbDepIdActionPerformed
 
     /**
      * @param args the command line arguments

@@ -248,17 +248,17 @@ public class AddEmployee extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        if (txtFName.getText().isEmpty()) {
+        if (txtFName.getText().isEmpty() && txtFName.getText().length() <= 2) {
             JOptionPane.showMessageDialog(null,
-                    "First Name is Empty", "Error",
+                    "First Name is Empty or less than two characters long", "Error",
                     JOptionPane.ERROR_MESSAGE);
-        } else if (txtLName.getText().isEmpty()) {
+        } else if (txtLName.getText().isEmpty() && txtLName.getText().length() <= 2) {
             JOptionPane.showMessageDialog(null,
-                    "Last Name is Empty", "Error",
+                    "Last Name is Empty or less than two characters long", "Error",
                     JOptionPane.ERROR_MESSAGE);
-        } else if (txtAdress.getText().isEmpty()) {
+        } else if (txtAdress.getText().isEmpty() && txtAdress.getText().length() <= 2) {
             JOptionPane.showMessageDialog(null,
-                    "Address is Empty", "Error",
+                    "Address is Empty or less than two characters long", "Error",
                     JOptionPane.ERROR_MESSAGE);
         } else if (this.cmbPayLevel.getSelectedItem() == null) {
             JOptionPane.showMessageDialog(null,
@@ -290,7 +290,7 @@ public class AddEmployee extends javax.swing.JFrame {
                 this.txtEmpId.setText(Integer.toString(empId));
             }catch(NumberFormatException ex){
                 JOptionPane.showMessageDialog(null,
-                    "The employee's ID cannot be converted to integers.", "Error",
+                    "The employee's ID cannot be converted to integers. Error: "+ex, "Error",
                     JOptionPane.ERROR_MESSAGE);
             }
 

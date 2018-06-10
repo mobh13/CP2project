@@ -1,0 +1,20 @@
+Pay Report for the company
+
+Department ID: 1		Department Name: Marketing
+tName: Martin Wright	ID: 1	Pay: 2,491.55
+tName: Jenny Canovan	ID: 2	Pay: 2,265.04
+tName: Thomas Hedinger	ID: 3	Pay: 2,059.13
+tName: Lara Masciowicz	ID: 4	Pay: 3,113.34
+The total amount for department (BD): 9,929.06
+Department ID: 2		Department Name: Sales
+tName: Jeremy Pfeifer 	ID: 5	Pay: 3,113.34
+tName: Candace du Mars	ID: 6	Pay: 2,491.55
+tName: Bamekan Sivabulasandaram	ID: 7	Pay: 1,871.94
+tName: John Provis	ID: 8	Pay: 2,740.70
+tName: Davina Coulston	ID: 9	Pay: 2,265.04
+The total amount for department (BD): 12,482.57
+Department ID: 3		Department Name: Accounting
+tName: Narelle Wilkins	ID: 10	Pay: 3,705.24
+tName: Lawrence Dooley	ID: 11	Pay: 2,740.70
+The total amount for department (BD): 6,445.94
+Total amount to be paid by the compnay (BD): 28,857.57

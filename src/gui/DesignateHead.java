@@ -48,8 +48,8 @@ public class DesignateHead extends javax.swing.JFrame {
         lblEmpId = new javax.swing.JLabel();
         lblDepId = new javax.swing.JLabel();
         lblInstructionos = new javax.swing.JLabel();
-        cmbDepId = new javax.swing.JComboBox<>();
-        cmbEmpID = new javax.swing.JComboBox<>();
+        cmbDepId = new javax.swing.JComboBox<String>();
+        cmbEmpID = new javax.swing.JComboBox<String>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -119,8 +119,8 @@ public class DesignateHead extends javax.swing.JFrame {
                         .addComponent(btnDesignate, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(197, 197, 197)
-                        .addComponent(cmbEmpID, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(84, 84, 84))
+                        .addComponent(cmbEmpID, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(56, 56, 56))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(86, 86, 86)
@@ -228,7 +228,7 @@ public class DesignateHead extends javax.swing.JFrame {
     private void cmbDepIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDepIdActionPerformed
         // TODO add your handling code here
         //method to list all employees of a selected department
-        int index = this.cmbDepId.getSelectedIndex();
+        int index = this.cmbDepId.getSelectedIndex()+1;
         //removing all previous items from combo box
         this.cmbEmpID.removeAllItems();
         //checking if there are employees in the department

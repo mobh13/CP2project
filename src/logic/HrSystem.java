@@ -78,7 +78,7 @@ public class HrSystem {
         getAllDepartments().get(depIndx).getListOfEmployees().get(indx).setGender(gender);
         getAllDepartments().get(depIndx).getListOfEmployees().get(indx).setPayLevel(payScales.get(payScale_indx));
     }catch(NullPointerException ex){
-        throw new NullPointerException("Cannot insert empty values in the employee.");
+        throw new NullPointerException("Cannot insert empty values in the employee. Error: "+ex);
     }
     
     

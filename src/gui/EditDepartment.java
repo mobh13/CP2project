@@ -221,8 +221,8 @@ public class EditDepartment extends javax.swing.JFrame {
     private void cmbDepIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDepIdActionPerformed
         //TODO add your handling code here:
         if (this.cmbDepId.getSelectedItem() != null) {
-            this.txtDepName.setText(HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getName());
-            this.txtLocation.setText(HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getLocation());
+            this.txtDepName.setText(HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()+1).getName());
+            this.txtLocation.setText(HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()+1).getLocation());
         }
     }//GEN-LAST:event_cmbDepIdActionPerformed
 

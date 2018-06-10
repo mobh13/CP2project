@@ -353,7 +353,7 @@ public class EditEmployee extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please select an employee from combo box", "Error", 2);
         }
         }catch(NullPointerException ex){
-            JOptionPane.showMessageDialog(this, "There are empty values being passed to the edit method", "Warning", 2);
+            JOptionPane.showMessageDialog(this, "There are empty values being passed to the edit method. Error: "+ex, "Warning", 2);
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
