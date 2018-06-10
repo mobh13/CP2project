@@ -14,7 +14,6 @@ import logic.HrSystem;
  *
  * @author Abdulla Ali
  * @version 1
- * @param: n/a
  * Purpose: To give the user an ability to edit the information of each department.
  */
 public class EditDepartment extends javax.swing.JFrame {

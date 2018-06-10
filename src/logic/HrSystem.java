@@ -28,13 +28,13 @@ public class HrSystem {
 
     /**
      * @author Moosa
-     * @purpose creating a new employee object using parameters and adding it to dep unassigned emp
-     * @param firstName
-     * @param lastName
-     * @param address
-     * @param gender
-     * @param payLevel
-     * @return empID
+     * Purpose creating a new employee object using parameters and adding it to dep unassigned emp
+     * @param firstName - first name of employee
+     * @param lastName - last name of employee 
+     * @param address - address of employee
+     * @param gender - gender of employee
+     * @param payLevel - pay level integer of employee
+     * @return empID - the generated id of employee
      */
     public static int addEmployee(String firstName, String lastName, String address, char gender, int payLevel) {
         //creating an emp object with the coresponding pay scale to the the appropiat department
@@ -57,11 +57,11 @@ public class HrSystem {
 
     /**
      * @author Mohammad Madan 
-     * @Purpose creating a new department object
-     * @param name
-     * @param location
+     * Purpose creating a new department object
+     * @param name - name of department
+     * @param location - location of department
      * @return depID
-     * @throws NullPointerException
+     * @throws NullPointerException - avoiding null values to pass
      */
     public static int addDepartment(String name, String location) {
         //creating an dep object with the data passed to add it to the system.
@@ -87,10 +87,10 @@ public class HrSystem {
 
     /**
      * @author: Abdulla Ali 
-     * @purpose: assigning an employee as head of a department
-     * @param empId
-     * @param depId
-     *  @throws NullPointerException
+     * Purpose: assigning an employee as head of a department
+     * @param empId - employee id 
+     * @param depId - department id
+     *  @throws NullPointerException - avoiding null values 
      */
     public static void designateHead(int empId, int depId) {
         //try and catch clause for null values and assign passed parameters to head fro dep
@@ -103,15 +103,15 @@ public class HrSystem {
 
     /**
      * @author: Moosa Hammad 
-     * @Purpose: changing the details of a specific employee
-     * @param indx
-     * @param f_name
-     * @param l_name
-     * @param address
-     * @param gender
-     * @param payScale_indx
-     * @param depIndx
-     * @throws NullPointerException
+     * Purpose: changing the details of a specific employee
+     * @param indx - index of employee location in the emp list
+     * @param f_name - employee's first name
+     * @param l_name - emp's last name
+     * @param address - address of employee
+     * @param gender - gender of employee
+     * @param payScale_indx - pay scale object's index 
+     * @param depIndx - department index in the department list
+     * @throws NullPointerException - avoiding null values
      */
     public static void editEmployee(int indx, String f_name, String l_name, String address, char gender, int payScale_indx, int depIndx) {
         //a try and catch clause to catch any null values being passed to the method
@@ -130,9 +130,9 @@ public class HrSystem {
 
     /**
      * @author: abdulla ali
-     * @purpose: to search for a department and delete it from system
-     * @param dep
-     * @return boolean found
+     * Purpose: to search for a department and delete it from system
+     * @param dep - object of department 
+     * @return boolean found 
      */
     public static boolean deleteDepartment(Department dep) {
         //boolean to control the loop and to retunr the value
