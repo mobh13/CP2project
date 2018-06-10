@@ -33,7 +33,6 @@ public class HrSystem {
         PayScale ps1 = payScales.get(payLevel);
         Employee newEmp = new Employee(firstName, lastName, address, gender, ps1);
         HrSystem.getAllDepartments().get(0).getListOfEmployees().add(newEmp);
-//       
         return newEmp.getId();
     }
     
@@ -44,7 +43,6 @@ public class HrSystem {
 
     public HrSystem() {
 
-//        unAssignedEmployees = new ArrayList<>();
         allDepartments = new ArrayList<>();
         payScales = new ArrayList<>();
     }
