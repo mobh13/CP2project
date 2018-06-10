@@ -442,8 +442,9 @@ public class EditEmployee extends javax.swing.JFrame {
             }
         }
         //setting the item to null at first
-        this.cmbPayScale.setSelectedItem(null);
+        
         this.cmbPayScale.setModel(new DefaultComboBoxModel(payScales.toArray()));
+        this.cmbPayScale.setSelectedItem(null);
     }
 
     /**

@@ -418,14 +418,14 @@ public class MainMenu extends javax.swing.JFrame {
             assignEmployee.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null,
-                    "No Departments exist", "Error",
+                    "No Employees exist", "Error",
                     JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btnAssignEmptoDepActionPerformed
 
     private void btnDepEditInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepEditInfoActionPerformed
         //check if the departments exist to enter and if none then display an error message
-        if (!HrSystem.getAllDepartments().isEmpty()) {
+        if (HrSystem.getAllDepartments().size() > 1) {
             EditDepartment editDepartment = new EditDepartment();
             editDepartment.setVisible(true);
         } else {
@@ -437,7 +437,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnDepDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDepDelActionPerformed
         // TODO add your handling code here:
-        if (!HrSystem.getAllDepartments().isEmpty()) {
+        if (HrSystem.getAllDepartments().size() > 1) {
             DeleteDepartment del_dep = new DeleteDepartment();
             del_dep.setVisible(true);
         } else {
@@ -450,7 +450,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnDesigHeadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDesigHeadActionPerformed
         // TODO add your handling code here:
-        if (!HrSystem.getAllDepartments().isEmpty()) {
+        if (HrSystem.getAllDepartments().size() > 1) {
             DesignateHead dh1 = new DesignateHead();
             dh1.setVisible(true);
         } else {
@@ -570,10 +570,10 @@ public class MainMenu extends javax.swing.JFrame {
         } catch (IOException ex) { //error message
             JOptionPane.showMessageDialog(this, ex + "\nError: The output file is not "
                     + "accessible!", "Output Error", 0);
-        }catch(Exception ex){
-            JOptionPane.showMessageDialog(this,"Error: "+ex, "Output Error", 0);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, "Error: " + ex, "Output Error", 0);
         }
-        
+
     }
 
     private void deSerialize() {
@@ -581,6 +581,7 @@ public class MainMenu extends javax.swing.JFrame {
         try {
 
             FileInputStream file = new FileInputStream("hrsystemdata.data");
+
             ObjectInputStream in = new ObjectInputStream(file);
 
             HrSystem.setAllDepartments((ArrayList<Department>) in.readObject());
@@ -600,28 +601,24 @@ public class MainMenu extends javax.swing.JFrame {
                     }
                     inCounter++;
                 }
-counter++;
+                counter++;
             }
             counter = 0;
             while (counter < HrSystem.getAllDepartments().size()) {
 
                 if (HrSystem.getAllDepartments().get(counter).getId() > departmentId) {
                     departmentId = HrSystem.getAllDepartments().get(counter).getId();
-                    
-
                 }
                 counter++;
-
             }
             counter = 0;
             while (counter < HrSystem.getPayScales().size()) {
 
                 if (HrSystem.getPayScales().get(counter).getLevel() > payScaleId) {
                     payScaleId = HrSystem.getPayScales().get(counter).getLevel();
-                    
 
                 }
-counter++;
+                counter++;
             }
             departmentId++;
             employeeId++;
@@ -640,7 +637,6 @@ counter++;
             JOptionPane.showMessageDialog(this, ex + "\n Error:The data can't  be loaded into the system. please contact the developer for support. ",
                     "Internal Input Error", 0);
         }
-
     }
 
     /**

@@ -171,7 +171,8 @@ public class ListEmployee extends javax.swing.JFrame {
 
     private void btnListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListActionPerformed
         // TODO add your handling code here:
-        if (!HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().isEmpty()) {
+        if(this.cmbDepId.getSelectedItem() != null){
+            if (!HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().isEmpty()) {
             this.txtAreaListEmp.setText("");
             this.txtAreaListEmp.append("Employees assigned to department " + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getName()
                     + " :");
@@ -183,8 +184,15 @@ public class ListEmployee extends javax.swing.JFrame {
             }
         } else {
             JOptionPane.showMessageDialog(null,
-                    "Department has no employees assigned to it.", "Error",
+                    "The department has no employees assigned to it.", "Error",
                     JOptionPane.ERROR_MESSAGE);
+        }
+        }
+        else{
+                 JOptionPane.showMessageDialog(null,
+                    "You did not choose any department", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            
         }
     }//GEN-LAST:event_btnListActionPerformed
 
