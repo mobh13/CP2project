@@ -13,13 +13,20 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Moosa
+ * @author Moosa Hammad
+ * Purpose: Have a clean install populating program with sample data
  */
 public class CleanInstall {
 
     static private String depName, depLoc, empFName, empLName, empAddress;
     static private char empGender;
     static private int empSalScal;
+    
+    /**
+     * @Author: Moosa Hammad
+     * Purpose: Take the data from a text file stored locally and then add it in
+     * the program array lists and variables
+     */
 
     public static void clean() {
         //clear all the departments and employees to prepare for a clean start
