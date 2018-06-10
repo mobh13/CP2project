@@ -717,7 +717,12 @@ public class MainMenu extends javax.swing.JFrame {
             HrSystem.getPayScales().add(new PayScale(8, 96336.34));
         }
     }
-
+    
+    /**
+     * Name: addDepartmentZero
+     * @Author: Moosa Hammad
+     * Purpose: add the first department when the program runs (Unassigned Employees "Department")
+     */
     private void addDepartmentZero() {
         if (HrSystem.getAllDepartments().isEmpty()) {
             HrSystem.addDepartment("Unassigned Employees", "");
