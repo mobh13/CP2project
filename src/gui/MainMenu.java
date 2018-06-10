@@ -562,6 +562,8 @@ public class MainMenu extends javax.swing.JFrame {
             // serialize the data objects
             outt.writeObject(HrSystem.getAllDepartments());
             outt.writeObject(HrSystem.getPayScales());
+            f.close();
+            outt.close();
         } catch (FileNotFoundException ex) { //error message
             JOptionPane.showMessageDialog(this, ex + "\nError:  The output file was "
                     + "not found!", "Output Error", 0);
@@ -577,7 +579,7 @@ public class MainMenu extends javax.swing.JFrame {
 
             FileInputStream file = new FileInputStream("hrsystemdata.data");
             ObjectInputStream in = new ObjectInputStream(file);
-            
+
             HrSystem.setAllDepartments((ArrayList<Department>) in.readObject());
             HrSystem.setPayScales((ArrayList<PayScale>) in.readObject());
             int payScaleId = 0;
@@ -586,26 +588,26 @@ public class MainMenu extends javax.swing.JFrame {
             int counter = 0;
             int inCounter = 0;
             while (counter < HrSystem.getAllDepartments().size()) {
-                inCounter = 0 ;
- while (inCounter < HrSystem.getAllDepartments().get(counter).getListOfEmployees().size()) {
-               
+                inCounter = 0;
+                while (inCounter < HrSystem.getAllDepartments().get(counter).getListOfEmployees().size()) {
 
-if(HrSystem.getAllDepartments().get(counter).getListOfEmployees().get(inCounter).getId() > employeeId){
+                    if (HrSystem.getAllDepartments().get(counter).getListOfEmployees().get(inCounter).getId() > employeeId) {
 
-employeeId = HrSystem.getAllDepartments().get(counter).getListOfEmployees().get(inCounter).getId();
-}
-inCounter++;
+                        employeeId = HrSystem.getAllDepartments().get(counter).getListOfEmployees().get(inCounter).getId();
+                    }
+                    inCounter++;
                 }
-
+counter++;
             }
             counter = 0;
             while (counter < HrSystem.getAllDepartments().size()) {
 
                 if (HrSystem.getAllDepartments().get(counter).getId() > departmentId) {
                     departmentId = HrSystem.getAllDepartments().get(counter).getId();
-                    counter++;
+                    
 
                 }
+                counter++;
 
             }
             counter = 0;
@@ -613,10 +615,10 @@ inCounter++;
 
                 if (HrSystem.getPayScales().get(counter).getLevel() > payScaleId) {
                     payScaleId = HrSystem.getPayScales().get(counter).getLevel();
-                    counter++;
+                    
 
                 }
-
+counter++;
             }
             departmentId++;
             employeeId++;
@@ -692,8 +694,8 @@ inCounter++;
     }
 
     private void addPayScale() {
-        File file = new File("hrsystemdata.data");
-        if (!file.exists()) {
+
+        if (HrSystem.getAllDepartments().isEmpty()) {
             HrSystem.getPayScales().add(new PayScale(1, 44245.75));
             HrSystem.getPayScales().add(new PayScale(2, 48670.32));
             HrSystem.getPayScales().add(new PayScale(3, 53537.35));
@@ -704,13 +706,12 @@ inCounter++;
             HrSystem.getPayScales().add(new PayScale(8, 96336.34));
         }
     }
-    
-    private void addDepartmentZero(){
-        if(HrSystem.getAllDepartments().isEmpty()){
+
+    private void addDepartmentZero() {
+        if (HrSystem.getAllDepartments().isEmpty()) {
             HrSystem.addDepartment("Unassigned Employees", "");
         }
     }
-
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
