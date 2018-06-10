@@ -11,10 +11,9 @@ import javax.swing.JOptionPane;
 import logic.HrSystem;
 
 /**
- *
- * @author Abdulla Ali
- * @version 1
- * Purpose: To give the user an ability to edit the information of each department.
+ *Name: EditDepartment
+ * @author Moosa Hammad
+ * purpose: Edit the details of a specified department when passing some exceptions
  */
 public class EditDepartment extends javax.swing.JFrame {
 
@@ -161,6 +160,10 @@ public class EditDepartment extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * @Author: Moosa Hammad
+     * purpose: load all the departments in the combo box 
+     */
     private void loadDepartments() {
         this.cmbDepId.removeAllItems();
         //for loop to put all the departments into the combo box

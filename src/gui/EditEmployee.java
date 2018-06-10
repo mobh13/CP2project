@@ -45,6 +45,10 @@ public class EditEmployee extends javax.swing.JFrame {
         this.setLocation(x, y);
     }
 
+    /**
+     * @Author: Abdulla Ali
+     * purpose: load all the departments in the combo box
+     */
     private void loadDepartments() {
         //populating the dep combo box
         //checking if there are any deps

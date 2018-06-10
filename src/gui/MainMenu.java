@@ -674,7 +674,15 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    /**
+     * Name: check
+     * @return true - when at least one employee found, false - when no employee was found
+     * @Author: Moosa Hammad
+     * Purpose: check the existing of at least one employee before start to let user have an
+     * access for the other methods or not (if there are employees then user is permitted to
+     * modify data in the program)
+     */
     private boolean check() {
         //condition to exit the loops
         boolean cond = false;
@@ -691,9 +699,13 @@ public class MainMenu extends javax.swing.JFrame {
         }
         return cond;
     }
-
+    
+    /**
+     * Name: addPayScale
+     * @Author: Moosa Hammad
+     * Purpose: add the pay scales when the program starts
+     */
     private void addPayScale() {
-
         if (HrSystem.getAllDepartments().isEmpty()) {
             HrSystem.getPayScales().add(new PayScale(1, 44245.75));
             HrSystem.getPayScales().add(new PayScale(2, 48670.32));

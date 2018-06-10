@@ -11,13 +11,16 @@ import javax.swing.JOptionPane;
 import logic.HrSystem;
 
 /**
- *
- * @author A.A
+ * @author Moosa Hammad
+ * Name: DeleteEmployee
+ * Purpose: Provide an interface to delete an Employee according to some conditions 
+ * @version 1
  */
 public class DeleteEmployee extends javax.swing.JFrame {
 
     /**
      * Creates new form DeleteEmployee
+     * @author: Moosa Hammad 
      */
     public DeleteEmployee() {
         initComponents();
@@ -204,7 +207,8 @@ public class DeleteEmployee extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbEmpIdActionPerformed
 
     /**
-     * @param args the command line arguments
+     * 
+     * @param args 
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -238,7 +242,10 @@ public class DeleteEmployee extends javax.swing.JFrame {
         });
     }
 
-    //method to load the departments
+    /**
+     *@Author: Moosa Hammad
+     * purpose: to load departments in the combo box
+     */
     private void loadDepartments() {
         //for loop to put all the departments into the combo box
         for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
