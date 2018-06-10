@@ -189,8 +189,8 @@ public class DesignateHead extends javax.swing.JFrame {
                     //calling method from HR System to designate head
                     HrSystem.designateHead(empId, depId);
                     //prompting a message box to confirm 
-                    JOptionPane.showMessageDialog(this, "Employee: " + HrSystem.getUnAssignedEmployees().get(empId).getFirstName() + " "
-                            + HrSystem.getUnAssignedEmployees().get(empId).getLastName() + " is now the head of "
+                    JOptionPane.showMessageDialog(this, "Employee: " + HrSystem.getAllDepartments().get(depId).getListOfEmployees().get(empId).getFirstName()
+                            +" "+HrSystem.getAllDepartments().get(depId).getListOfEmployees().get(empId).getLastName() + " is now the head of "
                             + HrSystem.getAllDepartments().get(depId).getName() + " Department.", "Designation is successul", 1);
                     //setting both combo boxes to null
                     this.cmbDepId.setSelectedItem(null);
@@ -200,8 +200,8 @@ public class DesignateHead extends javax.swing.JFrame {
                 // calling the method to designate head from HR System
                 HrSystem.designateHead(empId, depId);
                 //prompting a message box to confirm 
-                JOptionPane.showMessageDialog(this, "Employee: " + HrSystem.getUnAssignedEmployees().get(empId).getFirstName() + " "
-                        + HrSystem.getUnAssignedEmployees().get(empId).getLastName() + " is now the head of "
+                JOptionPane.showMessageDialog(this, "Employee: " + HrSystem.getAllDepartments().get(depId).getListOfEmployees().get(empId).getFirstName() + " "
+                        + HrSystem.getAllDepartments().get(depId).getListOfEmployees().get(empId).getLastName() + " is now the head of "
                         + HrSystem.getAllDepartments().get(depId).getName() + " Department.", "Designation is successul", 1);
                 //setting both combo boxes to null
                 this.cmbDepId.setSelectedItem(null);
