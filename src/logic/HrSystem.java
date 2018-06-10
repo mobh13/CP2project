@@ -9,8 +9,7 @@ import java.util.ArrayList;
 
 /**
  * @author madan Name: Human Resource System 
- * @Purpose: Used to behave as the
- * management tool for storing the structure of the system.
+ * Purpose: Used to behave as the management tool for storing the structure of the system.
  * @version 2
  */
 public class HrSystem {
