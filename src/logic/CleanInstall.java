@@ -5,8 +5,11 @@
  */
 package logic;
 
-
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,37 +23,44 @@ public class CleanInstall {
 
     public static void clean() {
         //clear all the departments and employees to prepare for a clean start
-        HrSystem.getAllDepartments().get(0).getListOfEmployees().clear();
-        HrSystem.getAllDepartments().clear();
-        Department.setIdCounter(0);
-        HrSystem.addDepartment("Unassigned Employees", "");
-        //create a scanner object to scan the file containing the data
-        Scanner input;
-        Department.setIdCounter(1);
-        Employee.setIdCounter(1);
-        //initilize the scanner object with the class path as a source 
-        input = new Scanner(CleanInstall.class.getResourceAsStream("/resources/startup.txt"));
-        //take every set of data and store it in a variable
-        int noDepartments = Integer.parseInt(input.nextLine());
-        for (int i = 0; i < noDepartments; i++) {
-            depName = input.nextLine();
-            depLoc = input.nextLine();
-            int noEmployees = Integer.parseInt(input.nextLine());
-            //add the department
-            HrSystem.addDepartment(depName, depLoc);
-            //loop for every employee in department
-            for (int j = 0; j < noEmployees; j++) {
-                //take employee info from file
-                empFName = input.nextLine();
-                empLName = input.nextLine();
-                empGender = input.nextLine().charAt(0);
-                empAddress = input.nextLine();
-                empSalScal = Integer.parseInt(input.nextLine().trim());
-                //insert employee and assign to a department
-                Employee emp = new Employee(empFName, empLName, empAddress, empGender, HrSystem.getPayScales().get(empSalScal - 1)); 
-                //skip the unassigned department
-                HrSystem.addEmployee(emp, i + 1);
+        try {
+            HrSystem.getAllDepartments().get(0).getListOfEmployees().clear();
+            HrSystem.getAllDepartments().clear();
+            Department.setIdCounter(0);
+            HrSystem.addDepartment("Unassigned Employees", "");
+            //create a scanner object to scan the file containing the data
+            Scanner input;
+            Department.setIdCounter(1);
+            Employee.setIdCounter(1);
+            //initilize the scanner object with the class path as a source 
+            
+
+            input = new Scanner(new File("startup.txt"));
+
+            //take every set of data and store it in a variable
+            int noDepartments = Integer.parseInt(input.nextLine());
+            for (int i = 0; i < noDepartments; i++) {
+                depName = input.nextLine();
+                depLoc = input.nextLine();
+                int noEmployees = Integer.parseInt(input.nextLine());
+                //add the department
+                HrSystem.addDepartment(depName, depLoc);
+                //loop for every employee in department
+                for (int j = 0; j < noEmployees; j++) {
+                    //take employee info from file
+                    empFName = input.nextLine();
+                    empLName = input.nextLine();
+                    empGender = input.nextLine().charAt(0);
+                    empAddress = input.nextLine();
+                    empSalScal = Integer.parseInt(input.nextLine().trim());
+                    //insert employee and assign to a department
+                    Employee emp = new Employee(empFName, empLName, empAddress, empGender, HrSystem.getPayScales().get(empSalScal - 1));
+                    //skip the unassigned department
+                    HrSystem.addEmployee(emp, i + 1);
+                }
             }
+        } catch (FileNotFoundException ex) {
+           Logger.getLogger(CleanInstall.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

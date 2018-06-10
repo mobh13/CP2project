@@ -293,6 +293,7 @@ public class EditEmployee extends javax.swing.JFrame {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
         // series of if statmnets used to valdiate the input in each field before saving
+        try{
         if (this.cmbEmpId.getSelectedItem() != null) {
             if (this.txtFName.getText() != null && this.txtFName.getText().length() > 2) {
                 if (this.txtLName.getText() != null && this.txtLName.getText().length() > 2) {
@@ -351,10 +352,14 @@ public class EditEmployee extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Please select an employee from combo box", "Error", 2);
         }
+        }catch(NullPointerException ex){
+            JOptionPane.showMessageDialog(this, "There are empty values being passed to the edit method", "Warning", 2);
+        }
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void cmbEmpIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbEmpIdActionPerformed
         // TODO add your handling code here:
+        try{
         if (this.cmbEmpId.getSelectedItem() != null) {
             //displaying the information of the employee before changing them
             this.txtFName.setText(HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getFirstName());
@@ -367,6 +372,8 @@ public class EditEmployee extends javax.swing.JFrame {
             }
             int pay_lvl = (HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getPayLevel().getLevel()) - 1;
             this.cmbPayScale.setSelectedIndex(pay_lvl);
+        }}catch(IllegalArgumentException ex){
+            //
         }
     }//GEN-LAST:event_cmbEmpIdActionPerformed
 

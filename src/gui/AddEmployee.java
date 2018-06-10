@@ -7,7 +7,6 @@ package gui;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.io.File;
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
 import logic.*;
@@ -287,7 +286,14 @@ public class AddEmployee extends javax.swing.JFrame {
 
             int empId = HrSystem.addEmployee(fName, lName, address, gender, payLvl);
 
-            this.txtEmpId.setText(Integer.toString(empId));
+            try{
+                this.txtEmpId.setText(Integer.toString(empId));
+            }catch(NumberFormatException ex){
+                JOptionPane.showMessageDialog(null,
+                    "The employee's ID cannot be converted to integers.", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            }
+
 
             JOptionPane.showMessageDialog(null,
                     "Employee added successfully", "Success",

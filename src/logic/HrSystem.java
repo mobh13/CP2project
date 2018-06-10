@@ -71,12 +71,18 @@ public class HrSystem {
     }
 
     public static void editEmployee(int indx, String f_name, String l_name, String address, char gender, int payScale_indx, int depIndx) {
+        try{
         getAllDepartments().get(depIndx).getListOfEmployees().get(indx).setFirstName(f_name);
         getAllDepartments().get(depIndx).getListOfEmployees().get(indx).setLastName(l_name);
         getAllDepartments().get(depIndx).getListOfEmployees().get(indx).setAddress(address);
         getAllDepartments().get(depIndx).getListOfEmployees().get(indx).setGender(gender);
         getAllDepartments().get(depIndx).getListOfEmployees().get(indx).setPayLevel(payScales.get(payScale_indx));
+    }catch(NullPointerException ex){
+        throw new NullPointerException("Cannot insert empty values in the employee.");
     }
+    
+    
+}
 
     public static boolean deleteDepartment(Department dep) {
         boolean found = false;

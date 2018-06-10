@@ -570,7 +570,10 @@ public class MainMenu extends javax.swing.JFrame {
         } catch (IOException ex) { //error message
             JOptionPane.showMessageDialog(this, ex + "\nError: The output file is not "
                     + "accessible!", "Output Error", 0);
+        }catch(Exception ex){
+            JOptionPane.showMessageDialog(this,"Error: "+ex, "Output Error", 0);
         }
+        
     }
 
     private void deSerialize() {
