@@ -20,8 +20,8 @@ public class CleanInstall {
 
     public static void clean() {
         //clear all the departments and employees to prepare for a clean start
-        HrSystem.getAllDepartments().clear();
         HrSystem.getAllDepartments().get(0).getListOfEmployees().clear();
+        HrSystem.getAllDepartments().clear();
         Department.setIdCounter(0);
         HrSystem.addDepartment("Unassigned Employees", "");
         //create a scanner object to scan the file containing the data

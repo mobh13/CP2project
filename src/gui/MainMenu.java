@@ -31,6 +31,7 @@ public class MainMenu extends javax.swing.JFrame {
         HrSystem hrSystem = new HrSystem();
         deSerialize();
         addPayScale();
+        addDepartmentZero();
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
@@ -701,6 +702,12 @@ inCounter++;
             HrSystem.getPayScales().add(new PayScale(6, 71258.22));
             HrSystem.getPayScales().add(new PayScale(7, 80946.95));
             HrSystem.getPayScales().add(new PayScale(8, 96336.34));
+        }
+    }
+    
+    private void addDepartmentZero(){
+        if(HrSystem.getAllDepartments().isEmpty()){
+            HrSystem.addDepartment("Unassigned Employees", "");
         }
     }
 

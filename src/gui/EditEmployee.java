@@ -367,7 +367,7 @@ public class EditEmployee extends javax.swing.JFrame {
                 this.rdbtnFemale.setSelected(true);
             }
             int pay_lvl = (HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(this.cmbEmpId.getSelectedIndex()).getPayLevel().getLevel()) - 1;
-            this.cmbPayScale.setSelectedIndex(pay_lvl);
+//            this.cmbPayScale.setSelectedIndex(pay_lvl);
         }
     }//GEN-LAST:event_cmbEmpIdActionPerformed
 
