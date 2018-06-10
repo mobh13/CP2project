@@ -21,7 +21,8 @@ public class Employee implements Serializable{
     private int id;
     static private int idCounter = 1;
    
-   public Employee(String firstName, String lastName, String address, char gender, PayScale payLevel) {
+   public Employee(String firstName, String lastName, String address, char gender, PayScale payLevel ) {
+       
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;

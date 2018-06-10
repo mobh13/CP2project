@@ -66,7 +66,7 @@ public class ListEmployee extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtAreaListEmp = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
