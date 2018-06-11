@@ -21,8 +21,10 @@ public class AddDepartment extends javax.swing.JFrame {
      */
     public AddDepartment() {
         initComponents();
+                //code to change the background of the jframe
         java.awt.Color recursiveBG = new java.awt.Color(240, 240, 240);
         getContentPane().setBackground(recursiveBG);
+        //centerting the window
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
@@ -190,38 +192,42 @@ public class AddDepartment extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
-
+        
+        // validation for the input fileds 
         if (txtDepName.getText().isEmpty()) {
-
+            // show error message
             JOptionPane.showMessageDialog(null,
                     "Department Name is Empty", "Error",
                     JOptionPane.ERROR_MESSAGE);
         } else if (txtDepName.getText().length() <= 3) {
+             // show error message
             JOptionPane.showMessageDialog(null,
                     "Department Name is Invalid, must be more than 3 characters", "Error",
                     JOptionPane.ERROR_MESSAGE);
 
         } else if (txtDepName.getText().length() > 3 ) {
-
+            // get the text
             String depName = txtDepName.getText();
 
             if (txtdepLocation.getText().isEmpty()) {
-
+        // show error message
                 JOptionPane.showMessageDialog(null,
                         "Department Location is Empty", "Error",
                         JOptionPane.ERROR_MESSAGE);
             } else if (txtdepLocation.getText().length() <= 3) {
+                 // show error message
                 JOptionPane.showMessageDialog(null,
                         "Department Location is Invalid, must be more than 3 characters", "Error",
                         JOptionPane.ERROR_MESSAGE);
 
             } else if (txtdepLocation.getText().length() > 3 ) {
-
+                // get the location string
                 String depLocation = txtdepLocation.getText();
-
+                // create department and get the id of the department
                 int depId = HrSystem.addDepartment(depName, depLocation);
+                // change the id filed to the id
                 depIdField.setText(Integer.toString(depId));
+                // show sucsess message
                 JOptionPane.showMessageDialog(null,
                         "Department added successfully", "Success",
                         JOptionPane.INFORMATION_MESSAGE);
@@ -237,34 +243,38 @@ public class AddDepartment extends javax.swing.JFrame {
     }//GEN-LAST:event_depIdFieldActionPerformed
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        // TODO add your handling code here:
+        // show conformation window
         int reply = JOptionPane.showConfirmDialog(
                 null,
                 "Are you sure you want to close this window?",
                 "Warning", JOptionPane.YES_OPTION);
-        if (reply == JOptionPane.YES_OPTION) {
-            this.dispose();
+        // check the user choice
+        if (reply == JOptionPane.YES_OPTION) { // if yes
+            this.dispose(); // dispose the window
         }
     }//GEN-LAST:event_btnCloseActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // TODO add your handling code here:
+        // show conformation window
         int reply = JOptionPane.showConfirmDialog(
                 null,
                 "Are you sure you want to close this window?",
                 "Warning", JOptionPane.YES_OPTION);
-        if (reply == JOptionPane.YES_OPTION) {
-            this.dispose();
+         // check the user choice
+        if (reply == JOptionPane.YES_OPTION) { // if yes
+            this.dispose(); // dispose the window
         }
     }//GEN-LAST:event_formWindowClosing
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        // TODO add your handling code here:
+        // show conformation window
         int reply = JOptionPane.showConfirmDialog(
                 null,
                 "Are you sure you want to clear fields?",
                 "Warning", JOptionPane.YES_OPTION);
+        // check user choice
         if (reply == JOptionPane.YES_OPTION) {
+            //clear all inputs 
             this.txtDepName.setText(null);
             this.txtdepLocation.setText(null);
             this.depIdField.setText(null);

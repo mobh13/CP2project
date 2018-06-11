@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * Name: Pay Scales
  * purpose: to be used to create pay scale objects for each level
- * @author madan
+ * @author mohamed madan
  * @version 1
  */
 public class PayScale implements Serializable {

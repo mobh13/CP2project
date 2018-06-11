@@ -23,13 +23,16 @@ public class AddEmployee extends javax.swing.JFrame {
      * Creates new form AddEmployee
      */
     public AddEmployee() {
-        initComponents();
+        initComponents(); //initiate components
+         //code to change the background of the jframe
         java.awt.Color recursiveBG = new java.awt.Color(240, 240, 240);
         getContentPane().setBackground(recursiveBG);
+          //centerting the window
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
         this.setLocation(x, y);
+        // loading the payScales
         loadPayScale();
     }
 
@@ -247,7 +250,9 @@ public class AddEmployee extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        // TODO add your handling code here:
+        
+        // validation for the input 
+        
         if (txtFName.getText().length() <= 2) {
             JOptionPane.showMessageDialog(null,
                     "First Name is Empty or less than two characters long", "Error",
@@ -269,7 +274,7 @@ public class AddEmployee extends javax.swing.JFrame {
                     "You should select a gender for the employee", "Error",
                     JOptionPane.ERROR_MESSAGE);
         } else {
-
+            // get the values of the fileds 
             String fName = txtFName.getText();
             String lName = txtLName.getText();
             String address = txtAdress.getText();
@@ -283,42 +288,50 @@ public class AddEmployee extends javax.swing.JFrame {
             } else if (rdbtnFemale.isSelected()) {
                 gender = 'F';
             }
-
+            // create the employee object ang get back the id
             int empId = HrSystem.addEmployee(fName, lName, address, gender, payLvl);
 
             try{
                 this.txtEmpId.setText(Integer.toString(empId));
-            }catch(NumberFormatException ex){
+            }
+            // Exception Handling
+            catch(NumberFormatException ex){
                 JOptionPane.showMessageDialog(null,
                     "The employee's ID cannot be converted to integers. Error: "+ex, "Error",
                     JOptionPane.ERROR_MESSAGE);
             }
 
-
+            // display sucssess message
             JOptionPane.showMessageDialog(null,
                     "Employee added successfully", "Success",
                     JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnAddActionPerformed
-
+      /**
+     * @author Mohammad Madan 
+     * Purpose: loading the payScales
+     */
     private void loadPayScale() {
-        this.cmbPayLevel.removeAllItems();
-        if (!HrSystem.getPayScales().isEmpty()) {
+        this.cmbPayLevel.removeAllItems(); // Reset the combo box
+        if (!HrSystem.getPayScales().isEmpty()) { // check if the payscale arrayList is not empty
+            // loop for getting the data of the ArrayList
             for (int i = 0; i < HrSystem.getPayScales().size(); i++) {
                 this.cmbPayLevel.addItem(HrSystem.getPayScales().get(i).getLevel() + " - "
                         + df2.format(HrSystem.getPayScales().get(i).getValue()));
             }
         }
+        // set selected item to null 
         this.cmbPayLevel.setSelectedItem(null);
     }
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-        // TODO add your handling code here:
+        // Show conformation message 
         int reply = JOptionPane.showConfirmDialog(
                 null,
                 "Are you sure you want to close this window?",
                 "Warning", JOptionPane.YES_OPTION);
-        if (reply == JOptionPane.YES_OPTION) {
-            this.dispose();
+        // check the choice of the user
+        if (reply == JOptionPane.YES_OPTION) { // if yes
+            this.dispose();//dispose this window
         }
     }//GEN-LAST:event_btnCloseActionPerformed
 
@@ -327,12 +340,14 @@ public class AddEmployee extends javax.swing.JFrame {
     }//GEN-LAST:event_txtLNameActionPerformed
 
     private void btnClearjButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearjButton1ActionPerformed
-        // TODO add your handling code here:
+        // Show conformation message 
         int reply = JOptionPane.showConfirmDialog(
                 null,
                 "Are you sure you want to clear fields?",
                 "Warning", JOptionPane.YES_OPTION);
+        // check the user input
         if (reply == JOptionPane.YES_OPTION) {
+            // clear everything
             this.btnGrpGen.clearSelection();
             this.txtAdress.setText(null);
             this.txtFName.setText(null);
@@ -344,13 +359,14 @@ public class AddEmployee extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
 
-        // TODO add your handling code here:
+         // Show conformation message 
         int reply = JOptionPane.showConfirmDialog(
                 null,
                 "Are you sure you want to close this window?",
                 "Warning", JOptionPane.YES_OPTION);
+        // check the choice of the user
         if (reply == JOptionPane.YES_OPTION) {
-            this.dispose();
+            this.dispose();//dispose this window
         }
     }//GEN-LAST:event_formWindowClosing
 
