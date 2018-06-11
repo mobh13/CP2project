@@ -157,27 +157,33 @@ public class DeleteEmployee extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        //check if user selects any data and show the appropriate message if he doesn't select one
-        if (cmbDepId.getSelectedItem() != null && cmbEmpId.getSelectedItem() != null && checkHead()) {
-            //remove the employee
-            HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().remove(cmbEmpId.getSelectedIndex());
-            //print confirmation
-            JOptionPane.showMessageDialog(null, "The Employee: " + cmbEmpId.getSelectedItem().toString() + "has been deleted", "Success",
-                    JOptionPane.INFORMATION_MESSAGE);
-            //clear the combo boxes
-            this.cmbEmpId.removeAllItems();
-            this.cmbDepId.setSelectedItem(null);
-            this.cmbEmpId.setSelectedItem(null);
-            //print errors 
-        } else if (cmbDepId.getSelectedItem() == null) {
-            JOptionPane.showMessageDialog(null, "Enter a department to delete the employee from",
-                    "Message", 2);
-        } else if (cmbEmpId.getSelectedItem() == null) {
-            JOptionPane.showMessageDialog(null, "Choose an employee to delete",
-                    "Message", 2);
-        } else {
-            JOptionPane.showMessageDialog(null, "The employee is the head of the department, change the head of the department to delete him",
-                    "Message", 2);
+        //asking confirmation
+        int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the employee "
+                + cmbEmpId.getSelectedItem() + "?",
+                "Warning", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+            //check if user selects any data and show the appropriate message if he doesn't select one
+            if (cmbDepId.getSelectedItem() != null && cmbEmpId.getSelectedItem() != null && checkHead()) {
+                //remove the employee
+                HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().remove(cmbEmpId.getSelectedIndex());
+                //print confirmation
+                JOptionPane.showMessageDialog(null, "The Employee: " + cmbEmpId.getSelectedItem().toString() + "has been deleted", "Success",
+                        JOptionPane.INFORMATION_MESSAGE);
+                //clear the combo boxes
+                this.cmbEmpId.removeAllItems();
+                this.cmbDepId.setSelectedItem(null);
+                this.cmbEmpId.setSelectedItem(null);
+                //print errors 
+            } else if (cmbDepId.getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(null, "Enter a department to delete the employee from",
+                        "Message", 2);
+            } else if (cmbEmpId.getSelectedItem() == null) {
+                JOptionPane.showMessageDialog(null, "Choose an employee to delete",
+                        "Message", 2);
+            } else {
+                JOptionPane.showMessageDialog(null, "The employee is the head of the department, change the head of the department to delete him",
+                        "Message", 2);
+            }
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 

@@ -3,13 +3,6 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/iakha/Documents/NetBeansProjects/CP2project_git/src/logic/HrSystem.java</file>
-            <file>file:/C:/Users/iakha/Documents/NetBeansProjects/CP2project_git/src/logic/Employee.java</file>
-            <file>file:/C:/Users/iakha/Documents/NetBeansProjects/CP2project_git/src/logic/PayScale.java</file>
-            <file>file:/C:/Users/iakha/Documents/NetBeansProjects/CP2project_git/src/logic/CleanInstall.java</file>
-            <file>file:/C:/Users/iakha/Documents/NetBeansProjects/CP2project_git/src/logic/Department.java</file>
-        </group>
-        <group>
             <file>file:/C:/Users/iakha/Documents/NetBeansProjects/CP2project_git/src/gui/PayReport.java</file>
             <file>file:/C:/Users/iakha/Documents/NetBeansProjects/CP2project_git/src/logic/HrSystem.java</file>
             <file>file:/C:/Users/iakha/Documents/NetBeansProjects/CP2project_git/src/gui/DeleteEmployee.java</file>
@@ -22,5 +15,6 @@
             <file>file:/C:/Users/iakha/Documents/NetBeansProjects/CP2project_git/src/gui/DesignateHead.java</file>
             <file>file:/C:/Users/iakha/Documents/NetBeansProjects/CP2project_git/src/logic/Department.java</file>
         </group>
+        <group/>
     </open-files>
 </project-private>
