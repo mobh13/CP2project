@@ -203,10 +203,10 @@ public class PayReport extends javax.swing.JFrame {
                 for (int i = 0; i < HrSystem.getAllDepartments().size(); i++) {
                     dep_sum = 0.0;
                     if (!HrSystem.getAllDepartments().get(i).getListOfEmployees().isEmpty()) {
-                        ps.append("\r\nDepartment ID: " + HrSystem.getAllDepartments().get(i).getId());
+                        ps.append("\r\n\r\nDepartment ID: " + HrSystem.getAllDepartments().get(i).getId());
                         ps.append("\t\tDepartment Name: " + HrSystem.getAllDepartments().get(i).getName());
                         for (int j = 0; j < HrSystem.getAllDepartments().get(i).getListOfEmployees().size(); j++) {
-                            ps.append("\r\ntName: " + HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getFirstName() + " "
+                            ps.append("\r\n\ttName: " + HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getFirstName() + " "
                                     + HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getLastName());
                             ps.append("\tID: " + Integer.toString(HrSystem.getAllDepartments().get(i).getListOfEmployees().get(j).getId()));
                             //formating the output to two decimal places.
