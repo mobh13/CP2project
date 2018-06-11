@@ -182,6 +182,7 @@ public class DeleteEmployee extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //confirmation to close window
         int reply = JOptionPane.showConfirmDialog(
                 null,
                 "Are you sure you want to close this window?",
