@@ -183,8 +183,7 @@ public class EditDepartment extends javax.swing.JFrame {
         String depName = txtDepName.getText();
         String depLoc = txtLocation.getText();
 
-        if (depName.length() > 3 && depLoc.length() > 3
-                && !txtDepName.getText().isEmpty() && !txtLocation.getText().isEmpty()) {
+        if (depName.length() > 3 && depLoc.length() > 3) {
             //update the department with the new data
             int index = cmbDepId.getSelectedIndex();
             HrSystem.getAllDepartments().get(index + 1).setName(depName);
