@@ -12,15 +12,18 @@ import logic.HrSystem;
 
 /**
  * @author Moosa Hammad
- * Name: DeleteEmployee
- * Purpose: Provide an interface to delete an Employee according to some conditions 
+ * @Name: DeleteEmployee
+ * @Purpose: Provide an interface to delete an Employee according to some
+ * conditions
  * @version 1
  */
 public class DeleteEmployee extends javax.swing.JFrame {
 
     /**
-     * Creates new form DeleteEmployee
-     * @author: Moosa Hammad 
+     * Name: DeleteEmployee
+     *
+     * @purpose: Creates new form DeleteEmployee
+     * @author: Moosa Hammad
      */
     public DeleteEmployee() {
         initComponents();
@@ -155,23 +158,23 @@ public class DeleteEmployee extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //check if user selects any data and show the appropriate message if he doesn't select one
-        if (cmbDepId.getSelectedItem() != null && cmbEmpId.getSelectedItem() != null && 
-                HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().get(cmbEmpId.getSelectedIndex()).getId() 
-                != HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getHead().getId()) {
+        if (cmbDepId.getSelectedItem() != null && cmbEmpId.getSelectedItem() != null && checkHead()) {
             //remove the employee
             HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().remove(cmbEmpId.getSelectedIndex());
+            //print confirmation
             JOptionPane.showMessageDialog(null, "The Employee: " + cmbEmpId.getSelectedItem().toString() + "has been deleted", "Success",
                     JOptionPane.INFORMATION_MESSAGE);
             //clear the combo boxes
             this.cmbDepId.setSelectedItem(null);
             this.cmbEmpId.setSelectedItem(null);
+            //print errors 
         } else if (cmbDepId.getSelectedItem() == null) {
             JOptionPane.showMessageDialog(null, "Enter a department to delete the employee from",
                     "Message", 2);
-        } else if (cmbEmpId.getSelectedItem() == null){
+        } else if (cmbEmpId.getSelectedItem() == null) {
             JOptionPane.showMessageDialog(null, "Choose an employee to delete",
                     "Message", 2);
-        }else{
+        } else {
             JOptionPane.showMessageDialog(null, "The employee is the head of the department, change the head of the department to delete him",
                     "Message", 2);
         }
@@ -207,8 +210,8 @@ public class DeleteEmployee extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbEmpIdActionPerformed
 
     /**
-     * 
-     * @param args 
+     *
+     * @param args
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -243,8 +246,10 @@ public class DeleteEmployee extends javax.swing.JFrame {
     }
 
     /**
-     *@Author: Moosa Hammad
-     * purpose: to load departments in the combo box
+     * Name: loadDepartments
+     *
+     * @Author: Moosa Hammad
+     * @purpose: to load departments in the combo box
      */
     private void loadDepartments() {
         //for loop to put all the departments into the combo box
@@ -258,6 +263,31 @@ public class DeleteEmployee extends javax.swing.JFrame {
         }
         //set the first item to null
         cmbDepId.setSelectedItem(null);
+    }
+
+    /**
+     * @Author: Moosa Hammad
+     * @purpose: to check if the user selected is the head of the department
+     * selected
+     * @return false - if the employee selected is the head of the department
+     * selected, true - if he is not a head of the department
+     */
+    private boolean checkHead() {
+        //condition to return
+        boolean cond = true;
+        //check if the department has any head employee
+        if (HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getHead() != null) {
+            /*if head found check if the head is the employee selected by
+            comparing ids
+             */
+            if (HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().get(cmbEmpId.getSelectedIndex()).getId()
+                    == HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getHead().getId()) {
+                //change condition if met
+                cond = false;
+            }
+        }
+        //return the boolean for checking
+        return cond;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
