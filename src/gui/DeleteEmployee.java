@@ -165,6 +165,7 @@ public class DeleteEmployee extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "The Employee: " + cmbEmpId.getSelectedItem().toString() + "has been deleted", "Success",
                     JOptionPane.INFORMATION_MESSAGE);
             //clear the combo boxes
+            this.cmbEmpId.removeAllItems();
             this.cmbDepId.setSelectedItem(null);
             this.cmbEmpId.setSelectedItem(null);
             //print errors 
