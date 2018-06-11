@@ -17,12 +17,18 @@ public class PayScale implements Serializable {
     static private int LevelCounter = 0;
     private int level;
     private double value;
-
+    /** 
+    * custom constructor 
+    **/
     public PayScale(int Level, double value) {
         this.level = Level;
         this.value = value;
     }
-
+/** 
+    * 
+    * Setters and Getters 
+    * 
+    **/
     public double getValue() {
         return value;
     }

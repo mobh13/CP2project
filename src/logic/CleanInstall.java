@@ -12,9 +12,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Name: Clean Install
+ * purpose: Have a clean install populating program with sample data
  * @author Moosa Hammad
- * Purpose: Have a clean install populating program with sample data
+ * @version 1
+ *
  */
 public class CleanInstall {
 
@@ -23,9 +25,10 @@ public class CleanInstall {
     static private int empSalScal;
     
     /**
-     * @Author: Moosa Hammad
      * Purpose: Take the data from a text file stored locally and then add it in
      * the program array lists and variables
+     * @Author: Moosa Hammad
+     * 
      */
 
     public static void clean() {

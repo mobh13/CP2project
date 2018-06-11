@@ -17,13 +17,7 @@ public class HrSystem {
     private static ArrayList<Department> allDepartments;
     private static ArrayList<PayScale> payScales;
 
-    public static void setAllDepartments(ArrayList<Department> allDepartments) {
-        HrSystem.allDepartments = allDepartments;
-    }
-
-    public static void setPayScales(ArrayList<PayScale> payScales) {
-        HrSystem.payScales = payScales;
-    }
+    
 
     /**
      * @author Moosa
@@ -47,7 +41,9 @@ public class HrSystem {
         allDepartments.get(i).getListOfEmployees().add(emp);
         return emp;
     }
-
+/** 
+    * custom constructor 
+    **/
     public HrSystem() {
 
         allDepartments = new ArrayList<>();
@@ -68,21 +64,16 @@ public class HrSystem {
         try {
              newDep = new Department(name, location);
             allDepartments.add(newDep);
-        } catch (NullPointerException ex) {
+        } 
+        // Exeption Handling
+        catch (NullPointerException ex) {
             throw new NullPointerException("Cannot insert empty values in the employee. Error: " + ex);
         }
-        
+        // return the id of the department
         return newDep.getId();
 
     }
 
-    public static ArrayList<Department> getAllDepartments() {
-        return allDepartments;
-    }
-
-    public static ArrayList<PayScale> getPayScales() {
-        return payScales;
-    }
 
     /**
      * @author: Abdulla Ali 
@@ -145,6 +136,25 @@ public class HrSystem {
             }
         }
         return found;
+    }
+    /** 
+    * 
+    * Setters and Getters 
+    * 
+    **/
+    public static void setAllDepartments(ArrayList<Department> allDepartments) {
+        HrSystem.allDepartments = allDepartments;
+    }
+
+    public static void setPayScales(ArrayList<PayScale> payScales) {
+        HrSystem.payScales = payScales;
+    }
+    public static ArrayList<Department> getAllDepartments() {
+        return allDepartments;
+    }
+
+    public static ArrayList<PayScale> getPayScales() {
+        return payScales;
     }
 
 }

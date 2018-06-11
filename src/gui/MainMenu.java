@@ -538,22 +538,38 @@ public class MainMenu extends javax.swing.JFrame {
             doSerialize(); //serialize system
         }
     }//GEN-LAST:event_btnSaveChangeActionPerformed
-
+/**
+     * Name: exit
+     * @return void
+     * @Author: Mohamed Madan
+     * Purpose: show to the user message dialog to ask him/her if he/she wants to 
+     * save the changes before exiting the program and do the exit behavior
+     */
     private void exit() {
-
+// show message dialog to ask the user if he/she want's to save the file before exting
         int reply = JOptionPane.showConfirmDialog(
                 null,
                 "Do you want to save changes you made to the system before exit?",
                 "Warning", JOptionPane.YES_NO_CANCEL_OPTION);
-        //if condition to check if the reply is yes
+        //if condition to check if the reply is yes or no
+         // save the data and exit
         if (reply == JOptionPane.YES_OPTION) {
             doSerialize(); //serialize system
-            System.exit(0);//Exit the program after saving data
-        } else if (reply == JOptionPane.NO_OPTION) {
-            System.exit(0);//Exit the program after saving data
+            System.exit(0);//Exit the program 
+        } 
+         //don't save the data and exit
+        else if (reply == JOptionPane.NO_OPTION) {
+           
+            System.exit(0);//Exit the program 
         }
     }
-
+/**
+     * Name: doSerialize
+     * @return void
+     * @Author: Mohamed Madan
+     * Purpose: To  serialize the data in the arraylists of the system into 
+     * a serialized file, the method has exception handling in it
+     */
     private void doSerialize() {
         try {
             // create FileOuputStream & ObjectOutputStream objects to serialize
@@ -562,28 +578,45 @@ public class MainMenu extends javax.swing.JFrame {
             // serialize the data objects
             outt.writeObject(HrSystem.getAllDepartments());
             outt.writeObject(HrSystem.getPayScales());
+            // close the FileOutputStram & ObjectOutputStram objects
             f.close();
             outt.close();
-        } catch (FileNotFoundException ex) { //error message
+        } 
+        //Exeption Handling for FileNotFoundException
+        catch (FileNotFoundException ex) { 
+            // Display error message dialog 
             JOptionPane.showMessageDialog(this, ex + "\nError:  The output file was "
                     + "not found!", "Output Error", 0);
-        } catch (IOException ex) { //error message
+        } 
+        //Exeption Handling for IOException
+        catch (IOException ex) { 
+            // Display error message dialog 
             JOptionPane.showMessageDialog(this, ex + "\nError: The output file is not "
                     + "accessible!", "Output Error", 0);
-        } catch (Exception ex) {
+        }
+        //Exeption Handling for Exception
+        catch (Exception ex) {
+            // Display error message dialog 
             JOptionPane.showMessageDialog(this, "Error: " + ex, "Output Error", 0);
         }
 
     }
-
+/**
+     * Name: deSerialize
+     * @return void
+     * @Author: Mohamed Madan
+     * Purpose: To de serialize the data file and insert it into the arraylists 
+     * of the system, the method has exception handling in it
+     */
     private void deSerialize() {
 
         try {
+            // create FileOuputStream & ObjectOutputStream objects to deserialize
 
             FileInputStream file = new FileInputStream("hrsystemdata.data");
 
             ObjectInputStream in = new ObjectInputStream(file);
-
+            // get the Data from the serialized file and insert them into the array lists in the HrSystem class
             HrSystem.setAllDepartments((ArrayList<Department>) in.readObject());
             HrSystem.setPayScales((ArrayList<PayScale>) in.readObject());
             int payScaleId = 0;
@@ -591,6 +624,7 @@ public class MainMenu extends javax.swing.JFrame {
             int employeeId = 0;
             int counter = 0;
             int inCounter = 0;
+            // loop to get the biggest employee id
             while (counter < HrSystem.getAllDepartments().size()) {
                 inCounter = 0;
                 while (inCounter < HrSystem.getAllDepartments().get(counter).getListOfEmployees().size()) {
@@ -603,7 +637,8 @@ public class MainMenu extends javax.swing.JFrame {
                 }
                 counter++;
             }
-            counter = 0;
+            counter = 0; // reset the counter for the next loop
+            // loop to get tje biggest department id
             while (counter < HrSystem.getAllDepartments().size()) {
 
                 if (HrSystem.getAllDepartments().get(counter).getId() > departmentId) {
@@ -611,7 +646,8 @@ public class MainMenu extends javax.swing.JFrame {
                 }
                 counter++;
             }
-            counter = 0;
+            counter = 0; // reset the counter for the next loop
+            // loop to get the biggest payScale id 
             while (counter < HrSystem.getPayScales().size()) {
 
                 if (HrSystem.getPayScales().get(counter).getLevel() > payScaleId) {
@@ -620,20 +656,31 @@ public class MainMenu extends javax.swing.JFrame {
                 }
                 counter++;
             }
+            // Increment the ids of department , employee and payscale by 1 to use them directly 
             departmentId++;
             employeeId++;
             payScaleId++;
+            // set the id counter of department , employee and payscale
             Department.setIdCounter(departmentId);
             Employee.setIdCounter(employeeId);
             PayScale.setIdCounter(payScaleId);
-        } catch (FileNotFoundException ex) {
+        }
+        // Exception Handling for FileNotFoundException
+        catch (FileNotFoundException ex) {
+            // Display error message dialog that tells the user to clean install 
             JOptionPane.showMessageDialog(this, "It looks like you are running the programm for the first time .\n"
                     + " Please install the data by clicking clean innstall button in the main menu\n. "
             );
-        } catch (IOException ex) {// show error message
+        } 
+        // Exception Handling for IOException
+        catch (IOException ex) {
+            // Display error message dialog 
             JOptionPane.showMessageDialog(this, ex + "\n Error:The data file is not accessible .\n",
                     "Input Error", 0);
-        } catch (ClassNotFoundException ex) {// show error message
+        } 
+        // Exception Handling for ClassNotFoundException
+        catch (ClassNotFoundException ex) {
+            // Display error message dialog 
             JOptionPane.showMessageDialog(this, ex + "\n Error:The data can't  be loaded into the system. please contact the developer for support. ",
                     "Internal Input Error", 0);
         }

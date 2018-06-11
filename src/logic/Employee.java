@@ -8,8 +8,10 @@ package logic;
 import java.io.Serializable;
 
 /**
- *
+ * Name: Employee
+ * purpose: to be used to create Employees objects
  * @author madan
+ * @version 1
  */
 public class Employee implements Serializable{
     
@@ -20,7 +22,12 @@ public class Employee implements Serializable{
     private PayScale payLevel;
     private int id;
     static private int idCounter = 1;
-   
+    
+   /** 
+    * 
+    * constructor 
+    * 
+    **/
    public Employee(String firstName, String lastName, String address, char gender, PayScale payLevel ) {
        
         this.firstName = firstName;
@@ -32,7 +39,11 @@ public class Employee implements Serializable{
         idCounter++;
     }
     
-
+/** 
+    * 
+    * Setters and Getters 
+    * 
+    **/
     public static int getIdCounter() {
         return idCounter;
     }

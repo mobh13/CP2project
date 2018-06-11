@@ -10,7 +10,10 @@ import java.util.ArrayList;
 
 /**
  *
+ * Name: Department
+ * purpose: to be used to create Departments objects
  * @author madan
+ * @version 1
  */
 public class Department implements Serializable {
 
@@ -20,7 +23,9 @@ public class Department implements Serializable {
     static private int idCounter = 0;
     private Employee head;
     private ArrayList<Employee> listOfEmployees ;
-
+    /** 
+    * custom constructor 
+    **/
     public Department(String name, String location) {
 
         this.id = idCounter;
@@ -30,10 +35,12 @@ public class Department implements Serializable {
         listOfEmployees = new ArrayList<>();
     }
 
-    public void setListOfEmployees(ArrayList<Employee> listOfEmployees) {
-        this.listOfEmployees = listOfEmployees;
-    }
-
+   
+    /** 
+    * 
+    *   Setters and Getters
+    * 
+    **/
     public static int getIdCounter() {
         return idCounter;
     }
@@ -76,6 +83,9 @@ public class Department implements Serializable {
 
     public void setHead(Employee head) {
         this.head = head;
+    }
+     public void setListOfEmployees(ArrayList<Employee> listOfEmployees) {
+        this.listOfEmployees = listOfEmployees;
     }
 
 }
