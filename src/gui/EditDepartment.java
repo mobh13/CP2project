@@ -179,8 +179,6 @@ public class EditDepartment extends javax.swing.JFrame {
         this.txtLocation.setText(null);
     }
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        //Save selected department in a String variable to use for checking
-        String selected = (String) cmbDepId.getSelectedItem();
         //get the input variables from the text fields 
         String depName = txtDepName.getText();
         String depLoc = txtLocation.getText();
@@ -189,19 +187,16 @@ public class EditDepartment extends javax.swing.JFrame {
                 && !txtDepName.getText().isEmpty() && !txtLocation.getText().isEmpty()) {
             //update the department with the new data
             int index = cmbDepId.getSelectedIndex();
-            HrSystem.getAllDepartments().get(index).setName(depName);
-            HrSystem.getAllDepartments().get(index).setLocation(depLoc);
+            HrSystem.getAllDepartments().get(index + 1).setName(depName);
+            HrSystem.getAllDepartments().get(index + 1).setLocation(depLoc);
             //message confirming the update of the department
             JOptionPane.showMessageDialog(null,
                     "Department has been updated successfully", "Success",
                     JOptionPane.INFORMATION_MESSAGE);
-            //set the selected item to the updated version 
-            cmbDepId.setSelectedItem(HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getName());
             //clearing the text boxes after insert/search
             txtDepName.setText(null);
             txtLocation.setText(null);
             loadDepartments();
-            cmbDepId.setSelectedIndex(index);
         } else if (depName.length() <= 3) {
             JOptionPane.showMessageDialog(null,
                     "Department Name is Invalid", "Error",
