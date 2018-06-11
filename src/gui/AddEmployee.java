@@ -42,7 +42,7 @@ public class AddEmployee extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        btnGrpGen = new javax.swing.ButtonGroup();
         lblGender = new javax.swing.JLabel();
         txtLName = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -110,11 +110,11 @@ public class AddEmployee extends javax.swing.JFrame {
             }
         });
 
-        buttonGroup1.add(rdbtnMale);
+        btnGrpGen.add(rdbtnMale);
         rdbtnMale.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         rdbtnMale.setText("Male");
 
-        buttonGroup1.add(rdbtnFemale);
+        btnGrpGen.add(rdbtnFemale);
         rdbtnFemale.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
         rdbtnFemale.setText("Female");
 
@@ -248,15 +248,15 @@ public class AddEmployee extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        if (txtFName.getText().isEmpty() && txtFName.getText().length() <= 2) {
+        if (txtFName.getText().length() <= 2) {
             JOptionPane.showMessageDialog(null,
                     "First Name is Empty or less than two characters long", "Error",
                     JOptionPane.ERROR_MESSAGE);
-        } else if (txtLName.getText().isEmpty() && txtLName.getText().length() <= 2) {
+        } else if (txtLName.getText().length() <= 2) {
             JOptionPane.showMessageDialog(null,
                     "Last Name is Empty or less than two characters long", "Error",
                     JOptionPane.ERROR_MESSAGE);
-        } else if (txtAdress.getText().isEmpty() && txtAdress.getText().length() <= 2) {
+        } else if ( txtAdress.getText().length() <= 2) {
             JOptionPane.showMessageDialog(null,
                     "Address is Empty or less than two characters long", "Error",
                     JOptionPane.ERROR_MESSAGE);
@@ -264,7 +264,7 @@ public class AddEmployee extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,
                     "Pay Level is not selected", "Error",
                     JOptionPane.ERROR_MESSAGE);
-        } else if (!rdbtnMale.isSelected() && !rdbtnFemale.isSelected()) {
+        } else if (this.btnGrpGen.getSelection()==null) {
             JOptionPane.showMessageDialog(null,
                     "You should select a gender for the employee", "Error",
                     JOptionPane.ERROR_MESSAGE);
@@ -333,7 +333,7 @@ public class AddEmployee extends javax.swing.JFrame {
                 "Are you sure you want to clear fields?",
                 "Warning", JOptionPane.YES_OPTION);
         if (reply == JOptionPane.YES_OPTION) {
-            this.buttonGroup1.clearSelection();
+            this.btnGrpGen.clearSelection();
             this.txtAdress.setText(null);
             this.txtFName.setText(null);
             this.txtLName.setText(null);
@@ -402,7 +402,7 @@ public class AddEmployee extends javax.swing.JFrame {
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnClear;
     private javax.swing.JButton btnClose;
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup btnGrpGen;
     private javax.swing.JComboBox<String> cmbPayLevel;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lblEmpId;

@@ -197,12 +197,12 @@ public class AddDepartment extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,
                     "Department Name is Empty", "Error",
                     JOptionPane.ERROR_MESSAGE);
-        } else if (txtDepName.getText().length() < 3) {
+        } else if (txtDepName.getText().length() <= 3) {
             JOptionPane.showMessageDialog(null,
-                    "Department Name is Invalid", "Error",
+                    "Department Name is Invalid, must be more than 3 characters", "Error",
                     JOptionPane.ERROR_MESSAGE);
 
-        } else if (txtDepName.getText().length() > 3 && !txtDepName.getText().isEmpty()) {
+        } else if (txtDepName.getText().length() > 3 ) {
 
             String depName = txtDepName.getText();
 
@@ -211,12 +211,12 @@ public class AddDepartment extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,
                         "Department Location is Empty", "Error",
                         JOptionPane.ERROR_MESSAGE);
-            } else if (txtdepLocation.getText().length() < 3) {
+            } else if (txtdepLocation.getText().length() <= 3) {
                 JOptionPane.showMessageDialog(null,
-                        "Department Location is Invalid", "Error",
+                        "Department Location is Invalid, must be more than 3 characters", "Error",
                         JOptionPane.ERROR_MESSAGE);
 
-            } else if (txtdepLocation.getText().length() > 3 && !txtdepLocation.getText().isEmpty()) {
+            } else if (txtdepLocation.getText().length() > 3 ) {
 
                 String depLocation = txtdepLocation.getText();
 

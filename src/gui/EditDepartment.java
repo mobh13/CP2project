@@ -185,9 +185,9 @@ public class EditDepartment extends javax.swing.JFrame {
 
         if (depName.length() > 3 && depLoc.length() > 3) {
             //update the department with the new data
-            int index = cmbDepId.getSelectedIndex();
-            HrSystem.getAllDepartments().get(index + 1).setName(depName);
-            HrSystem.getAllDepartments().get(index + 1).setLocation(depLoc);
+            int index = cmbDepId.getSelectedIndex() + 1;
+            HrSystem.getAllDepartments().get(index).setName(depName);
+            HrSystem.getAllDepartments().get(index).setLocation(depLoc);
             //message confirming the update of the department
             JOptionPane.showMessageDialog(null,
                     "Department has been updated successfully", "Success",
@@ -198,11 +198,11 @@ public class EditDepartment extends javax.swing.JFrame {
             loadDepartments();
         } else if (depName.length() <= 3) {
             JOptionPane.showMessageDialog(null,
-                    "Department Name is Invalid", "Error",
+                    "Department Name is Invalid, must be more than 3 characters", "Error",
                     JOptionPane.ERROR_MESSAGE);
         } else if (depLoc.length() <= 3) {
             JOptionPane.showMessageDialog(null,
-                    "Department Location is Invalid", "Error",
+                    "Department Location is Invalid, must be more than 3 characters", "Error",
                     JOptionPane.ERROR_MESSAGE);
         } else if (txtDepName.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null,
