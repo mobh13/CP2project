@@ -25,6 +25,8 @@ public class Department implements Serializable {
     private ArrayList<Employee> listOfEmployees ;
     /** 
     * custom constructor 
+     * @param name
+     * @param location
     **/
     public Department(String name, String location) {
 

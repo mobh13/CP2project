@@ -27,6 +27,11 @@ public class Employee implements Serializable{
     * 
     * constructor 
     * 
+     * @param firstName
+     * @param lastName
+     * @param address
+     * @param gender
+     * @param payLevel
     **/
    public Employee(String firstName, String lastName, String address, char gender, PayScale payLevel ) {
        

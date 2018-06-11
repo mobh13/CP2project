@@ -141,6 +141,7 @@ public class HrSystem {
     * 
     * Setters and Getters 
     * 
+     * @param allDepartments
     **/
     public static void setAllDepartments(ArrayList<Department> allDepartments) {
         HrSystem.allDepartments = allDepartments;
