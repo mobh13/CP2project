@@ -12,8 +12,10 @@ import javax.swing.JOptionPane;
 import logic.HrSystem;
 
 /**
- * @author Mohamed Madan
  * Name: List Employees
+ *
+ * @author Mohamed Madan
+ *
  * Purpose: used to provide an interface to List Employees of a specific .
  * @version 1
  */
@@ -23,25 +25,26 @@ public class ListEmployee extends javax.swing.JFrame {
 
     /**
      * Creates new form ListEmployee
+     *
      * @author: Mohamed Madan
      */
     public ListEmployee() {
         //initiate the components 
         initComponents();
-         //calling a method to load deps in combo box
+        //calling a method to load deps in combo box
         loadDepartments();
         //code to change the background of the jframe
         java.awt.Color recursiveBG = new java.awt.Color(240, 240, 240);
         getContentPane().setBackground(recursiveBG);
-         //centerting the window
+        //centerting the window
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
         this.setLocation(x, y);
     }
-/**
-     * @Author: Mohamed Madan
-     * purpose: to load departments in the combo box
+
+    /**
+     * @Author: Mohamed Madan purpose: to load departments in the combo box
      */
     private void loadDepartments() {
         // chek if the all departments arraylist is empty or not
@@ -55,7 +58,7 @@ public class ListEmployee extends javax.swing.JFrame {
                     // add the name of the department into the combo box
                     cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getName());
                 } else {
-                     // add the name and the id of the department into the combo box
+                    // add the name and the id of the department into the combo box
                     cmbDepId.addItem(HrSystem.getAllDepartments().get(i).getId() + " - "
                             + HrSystem.getAllDepartments().get(i).getName());
                 }
@@ -176,7 +179,7 @@ public class ListEmployee extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
-       // display confermation message
+        // display confermation message
         int reply = JOptionPane.showConfirmDialog(
                 null,
                 "Are you sure you want to close this window? ",
@@ -189,46 +192,44 @@ public class ListEmployee extends javax.swing.JFrame {
 
     private void btnListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListActionPerformed
         //check if the user selected an item
-        if(this.cmbDepId.getSelectedItem() != null){
+        if (this.cmbDepId.getSelectedItem() != null) {
             // check if the department have employees
             if (!HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().isEmpty()) {
-            this.txtAreaListEmp.setText(""); // reset the text area
-            // add the selected department's employees information to the text are
-            this.txtAreaListEmp.append("Employees assigned to department " + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getName()
-                    + " :");
-            // loop to get the selected department employees information and add them to the text area
-            for (int i = 0; i < HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().size(); i++) {
-                this.txtAreaListEmp.append("\nEmployee " + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getId());
-                this.txtAreaListEmp.append("\tName: " + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getFirstName()
-                        + " " + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getLastName());
-                this.txtAreaListEmp.append("\tAnnual Pay (BD): " + df2.format(HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getPayLevel().getValue()));
-            }
-        } 
-            // if the department dosn't have employees
+                this.txtAreaListEmp.setText(""); // reset the text area
+                // add the selected department's employees information to the text are
+                this.txtAreaListEmp.append("Employees assigned to department " + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getName()
+                        + " :");
+                // loop to get the selected department employees information and add them to the text area
+                for (int i = 0; i < HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().size(); i++) {
+                    this.txtAreaListEmp.append("\nEmployee " + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getId());
+                    this.txtAreaListEmp.append("\tName: " + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getFirstName()
+                            + " " + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getLastName());
+                    this.txtAreaListEmp.append("\tAnnual Pay (BD): " + df2.format(HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex()).getListOfEmployees().get(i).getPayLevel().getValue()));
+                }
+            } // if the department dosn't have employees
             else {
                 // display error message that the department dosnt' have any employees
+                JOptionPane.showMessageDialog(null,
+                        "The department has no employees assigned to it.", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+        } // if the user didn't select anything 
+        else {
+            //display error message
             JOptionPane.showMessageDialog(null,
-                    "The department has no employees assigned to it.", "Error",
-                    JOptionPane.ERROR_MESSAGE);
-        }
-        }
-        // if the user didn't select anything 
-        else{
-           //display error message
-                 JOptionPane.showMessageDialog(null,
                     "You did not choose any department", "Error",
                     JOptionPane.ERROR_MESSAGE);
-            
+
         }
     }//GEN-LAST:event_btnListActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-           // display confermation message
+        // display confermation message
         int reply = JOptionPane.showConfirmDialog(
                 null,
                 "Are you sure you want to close this window? ",
                 "Warning", JOptionPane.YES_NO_OPTION);
-                // if the user clicks ok then dispose this window and get beck to the main menu
+        // if the user clicks ok then dispose this window and get beck to the main menu
         if (reply == JOptionPane.YES_OPTION) {
             this.dispose();
         }

@@ -11,8 +11,10 @@ import javax.swing.JOptionPane;
 import logic.*;
 
 /**
+ * Name AddDepartment
  *
- * @author A.A
+ * @author Abdulla Ali
+ *
  */
 public class AddDepartment extends javax.swing.JFrame {
 
@@ -21,7 +23,7 @@ public class AddDepartment extends javax.swing.JFrame {
      */
     public AddDepartment() {
         initComponents();
-                //code to change the background of the jframe
+        //code to change the background of the jframe
         java.awt.Color recursiveBG = new java.awt.Color(240, 240, 240);
         getContentPane().setBackground(recursiveBG);
         //centerting the window
@@ -192,7 +194,7 @@ public class AddDepartment extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        
+
         // validation for the input fileds 
         if (txtDepName.getText().isEmpty()) {
             // show error message
@@ -200,27 +202,27 @@ public class AddDepartment extends javax.swing.JFrame {
                     "Department Name is Empty", "Error",
                     JOptionPane.ERROR_MESSAGE);
         } else if (txtDepName.getText().length() <= 3) {
-             // show error message
+            // show error message
             JOptionPane.showMessageDialog(null,
                     "Department Name is Invalid, must be more than 3 characters", "Error",
                     JOptionPane.ERROR_MESSAGE);
 
-        } else if (txtDepName.getText().length() > 3 ) {
+        } else if (txtDepName.getText().length() > 3) {
             // get the text
             String depName = txtDepName.getText();
 
             if (txtdepLocation.getText().isEmpty()) {
-        // show error message
+                // show error message
                 JOptionPane.showMessageDialog(null,
                         "Department Location is Empty", "Error",
                         JOptionPane.ERROR_MESSAGE);
             } else if (txtdepLocation.getText().length() <= 3) {
-                 // show error message
+                // show error message
                 JOptionPane.showMessageDialog(null,
                         "Department Location is Invalid, must be more than 3 characters", "Error",
                         JOptionPane.ERROR_MESSAGE);
 
-            } else if (txtdepLocation.getText().length() > 3 ) {
+            } else if (txtdepLocation.getText().length() > 3) {
                 // get the location string
                 String depLocation = txtdepLocation.getText();
                 // create department and get the id of the department
@@ -260,7 +262,7 @@ public class AddDepartment extends javax.swing.JFrame {
                 null,
                 "Are you sure you want to close this window?",
                 "Warning", JOptionPane.YES_OPTION);
-         // check the user choice
+        // check the user choice
         if (reply == JOptionPane.YES_OPTION) { // if yes
             this.dispose(); // dispose the window
         }

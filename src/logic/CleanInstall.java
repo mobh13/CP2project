@@ -27,7 +27,7 @@ public class CleanInstall {
     /**
      * Purpose: Take the data from a text file stored locally and then add it in
      * the program array lists and variables
-     * @Author: Moosa Hammad
+     * @author: Moosa Hammad
      * 
      */
 

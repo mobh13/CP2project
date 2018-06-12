@@ -11,10 +11,8 @@ import javax.swing.JOptionPane;
 import logic.HrSystem;
 
 /**
- * @author Moosa Hammad
- * @Name: DeleteEmployee
- * @Purpose: Provide an interface to delete an Employee according to some
- * conditions
+ * @author Moosa Hammad Name: DeleteEmployee Purpose: Provide an interface to
+ * delete an Employee according to some conditions
  * @version 1
  */
 public class DeleteEmployee extends javax.swing.JFrame {
@@ -22,7 +20,8 @@ public class DeleteEmployee extends javax.swing.JFrame {
     /**
      * Name: DeleteEmployee
      *
-     * @purpose: Creates new form DeleteEmployee
+     * purpose: Creates new form DeleteEmployee
+     *
      * @author: Moosa Hammad
      */
     public DeleteEmployee() {
@@ -219,7 +218,7 @@ public class DeleteEmployee extends javax.swing.JFrame {
 
     /**
      *
-     * @param args
+     * @param args - the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

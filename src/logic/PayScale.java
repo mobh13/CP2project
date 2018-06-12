@@ -19,8 +19,8 @@ public class PayScale implements Serializable {
     private double value;
     /** 
     * custom constructor 
-     * @param Level
-     * @param value
+     * @param Level - level of pay scale 
+     * @param value - value of pay scale 
     **/
     public PayScale(int Level, double value) {
         this.level = Level;

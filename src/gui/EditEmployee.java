@@ -14,8 +14,10 @@ import javax.swing.JOptionPane;
 import logic.HrSystem;
 
 /**
- *Name: Edit Employee
+ * Name: Edit Employee
+ *
  * @author Abdulla ali
+ *
  * purpose: used to alter the details of a specified employee.
  */
 public class EditEmployee extends javax.swing.JFrame {
@@ -46,8 +48,7 @@ public class EditEmployee extends javax.swing.JFrame {
     }
 
     /**
-     * @Author: Abdulla Ali
-     * purpose: load all the departments in the combo box
+     * @Author: Abdulla Ali purpose: load all the departments in the combo box
      */
     private void loadDepartments() {
         //populating the dep combo box
@@ -303,67 +304,67 @@ public class EditEmployee extends javax.swing.JFrame {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
         // series of if statmnets used to valdiate the input in each field before saving
-        try{
-        if (this.cmbEmpId.getSelectedItem() != null) {
-            if (this.txtFName.getText() != null && this.txtFName.getText().length() > 2) {
-                if (this.txtLName.getText() != null && this.txtLName.getText().length() > 2) {
-                    if (this.txtAddress.getText() != null && this.txtAddress.getText().length() > 2) {
-                        if (this.cmbPayScale.getSelectedIndex() >= 0) {
-                            if (this.rdbtnFemale.isSelected() || this.rdbtnMale.isSelected()) {
-                                //saving the information added
-                                int indx = this.cmbEmpId.getSelectedIndex();
-                                String f_name = this.txtFName.getText();
-                                String l_name = this.txtLName.getText();
-                                String adress = this.txtAddress.getText();
-                                int payScale_indx = this.cmbPayScale.getSelectedIndex();
-                                char gender = 0;
-                                //checking which radio button is used
-                                if (this.rdbtnFemale.isSelected()) {
-                                    gender = 'F';
+        try {
+            if (this.cmbEmpId.getSelectedItem() != null) {
+                if (this.txtFName.getText() != null && this.txtFName.getText().length() > 2) {
+                    if (this.txtLName.getText() != null && this.txtLName.getText().length() > 2) {
+                        if (this.txtAddress.getText() != null && this.txtAddress.getText().length() > 2) {
+                            if (this.cmbPayScale.getSelectedIndex() >= 0) {
+                                if (this.rdbtnFemale.isSelected() || this.rdbtnMale.isSelected()) {
+                                    //saving the information added
+                                    int indx = this.cmbEmpId.getSelectedIndex();
+                                    String f_name = this.txtFName.getText();
+                                    String l_name = this.txtLName.getText();
+                                    String adress = this.txtAddress.getText();
+                                    int payScale_indx = this.cmbPayScale.getSelectedIndex();
+                                    char gender = 0;
+                                    //checking which radio button is used
+                                    if (this.rdbtnFemale.isSelected()) {
+                                        gender = 'F';
+                                    }
+                                    if (this.rdbtnMale.isSelected()) {
+                                        gender = 'M';
+                                    }
+                                    //passing parameters to a method in the hr system to edit the infroatiom of that employee
+                                    HrSystem.editEmployee(indx, f_name, l_name, adress, gender, payScale_indx, cmbDepId.getSelectedIndex());
+                                    //confimation message is shown 
+                                    JOptionPane.showMessageDialog(this,
+                                            "The updates have been saved successfully for employee "
+                                            + HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(indx).getFirstName() + " "
+                                            + HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(indx).getLastName() + ".",
+                                            "Updated",
+                                            JOptionPane.PLAIN_MESSAGE);
+                                    //clearing all fields 
+                                    this.cmbEmpId.setSelectedItem(null);
+                                    this.cmbPayScale.setSelectedItem(null);
+                                    this.txtFName.setText(null);
+                                    this.txtLName.setText(null);
+                                    this.txtAddress.setText(null);
+                                    this.radBtnGrp.clearSelection();
+                                    this.cmbDepId.setSelectedItem(null);
+                                    //messages to be prompted if the input was invalid
+                                } else {
+                                    JOptionPane.showMessageDialog(this, "Please select either one of the genders", "Error", 2);
                                 }
-                                if (this.rdbtnMale.isSelected()) {
-                                    gender = 'M';
-                                }
-                                //passing parameters to a method in the hr system to edit the infroatiom of that employee
-                                HrSystem.editEmployee(indx, f_name, l_name, adress, gender, payScale_indx, cmbDepId.getSelectedIndex());
-                                //confimation message is shown 
-                                JOptionPane.showMessageDialog(this,
-                                        "The updates have been saved successfully for employee "
-                                        + HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(indx).getFirstName() + " "
-                                        + HrSystem.getAllDepartments().get(dep_index).getListOfEmployees().get(indx).getLastName() + ".",
-                                        "Updated",
-                                        JOptionPane.PLAIN_MESSAGE);
-                                //clearing all fields 
-                                this.cmbEmpId.setSelectedItem(null);
-                                this.cmbPayScale.setSelectedItem(null);
-                                this.txtFName.setText(null);
-                                this.txtLName.setText(null);
-                                this.txtAddress.setText(null);
-                                this.radBtnGrp.clearSelection();
-                                this.cmbDepId.setSelectedItem(null);
-                                //messages to be prompted if the input was invalid
-                            } else {
-                                JOptionPane.showMessageDialog(this, "Please select either one of the genders", "Error", 2);
-                            }
 
+                            } else {
+                                JOptionPane.showMessageDialog(this, "Please select a payscale level from combo box", "Error", 2);
+                            }
                         } else {
-                            JOptionPane.showMessageDialog(this, "Please select a payscale level from combo box", "Error", 2);
+                            JOptionPane.showMessageDialog(this, "Please eneter an address", "Error", 2);
                         }
                     } else {
-                        JOptionPane.showMessageDialog(this, "Please eneter an address", "Error", 2);
+                        JOptionPane.showMessageDialog(this, "Please enter a last name that is longer than two characters", "Error", 2);
                     }
                 } else {
-                    JOptionPane.showMessageDialog(this, "Please enter a last name that is longer than two characters", "Error", 2);
+                    JOptionPane.showMessageDialog(this, "Please enter a first name that is longer than two characters", "Error", 2);
                 }
-            } else {
-                JOptionPane.showMessageDialog(this, "Please enter a first name that is longer than two characters", "Error", 2);
-            }
 
-        } else {
-            JOptionPane.showMessageDialog(this, "Please select an employee from combo box", "Error", 2);
-        }
-        }catch(NullPointerException ex){
-            JOptionPane.showMessageDialog(this, "There are empty values being passed to the edit method. Error: "+ex, "Warning", 2);
+            } else {
+                JOptionPane.showMessageDialog(this, "Please select an employee from combo box", "Error", 2);
+            }
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(this, "There are empty values being passed to the edit method. Error: " + ex, "Warning", 2);
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -436,10 +437,11 @@ public class EditEmployee extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbPayScaleActionPerformed
 
-      /**
-       * Name: Load Payscales
-     * @Author: abdulla ali
-     * purpose: used to populate the payscales objects in the combo box
+    /**
+     * Name: Load Payscales
+     *
+     * @Author: abdulla ali purpose: used to populate the payscales objects in
+     * the combo box
      */
     private void loadPayScale() {
         this.cmbPayScale.removeAllItems();
@@ -452,7 +454,7 @@ public class EditEmployee extends javax.swing.JFrame {
             }
         }
         //setting the item to null at first
-        
+
         this.cmbPayScale.setModel(new DefaultComboBoxModel(payScales.toArray()));
         this.cmbPayScale.setSelectedItem(null);
     }

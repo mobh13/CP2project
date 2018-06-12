@@ -25,8 +25,8 @@ public class Department implements Serializable {
     private ArrayList<Employee> listOfEmployees ;
     /** 
     * custom constructor 
-     * @param name
-     * @param location
+     * @param name - name of department
+     * @param location - location of department
     **/
     public Department(String name, String location) {
 
@@ -37,12 +37,7 @@ public class Department implements Serializable {
         listOfEmployees = new ArrayList<>();
     }
 
-   
-    /** 
-    * 
-    *   Setters and Getters
-    * 
-    **/
+    //   Setters and Getters
     public static int getIdCounter() {
         return idCounter;
     }

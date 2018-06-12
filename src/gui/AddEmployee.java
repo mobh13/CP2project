@@ -12,8 +12,9 @@ import javax.swing.JOptionPane;
 import logic.*;
 
 /**
+ * Name: AddEmployee
  *
- * @author A.A
+ * @author Moosa Hammad
  */
 public class AddEmployee extends javax.swing.JFrame {
 
@@ -24,10 +25,10 @@ public class AddEmployee extends javax.swing.JFrame {
      */
     public AddEmployee() {
         initComponents(); //initiate components
-         //code to change the background of the jframe
+        //code to change the background of the jframe
         java.awt.Color recursiveBG = new java.awt.Color(240, 240, 240);
         getContentPane().setBackground(recursiveBG);
-          //centerting the window
+        //centerting the window
         Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (int) ((dimension.getWidth() - this.getWidth()) / 2);
         int y = (int) ((dimension.getHeight() - this.getHeight()) / 2);
@@ -250,9 +251,8 @@ public class AddEmployee extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        
+
         // validation for the input 
-        
         if (txtFName.getText().length() <= 2) {
             JOptionPane.showMessageDialog(null,
                     "First Name is Empty or less than two characters long", "Error",
@@ -261,7 +261,7 @@ public class AddEmployee extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,
                     "Last Name is Empty or less than two characters long", "Error",
                     JOptionPane.ERROR_MESSAGE);
-        } else if ( txtAdress.getText().length() <= 2) {
+        } else if (txtAdress.getText().length() <= 2) {
             JOptionPane.showMessageDialog(null,
                     "Address is Empty or less than two characters long", "Error",
                     JOptionPane.ERROR_MESSAGE);
@@ -269,7 +269,7 @@ public class AddEmployee extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,
                     "Pay Level is not selected", "Error",
                     JOptionPane.ERROR_MESSAGE);
-        } else if (this.btnGrpGen.getSelection()==null) {
+        } else if (this.btnGrpGen.getSelection() == null) {
             JOptionPane.showMessageDialog(null,
                     "You should select a gender for the employee", "Error",
                     JOptionPane.ERROR_MESSAGE);
@@ -291,14 +291,13 @@ public class AddEmployee extends javax.swing.JFrame {
             // create the employee object ang get back the id
             int empId = HrSystem.addEmployee(fName, lName, address, gender, payLvl);
 
-            try{
+            try {
                 this.txtEmpId.setText(Integer.toString(empId));
-            }
-            // Exception Handling
-            catch(NumberFormatException ex){
+            } // Exception Handling
+            catch (NumberFormatException ex) {
                 JOptionPane.showMessageDialog(null,
-                    "The employee's ID cannot be converted to integers. Error: "+ex, "Error",
-                    JOptionPane.ERROR_MESSAGE);
+                        "The employee's ID cannot be converted to integers. Error: " + ex, "Error",
+                        JOptionPane.ERROR_MESSAGE);
             }
 
             // display sucssess message
@@ -307,9 +306,8 @@ public class AddEmployee extends javax.swing.JFrame {
                     JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnAddActionPerformed
-      /**
-     * @author Mohammad Madan 
-     * Purpose: loading the payScales
+    /**
+     * @author Mohammad Madan Purpose: loading the payScales
      */
     private void loadPayScale() {
         this.cmbPayLevel.removeAllItems(); // Reset the combo box
@@ -359,7 +357,7 @@ public class AddEmployee extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
 
-         // Show conformation message 
+        // Show conformation message 
         int reply = JOptionPane.showConfirmDialog(
                 null,
                 "Are you sure you want to close this window?",

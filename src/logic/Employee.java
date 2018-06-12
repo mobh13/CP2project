@@ -25,13 +25,13 @@ public class Employee implements Serializable{
     
    /** 
     * 
-    * constructor 
+    * constructor for employee
     * 
-     * @param firstName
-     * @param lastName
-     * @param address
-     * @param gender
-     * @param payLevel
+     * @param firstName - first name of employee
+     * @param lastName - last name of employee
+     * @param address - address of employee 
+     * @param gender - gender of employee
+     * @param payLevel - pay level of employee
     **/
    public Employee(String firstName, String lastName, String address, char gender, PayScale payLevel ) {
        
@@ -44,11 +44,8 @@ public class Employee implements Serializable{
         idCounter++;
     }
     
-/** 
-    * 
-    * Setters and Getters 
-    * 
-    **/
+
+    //Setters and Getters 
     public static int getIdCounter() {
         return idCounter;
     }

@@ -15,10 +15,12 @@ import javax.swing.JOptionPane;
 import logic.HrSystem;
 
 /**
- *
- * @author Abdulla Ali - Malik Kamal
  * Name: Produce Pay Report
- * purpose: to prompt the user to display and export the pay report for the company 
+ *
+ * @author Abdulla Ali
+ *
+ * purpose: to prompt the user to display and export the pay report for the
+ * company
  * @version 2
  */
 public class PayReport extends javax.swing.JFrame {
@@ -27,8 +29,8 @@ public class PayReport extends javax.swing.JFrame {
 
     /**
      * Purpose: Creates new form PayReport
-     * @author: Abdulla Ali - Malik Kamal
-     * Name: Pay Report
+     *
+     * @author: Abdulla Ali - Malik Kamal Name: Pay Report
      */
     public PayReport() {
         //centers the window and changes backgorund color
@@ -232,7 +234,7 @@ public class PayReport extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // TODO add your handling code here:
-         //validtion before exiting
+        //validtion before exiting
         int reply = JOptionPane.showConfirmDialog(
                 null,
                 "Are you sure you want to close this window?",

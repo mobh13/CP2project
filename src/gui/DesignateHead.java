@@ -11,11 +11,14 @@ import javax.swing.JOptionPane;
 import logic.HrSystem;
 
 /**
- * @author Abdulla Ali 
- *Name: Designate Head
- * Purpose: to prompt the user to select a department and en employee to be as head of department.
+ * Name: Designate Head
+ *
+ * @author Abdulla Ali
+ *
+ * Purpose: to prompt the user to select a department and en employee to be as
+ * head of department.
  * @version 1
- * 
+ *
  */
 public class DesignateHead extends javax.swing.JFrame {
 
@@ -193,7 +196,7 @@ public class DesignateHead extends javax.swing.JFrame {
                     HrSystem.designateHead(empId, depId + 1);
                     //prompting a message box to confirm 
                     JOptionPane.showMessageDialog(this, "Employee: " + HrSystem.getAllDepartments().get(depId + 1).getListOfEmployees().get(empId).getFirstName()
-                            +" "+HrSystem.getAllDepartments().get(depId + 1).getListOfEmployees().get(empId).getLastName() + " is now the head of "
+                            + " " + HrSystem.getAllDepartments().get(depId + 1).getListOfEmployees().get(empId).getLastName() + " is now the head of "
                             + HrSystem.getAllDepartments().get(depId + 1).getName() + " Department.", "Designation is successul", 1);
                     //setting both combo boxes to null
                     this.cmbDepId.setSelectedItem(null);
@@ -231,7 +234,7 @@ public class DesignateHead extends javax.swing.JFrame {
     private void cmbDepIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDepIdActionPerformed
         // TODO add your handling code here
         //method to list all employees of a selected department
-        int index = this.cmbDepId.getSelectedIndex()+1;
+        int index = this.cmbDepId.getSelectedIndex() + 1;
         //removing all previous items from combo box
         this.cmbEmpID.removeAllItems();
         //checking if there are employees in the department
@@ -248,9 +251,8 @@ public class DesignateHead extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_cmbDepIdActionPerformed
-  /**
-     * @Author: abdulla ali
-     * purpose: to load departments in the combo box
+    /**
+     * @Author: abdulla ali purpose: to load departments in the combo box
      */
     private void loadDepartments() {
         //method to load departmnets in the combo box
