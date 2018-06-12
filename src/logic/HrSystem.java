@@ -8,8 +8,13 @@ package logic;
 import java.util.ArrayList;
 
 /**
- * @author madan Name: Human Resource System 
- * Purpose: Used to behave as the management tool for storing the structure of the system.
+ * Name: Human Resource System
+ *
+ * @author madan
+ *
+ * Purpose: Used to behave as the management tool for storing the structure of
+ * the system.
+ *
  * @version 2
  */
 public class HrSystem {
@@ -17,13 +22,11 @@ public class HrSystem {
     private static ArrayList<Department> allDepartments;
     private static ArrayList<PayScale> payScales;
 
-    
-
     /**
-     * @author Moosa
-     * Purpose creating a new employee object using parameters and adding it to dep unassigned emp
+     * @author Moosa Purpose creating a new employee object using parameters and
+     * adding it to dep unassigned emp
      * @param firstName - first name of employee
-     * @param lastName - last name of employee 
+     * @param lastName - last name of employee
      * @param address - address of employee
      * @param gender - gender of employee
      * @param payLevel - pay level integer of employee
@@ -41,9 +44,11 @@ public class HrSystem {
         allDepartments.get(i).getListOfEmployees().add(emp);
         return emp;
     }
-/** 
-    * custom constructor 
-    **/
+
+    /**
+     * custom constructor 
+    *
+     */
     public HrSystem() {
 
         allDepartments = new ArrayList<>();
@@ -51,8 +56,7 @@ public class HrSystem {
     }
 
     /**
-     * @author Mohammad Madan 
-     * Purpose creating a new department object
+     * @author Mohammad Madan Purpose creating a new department object
      * @param name - name of department
      * @param location - location of department
      * @return depID
@@ -60,12 +64,11 @@ public class HrSystem {
      */
     public static int addDepartment(String name, String location) {
         //creating an dep object with the data passed to add it to the system.
-         Department newDep = null;
+        Department newDep = null;
         try {
-             newDep = new Department(name, location);
+            newDep = new Department(name, location);
             allDepartments.add(newDep);
-        } 
-        // Exeption Handling
+        } // Exeption Handling
         catch (NullPointerException ex) {
             throw new NullPointerException("Cannot insert empty values in the employee. Error: " + ex);
         }
@@ -74,13 +77,12 @@ public class HrSystem {
 
     }
 
-
     /**
-     * @author: Abdulla Ali 
-     * Purpose: assigning an employee as head of a department
-     * @param empId - employee id 
+     * @author: Abdulla Ali Purpose: assigning an employee as head of a
+     * department
+     * @param empId - employee id
      * @param depId - department id
-     *  @throws NullPointerException - avoiding null values 
+     * @throws NullPointerException - avoiding null values
      */
     public static void designateHead(int empId, int depId) {
         //try and catch clause for null values and assign passed parameters to head fro dep
@@ -92,14 +94,14 @@ public class HrSystem {
     }
 
     /**
-     * @author: Moosa Hammad 
-     * Purpose: changing the details of a specific employee
+     * @author: Moosa Hammad Purpose: changing the details of a specific
+     * employee
      * @param indx - index of employee location in the emp list
      * @param f_name - employee's first name
      * @param l_name - emp's last name
      * @param address - address of employee
      * @param gender - gender of employee
-     * @param payScale_indx - pay scale object's index 
+     * @param payScale_indx - pay scale object's index
      * @param depIndx - department index in the department list
      * @throws NullPointerException - avoiding null values
      */
@@ -119,10 +121,10 @@ public class HrSystem {
     }
 
     /**
-     * @author: abdulla ali
-     * Purpose: to search for a department and delete it from system
-     * @param dep - object of department 
-     * @return boolean found 
+     * @author: abdulla ali Purpose: to search for a department and delete it
+     * from system
+     * @param dep - object of department
+     * @return boolean found
      */
     public static boolean deleteDepartment(Department dep) {
         //boolean to control the loop and to retunr the value
@@ -137,12 +139,14 @@ public class HrSystem {
         }
         return found;
     }
-    /** 
-    * 
-    * Setters and Getters 
-    * 
+
+    /**
+     *
+     * Setters and Getters
+     *
      * @param allDepartments - list of department  
-    **/
+    *
+     */
     public static void setAllDepartments(ArrayList<Department> allDepartments) {
         HrSystem.allDepartments = allDepartments;
     }
@@ -150,6 +154,7 @@ public class HrSystem {
     public static void setPayScales(ArrayList<PayScale> payScales) {
         HrSystem.payScales = payScales;
     }
+
     public static ArrayList<Department> getAllDepartments() {
         return allDepartments;
     }

@@ -144,13 +144,13 @@ public class DeleteDepartment extends javax.swing.JFrame {
         // TODO add your handling code here:
         //if statment to check if the user selected something
         if (this.cmbDepId.getSelectedItem() != null) {
-            //asking confirmation
-            int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete department "
-                    + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex() + 1).getName() + "?",
-                    "Warning", JOptionPane.YES_NO_OPTION);
-            if (reply == JOptionPane.YES_OPTION) {
-                //checking if there is no employes in the department 
-                if (HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex() + 1).getListOfEmployees().isEmpty()) {
+            //checking if there is no employes in the department 
+            if (HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex() + 1).getListOfEmployees().isEmpty()) {
+                //asking confirmation
+                int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete department "
+                        + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex() + 1).getName() + "?",
+                        "Warning", JOptionPane.YES_NO_OPTION);
+                if (reply == JOptionPane.YES_OPTION) {
                     //deleting the department and validating results
                     if (HrSystem.deleteDepartment(HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex() + 1)) == true) {
                         JOptionPane.showMessageDialog(null, "The department have been deleted successfully.",
@@ -162,12 +162,13 @@ public class DeleteDepartment extends javax.swing.JFrame {
                                 "Message", 2);
                     }
                     //if there are still employes working at the department
-                } else {
-                    JOptionPane.showMessageDialog(null, "The department " + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex() + 1).getName()
-                            + " still have employees assigned to it, please remove employees before deleting department.",
-                            "Error", 2);
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "The department " + HrSystem.getAllDepartments().get(this.cmbDepId.getSelectedIndex() + 1).getName()
+                        + " still have employees assigned to it, please remove employees before deleting department.",
+                        "Error", 2);
             }
+
             //if the user did not choose anything
         } else {
             JOptionPane.showMessageDialog(this, "Please select a department from combo box.",

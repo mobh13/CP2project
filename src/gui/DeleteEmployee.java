@@ -11,8 +11,13 @@ import javax.swing.JOptionPane;
 import logic.HrSystem;
 
 /**
- * @author Moosa Hammad Name: DeleteEmployee Purpose: Provide an interface to
- * delete an Employee according to some conditions
+ * Name: DeleteEmployee
+ *
+ * @author Moosa Hammad
+ *
+ * Purpose: Provide an interface to delete an Employee according to some
+ * conditions
+ *
  * @version 1
  */
 public class DeleteEmployee extends javax.swing.JFrame {
@@ -52,8 +57,8 @@ public class DeleteEmployee extends javax.swing.JFrame {
         cmbEmpId = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnClose = new javax.swing.JButton();
+        btnDelete = new javax.swing.JButton();
         lblDepId = new javax.swing.JLabel();
         cmbDepId = new javax.swing.JComboBox<>();
 
@@ -75,21 +80,21 @@ public class DeleteEmployee extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 0, 0));
         jLabel2.setText("Employee ID: ");
 
-        jButton1.setBackground(new java.awt.Color(255, 153, 153));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton1.setText("Close");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnClose.setBackground(new java.awt.Color(255, 153, 153));
+        btnClose.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnClose.setText("Close");
+        btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCloseActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(153, 255, 153));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton2.setText("Delete");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnDelete.setBackground(new java.awt.Color(153, 255, 153));
+        btnDelete.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnDelete.setText("Delete");
+        btnDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnDeleteActionPerformed(evt);
             }
         });
 
@@ -110,34 +115,36 @@ public class DeleteEmployee extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(163, 163, 163)
+                .addGap(143, 143, 143)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(67, 67, 67)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cmbEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(28, 28, 28)))
-                .addContainerGap(162, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(lblDepId)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(cmbDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(162, 162, 162))
+                        .addComponent(lblDepId)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 161, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(186, 186, 186)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(188, 188, 188)
+                        .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(67, 67, 67)
+                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addComponent(jLabel1)
-                .addGap(42, 42, 42)
+                .addGap(64, 64, 64)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbDepId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -145,24 +152,25 @@ public class DeleteEmployee extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbEmpId, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(108, 108, 108)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(59, Short.MAX_VALUE))
+                    .addComponent(btnClose, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         //asking confirmation
-        int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the employee "
-                + cmbEmpId.getSelectedItem() + "?",
-                "Warning", JOptionPane.YES_NO_OPTION);
-        if (reply == JOptionPane.YES_OPTION) {
-            //check if user selects any data and show the appropriate message if he doesn't select one
-            if (cmbDepId.getSelectedItem() != null && cmbEmpId.getSelectedItem() != null && checkHead()) {
+
+        //check if user selects any data and show the appropriate message if he doesn't select one
+        if (cmbDepId.getSelectedItem() != null && cmbEmpId.getSelectedItem() != null && checkHead()) {
+            int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the employee "
+                    + cmbEmpId.getSelectedItem() + "?",
+                    "Warning", JOptionPane.YES_NO_OPTION);
+            if (reply == JOptionPane.YES_OPTION) {
                 //remove the employee
                 HrSystem.getAllDepartments().get(cmbDepId.getSelectedIndex()).getListOfEmployees().remove(cmbEmpId.getSelectedIndex());
                 //print confirmation
@@ -172,21 +180,21 @@ public class DeleteEmployee extends javax.swing.JFrame {
                 this.cmbEmpId.removeAllItems();
                 this.cmbDepId.setSelectedItem(null);
                 this.cmbEmpId.setSelectedItem(null);
-                //print errors 
-            } else if (cmbDepId.getSelectedItem() == null) {
-                JOptionPane.showMessageDialog(null, "Enter a department to delete the employee from",
-                        "Message", 2);
-            } else if (cmbEmpId.getSelectedItem() == null) {
-                JOptionPane.showMessageDialog(null, "Choose an employee to delete",
-                        "Message", 2);
-            } else {
-                JOptionPane.showMessageDialog(null, "The employee is the head of the department, change the head of the department to delete him",
-                        "Message", 2);
             }
+            //print errors 
+        } else if (cmbDepId.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(null, "Enter a department to delete the employee from",
+                    "Message", 2);
+        } else if (cmbEmpId.getSelectedItem() == null) {
+            JOptionPane.showMessageDialog(null, "Choose an employee to delete",
+                    "Message", 2);
+        } else {
+            JOptionPane.showMessageDialog(null, "The employee is the head of the department, change the head of the department to delete him",
+                    "Message", 2);
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnDeleteActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCloseActionPerformed
         //confirmation to close window
         int reply = JOptionPane.showConfirmDialog(
                 null,
@@ -195,7 +203,7 @@ public class DeleteEmployee extends javax.swing.JFrame {
         if (reply == JOptionPane.YES_OPTION) {
             this.dispose();
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCloseActionPerformed
 
     private void cmbDepIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbDepIdActionPerformed
         //check if the selected item is not null
@@ -298,10 +306,10 @@ public class DeleteEmployee extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnClose;
+    private javax.swing.JButton btnDelete;
     private javax.swing.JComboBox<String> cmbDepId;
     private javax.swing.JComboBox<String> cmbEmpId;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblDepId;
