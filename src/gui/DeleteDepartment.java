@@ -201,7 +201,9 @@ public class DeleteDepartment extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowClosing
     //method to populate combo box
     /**
-     * @Author: abdulla ali purpose: to load departments in the combo box
+     * @Author: abdulla ali 
+     * 
+     * purpose: to load departments in the combo box
      */
     private void loadDepartments() {
         //checking if the system has departments entered 

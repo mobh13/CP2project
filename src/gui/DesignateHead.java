@@ -252,24 +252,35 @@ public class DesignateHead extends javax.swing.JFrame {
 
     }//GEN-LAST:event_cmbDepIdActionPerformed
     /**
-     * @Author: abdulla ali purpose: to load departments in the combo box
+     * @Author: abdulla ali
+     *
+     * purpose: to load departments in the combo box
      */
     private void loadDepartments() {
         //method to load departmnets in the combo box
-        //if there are no departments
+        //checking if the system has departments entered 
         if (!HrSystem.getAllDepartments().isEmpty()) {
-            //clearing the box
+            //clearing coombo box
             this.cmbDepId.removeAllItems();
-            //looping to add all departments
-            for (int i = 1; i < HrSystem.getAllDepartments().size(); i++) {
-                String info = HrSystem.getAllDepartments().get(i).getId() + " - "
-                        + HrSystem.getAllDepartments().get(i).getName();
-                this.cmbDepId.addItem(info);
+            try {
+                //for loop to add all departments
+                for (int i = 1; i < HrSystem.getAllDepartments().size(); i++) {
+                    String info = HrSystem.getAllDepartments().get(i).getId() + " - "
+                            + HrSystem.getAllDepartments().get(i).getName();
+                    this.cmbDepId.addItem(info);
+                }
+                //to catch the exception of array's index out of bound
+            } catch (IndexOutOfBoundsException ex) {
+                JOptionPane.showMessageDialog(this, "While loading the departments in "
+                        + "the combo box, an error has occured:\n" + ex, null, 0);
+                //general exception to prvent the application from crashing 
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this, "An error has occured:\n" + ex, null, 0);
             }
-            //setting initail selection to null/nothing
-            this.cmbDepId.setSelectedIndex(-1);
-        }
 
+            //setting the initial selected item null
+            this.cmbDepId.setSelectedItem(null);
+        }
     }
 
     /**
